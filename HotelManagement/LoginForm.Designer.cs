@@ -30,6 +30,7 @@ namespace hotel_management
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbForgotPassword = new System.Windows.Forms.Label();
             this.viewPasswordbox = new System.Windows.Forms.PictureBox();
             this.lbExit = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@ namespace hotel_management
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.groupBox1.Controls.Add(this.lbForgotPassword);
             this.groupBox1.Controls.Add(this.viewPasswordbox);
             this.groupBox1.Controls.Add(this.lbExit);
             this.groupBox1.Controls.Add(this.btnLogin);
@@ -58,6 +60,19 @@ namespace hotel_management
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lbForgotPassword
+            // 
+            this.lbForgotPassword.AutoSize = true;
+            this.lbForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lbForgotPassword.ForeColor = System.Drawing.Color.Black;
+            this.lbForgotPassword.Location = new System.Drawing.Point(120, 220);
+            this.lbForgotPassword.Name = "lbForgotPassword";
+            this.lbForgotPassword.Size = new System.Drawing.Size(159, 20);
+            this.lbForgotPassword.TabIndex = 2;
+            this.lbForgotPassword.Text = "Forgot password?";
+            this.lbForgotPassword.Click += new System.EventHandler(this.lbForgotPassword_Click);
             // 
             // viewPasswordbox
             // 
@@ -83,7 +98,7 @@ namespace hotel_management
             this.lbExit.Location = new System.Drawing.Point(116, 325);
             this.lbExit.Name = "lbExit";
             this.lbExit.Size = new System.Drawing.Size(91, 42);
-            this.lbExit.TabIndex = 1;
+            this.lbExit.TabIndex = 0;
             this.lbExit.Text = "Exit";
             this.lbExit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbExit.Click += new System.EventHandler(this.lbExit_Click);
@@ -97,7 +112,7 @@ namespace hotel_management
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(233, 46);
-            this.btnLogin.TabIndex = 1;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -106,28 +121,28 @@ namespace hotel_management
             // 
             this.txbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txbUsername.ForeColor = System.Drawing.Color.DarkGray;
-            this.txbUsername.Location = new System.Drawing.Point(83, 94);
+            this.txbUsername.Location = new System.Drawing.Point(46, 94);
             this.txbUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbUsername.Name = "txbUsername";
-            this.txbUsername.Size = new System.Drawing.Size(196, 30);
+            this.txbUsername.PlaceholderText = "Username";
+            this.txbUsername.Size = new System.Drawing.Size(233, 30);
             this.txbUsername.TabIndex = 0;
-            this.txbUsername.Text = "Username";
+            this.txbUsername.TabStop = false;
             this.txbUsername.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txbUsername_MouseClick);
-            this.txbUsername.MouseLeave += new System.EventHandler(this.txbUsername_MouseLeave);
             // 
             // txbPassword
             // 
             this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txbPassword.ForeColor = System.Drawing.Color.DarkGray;
-            this.txbPassword.Location = new System.Drawing.Point(83, 178);
+            this.txbPassword.Location = new System.Drawing.Point(46, 178);
             this.txbPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbPassword.Name = "txbPassword";
-            this.txbPassword.PasswordChar = '*';
-            this.txbPassword.Size = new System.Drawing.Size(196, 30);
-            this.txbPassword.TabIndex = 0;
-            this.txbPassword.Text = "Password";
-            this.txbPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txbPassword_MouseClick);
-            this.txbPassword.MouseLeave += new System.EventHandler(this.txbPassword_MouseLeave);
+            this.txbPassword.PlaceholderText = "Password";
+            this.txbPassword.Size = new System.Drawing.Size(233, 30);
+            this.txbPassword.TabIndex = 1;
+            this.txbPassword.TabStop = false;
+            this.txbPassword.UseSystemPasswordChar = true;
+            this.txbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txbPassword_KeyDown);
             // 
             // LoginForm
             // 
@@ -137,12 +152,15 @@ namespace hotel_management
             this.BackgroundImage = global::hotel_management.Properties.Resources.loginBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(924, 631);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogin";
+            this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -161,5 +179,6 @@ namespace hotel_management
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private PictureBox viewPasswordbox;
+        private Label lbForgotPassword;
     }
 }

@@ -19,6 +19,13 @@ namespace hotel_management
             InitializeComponent();
         }
 
+        //MainForm frm;
+
+        public static class FormState
+        {
+            public static Form PreviousPage;
+        }
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -47,50 +54,65 @@ namespace hotel_management
             //}
             //else
             //{
-                MessageBox.Show("Username hoặc Password không đúng!", "Thông báo");
+            //MessageBox.Show("Username hoặc Password không đúng!", "Thông báo");
             //}
+            FormState.PreviousPage = this;
+            MainForm frm = new MainForm(this.txbUsername.Text);
+            frm.FormClosed += frm_FormClosed;
+            Clearfield();
+            txbPassword.TabStop = false;
+            frm.Show(this);
+            Hide();
         }
 
-        private void txbUsername_MouseClick(object sender, MouseEventArgs e)
+        void frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormState.PreviousPage.Show();
+        }
+
+        private void Clearfield()
         {
             txbUsername.Text = "";
-            //((TextBox)sender).Text = "";
-        }
-
-        private void txbPassword_MouseClick(object sender, MouseEventArgs e)
-        {
             txbPassword.Text = "";
         }
 
         private void viewPasswordbox_Click(object sender, EventArgs e)
         {
-            if (txbPassword.PasswordChar == '*')
+            if (txbPassword.UseSystemPasswordChar == true)
             {
+                //enable password
                 this.viewPasswordbox.Image = global::hotel_management.Properties.Resources.eye_slash;
-                txbPassword.PasswordChar = '\0';
+                txbPassword.UseSystemPasswordChar = false;
             }
             else
             {
+                //disable password
+                txbPassword.UseSystemPasswordChar = true;
                 this.viewPasswordbox.Image = global::hotel_management.Properties.Resources.eye;
-                txbPassword.PasswordChar = '*';
             }
         }
 
-        private void txbPassword_MouseLeave(object sender, EventArgs e)
+
+        private void txbPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if (txbPassword.Text == "")
+            
+            if (e.KeyCode == Keys.Enter)
             {
-                txbPassword.Text = "Password";
-                txbPassword.PasswordChar = '*';
+                btnLogin_Click(sender, e);
             }
+
         }
 
-        private void txbUsername_MouseLeave(object sender, EventArgs e)
+
+        private void lbForgotPassword_Click(object sender, EventArgs e)
         {
-            if (txbUsername.Text == "")
-            {
-                txbUsername.Text = "Username";
-            }
+            MessageBox.Show("ngoo", "Thông báo");
         }
+
+        private void txbUsername_MouseClick(object sender, EventArgs e)
+        {
+            txbPassword.TabStop = true;
+        }
+
     }
 }

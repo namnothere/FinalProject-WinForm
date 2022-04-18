@@ -1,4 +1,5 @@
-﻿using FontAwesome.Sharp;
+﻿#nullable enable // at the top of the file
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 namespace hotel_management
 {
     public partial class MainForm : Form
@@ -23,6 +23,12 @@ namespace hotel_management
             leftBorderBtn.Size = new Size(7, 60);
             panel_sidebar.Controls.Add(leftBorderBtn);
         }
+
+        public static class FormState
+        {
+            public static Form PreviousPage;
+        }
+
         //public frmMain(Account account)
         //{
         //    InitializeComponent();
@@ -31,6 +37,16 @@ namespace hotel_management
         //    panel_sidebar.Controls.Add(leftBorderBtn);
         //    this.account = account;
         //}
+
+        public MainForm(string username)
+        {
+            InitializeComponent();
+            this.txbUsername.Text = username;
+            leftBorderBtn = new Panel();
+            leftBorderBtn.Size = new Size(7, 60);
+            panel_sidebar.Controls.Add(leftBorderBtn);
+            //this.txbUsername.Text = "Welcome";
+        }
 
         //struct
         private struct RGBcolors
@@ -104,18 +120,21 @@ namespace hotel_management
         private void btnHome_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBcolors.color1);
+            FormState.PreviousPage = this;
             //OpenFormInPanel(new frmHome());
         }
 
         private void btnDatPhong_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBcolors.color2);
+            FormState.PreviousPage = this;
             //OpenFormInPanel(new frmBookRoom());
         }
 
         private void btnNhanPhong_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBcolors.color3);
+
             //OpenFormInPanel(new frmCheckIn());
         }
 
@@ -133,9 +152,7 @@ namespace hotel_management
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            LoginForm fm = new LoginForm();
-            fm.Show();
+            this.Close();
         }
     }
 }

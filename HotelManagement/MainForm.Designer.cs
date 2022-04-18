@@ -37,16 +37,11 @@ namespace hotel_management
             this.btnDatPhong = new FontAwesome.Sharp.IconButton();
             this.btnHome = new FontAwesome.Sharp.IconButton();
             this.panelInfo = new System.Windows.Forms.Panel();
-            this.lblName = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txbUsername = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_workarea = new System.Windows.Forms.Panel();
             this.panel_sidebar.SuspendLayout();
             this.panelInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,11 +55,10 @@ namespace hotel_management
             this.panel_sidebar.Controls.Add(this.btnDatPhong);
             this.panel_sidebar.Controls.Add(this.btnHome);
             this.panel_sidebar.Controls.Add(this.panelInfo);
-            this.panel_sidebar.Controls.Add(this.panelLogo);
             this.panel_sidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_sidebar.Location = new System.Drawing.Point(0, 0);
             this.panel_sidebar.Name = "panel_sidebar";
-            this.panel_sidebar.Size = new System.Drawing.Size(292, 729);
+            this.panel_sidebar.Size = new System.Drawing.Size(292, 545);
             this.panel_sidebar.TabIndex = 3;
             // 
             // btnDangXuat
@@ -79,7 +73,7 @@ namespace hotel_management
             this.btnDangXuat.IconColor = System.Drawing.Color.Gainsboro;
             this.btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 669);
+            this.btnDangXuat.Location = new System.Drawing.Point(0, 485);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnDangXuat.Size = new System.Drawing.Size(292, 60);
@@ -102,7 +96,7 @@ namespace hotel_management
             this.btnQLKhachHang.IconColor = System.Drawing.Color.Gainsboro;
             this.btnQLKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnQLKhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 613);
+            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 427);
             this.btnQLKhachHang.Name = "btnQLKhachHang";
             this.btnQLKhachHang.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnQLKhachHang.Size = new System.Drawing.Size(292, 60);
@@ -125,12 +119,12 @@ namespace hotel_management
             this.btnTraPhong.IconColor = System.Drawing.Color.Gainsboro;
             this.btnTraPhong.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnTraPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTraPhong.Location = new System.Drawing.Point(0, 553);
+            this.btnTraPhong.Location = new System.Drawing.Point(0, 367);
             this.btnTraPhong.Name = "btnTraPhong";
             this.btnTraPhong.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnTraPhong.Size = new System.Drawing.Size(292, 60);
             this.btnTraPhong.TabIndex = 12;
-            this.btnTraPhong.Text = "Trả phòng";
+            this.btnTraPhong.Text = "Check-in/out";
             this.btnTraPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTraPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTraPhong.UseVisualStyleBackColor = false;
@@ -148,12 +142,12 @@ namespace hotel_management
             this.btnNhanPhong.IconColor = System.Drawing.Color.Gainsboro;
             this.btnNhanPhong.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnNhanPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNhanPhong.Location = new System.Drawing.Point(0, 493);
+            this.btnNhanPhong.Location = new System.Drawing.Point(0, 307);
             this.btnNhanPhong.Name = "btnNhanPhong";
             this.btnNhanPhong.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnNhanPhong.Size = new System.Drawing.Size(292, 60);
             this.btnNhanPhong.TabIndex = 11;
-            this.btnNhanPhong.Text = "Nhận phòng";
+            this.btnNhanPhong.Text = "Lịch làm việc";
             this.btnNhanPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNhanPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNhanPhong.UseVisualStyleBackColor = false;
@@ -171,12 +165,12 @@ namespace hotel_management
             this.btnDatPhong.IconColor = System.Drawing.Color.Gainsboro;
             this.btnDatPhong.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDatPhong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDatPhong.Location = new System.Drawing.Point(0, 433);
+            this.btnDatPhong.Location = new System.Drawing.Point(0, 247);
             this.btnDatPhong.Name = "btnDatPhong";
             this.btnDatPhong.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnDatPhong.Size = new System.Drawing.Size(292, 60);
             this.btnDatPhong.TabIndex = 10;
-            this.btnDatPhong.Text = "Đặt phòng";
+            this.btnDatPhong.Text = "Quản lý nhân viên";
             this.btnDatPhong.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDatPhong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDatPhong.UseVisualStyleBackColor = false;
@@ -194,10 +188,10 @@ namespace hotel_management
             this.btnHome.IconColor = System.Drawing.Color.Gainsboro;
             this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(0, 348);
+            this.btnHome.Location = new System.Drawing.Point(0, 168);
             this.btnHome.Name = "btnHome";
             this.btnHome.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
-            this.btnHome.Size = new System.Drawing.Size(292, 85);
+            this.btnHome.Size = new System.Drawing.Size(292, 79);
             this.btnHome.TabIndex = 9;
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -209,62 +203,35 @@ namespace hotel_management
             // 
             this.panelInfo.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panelInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelInfo.Controls.Add(this.lblName);
-            this.panelInfo.Controls.Add(this.pictureBox2);
+            this.panelInfo.Controls.Add(this.txbUsername);
+            this.panelInfo.Controls.Add(this.pictureBox1);
             this.panelInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelInfo.Location = new System.Drawing.Point(0, 174);
+            this.panelInfo.Location = new System.Drawing.Point(0, 0);
             this.panelInfo.Name = "panelInfo";
-            this.panelInfo.Size = new System.Drawing.Size(292, 174);
+            this.panelInfo.Size = new System.Drawing.Size(292, 168);
             this.panelInfo.TabIndex = 8;
             // 
-            // lblName
+            // txbUsername
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblName.ForeColor = System.Drawing.Color.White;
-            this.lblName.Location = new System.Drawing.Point(73, 129);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(117, 25);
-            this.lblName.TabIndex = 6;
-            this.lblName.Text = "Sadio mane";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(66, 6);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(146, 135);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panelLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelLogo.Controls.Add(this.label1);
-            this.panelLogo.Controls.Add(this.pictureBox1);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(292, 174);
-            this.panelLogo.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Mistral", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(137, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 33);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Sixboy Hotel";
+            this.txbUsername.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.txbUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbUsername.Enabled = false;
+            this.txbUsername.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbUsername.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.txbUsername.Location = new System.Drawing.Point(-1, 141);
+            this.txbUsername.Name = "txbUsername";
+            this.txbUsername.ReadOnly = true;
+            this.txbUsername.Size = new System.Drawing.Size(292, 23);
+            this.txbUsername.TabIndex = 2;
+            this.txbUsername.TabStop = false;
+            this.txbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(0, 54);
+            this.pictureBox1.Image = global::hotel_management.Properties.Resources.profileIcon;
+            this.pictureBox1.Location = new System.Drawing.Point(59, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(133, 95);
+            this.pictureBox1.Size = new System.Drawing.Size(171, 150);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -275,7 +242,7 @@ namespace hotel_management
             this.panel_workarea.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_workarea.Location = new System.Drawing.Point(292, 0);
             this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(808, 729);
+            this.panel_workarea.Size = new System.Drawing.Size(808, 545);
             this.panel_workarea.TabIndex = 4;
             // 
             // MainForm
@@ -283,20 +250,20 @@ namespace hotel_management
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1100, 729);
+            this.ClientSize = new System.Drawing.Size(1100, 545);
+            this.ControlBox = false;
             this.Controls.Add(this.panel_workarea);
             this.Controls.Add(this.panel_sidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Quản lý khách sạn - Nhân viên: sadio mane";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel_sidebar.ResumeLayout(false);
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panelLogo.ResumeLayout(false);
-            this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -304,18 +271,15 @@ namespace hotel_management
 
         #endregion
         private System.Windows.Forms.Panel panel_sidebar;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel_workarea;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panelLogo;
         private FontAwesome.Sharp.IconButton btnDangXuat;
         private FontAwesome.Sharp.IconButton btnQLKhachHang;
         private FontAwesome.Sharp.IconButton btnTraPhong;
         private FontAwesome.Sharp.IconButton btnNhanPhong;
         private FontAwesome.Sharp.IconButton btnDatPhong;
         private FontAwesome.Sharp.IconButton btnHome;
-        private System.Windows.Forms.Panel panelInfo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblName;
+        private Panel panelInfo;
+        private PictureBox pictureBox1;
+        private TextBox txbUsername;
     }
 }
