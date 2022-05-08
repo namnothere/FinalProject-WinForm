@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,14 +45,20 @@ namespace hotel_management
             return false;
         }
 
-
         //insert new customer to db
         //return true if success
         //return false if fail
-        public bool InsertCustomer()
+        public bool insertCustomer(string id, string name, string address, string phone)
         {
-            var insert = mydb.insertCustomer(this);
-            return true;
+            SqlCommand cmd = new SqlCommand("INSERT INTO Customer VALUES (@id, @name, @address, @phone)", mydb.getConnection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.AddWithValue("@phone", phone);
+            int result = cmd.ExecuteNonQuery();
+            if (result > 0)
+                return true;
+            return false;
         }
     }
 }

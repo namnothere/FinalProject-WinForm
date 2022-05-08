@@ -104,7 +104,7 @@ namespace hotel_management
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
+            this.panel1.BackColor = System.Drawing.Color.LightGreen;
             this.panel1.Controls.Add(this.iconPictureBox1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label12);
@@ -117,7 +117,7 @@ namespace hotel_management
             // 
             // iconPictureBox1
             // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(85)))));
+            this.iconPictureBox1.BackColor = System.Drawing.Color.LightGreen;
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.LuggageCart;
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -142,7 +142,7 @@ namespace hotel_management
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.DarkGray;
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.txbRoom);
@@ -154,6 +154,7 @@ namespace hotel_management
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.ForeColor = System.Drawing.Color.ForestGreen;
             this.panel2.Location = new System.Drawing.Point(0, 51);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
@@ -203,6 +204,7 @@ namespace hotel_management
             // 
             // btnAllList
             // 
+            this.btnAllList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAllList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAllList.Location = new System.Drawing.Point(858, 760);
             this.btnAllList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -214,6 +216,8 @@ namespace hotel_management
             // 
             // btnDel
             // 
+            this.btnDel.BackColor = System.Drawing.SystemColors.Window;
+            this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDel.Location = new System.Drawing.Point(1172, 831);
             this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -221,10 +225,12 @@ namespace hotel_management
             this.btnDel.Size = new System.Drawing.Size(212, 61);
             this.btnDel.TabIndex = 7;
             this.btnDel.Text = "Remove Order";
-            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.UseVisualStyleBackColor = false;
             // 
             // btnEdit
             // 
+            this.btnEdit.BackColor = System.Drawing.SystemColors.Window;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEdit.Location = new System.Drawing.Point(885, 831);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -232,10 +238,12 @@ namespace hotel_management
             this.btnEdit.Size = new System.Drawing.Size(212, 61);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Edit ";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.UseVisualStyleBackColor = false;
             // 
             // btnBook
             // 
+            this.btnBook.BackColor = System.Drawing.SystemColors.Window;
+            this.btnBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBook.Location = new System.Drawing.Point(595, 831);
             this.btnBook.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -243,13 +251,14 @@ namespace hotel_management
             this.btnBook.Size = new System.Drawing.Size(212, 61);
             this.btnBook.TabIndex = 6;
             this.btnBook.Text = "Book";
-            this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.UseVisualStyleBackColor = false;
             this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.LVBookList);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox3.ForeColor = System.Drawing.Color.ForestGreen;
             this.groupBox3.Location = new System.Drawing.Point(858, 36);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
@@ -271,7 +280,7 @@ namespace hotel_management
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox2.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox2.Controls.Add(this.comboBoxSex);
             this.groupBox2.Controls.Add(this.txbPhone);
             this.groupBox2.Controls.Add(this.txbAddress);
@@ -285,6 +294,7 @@ namespace hotel_management
             this.groupBox2.Controls.Add(this.dateDOB);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.ForeColor = System.Drawing.Color.ForestGreen;
             this.groupBox2.Location = new System.Drawing.Point(14, 403);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
@@ -406,7 +416,7 @@ namespace hotel_management
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
             this.groupBox1.Controls.Add(this.txbRoomNumber);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.label3);
@@ -419,6 +429,7 @@ namespace hotel_management
             this.groupBox1.Controls.Add(this.dClaimRoom);
             this.groupBox1.Controls.Add(this.comboBoxRoomType);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.ForeColor = System.Drawing.Color.ForestGreen;
             this.groupBox1.Location = new System.Drawing.Point(14, 36);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";

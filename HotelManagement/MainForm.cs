@@ -97,6 +97,19 @@ namespace hotel_management
         {
             //OpenFormInPanel(new frmHome());
             ActivateButton(btnHome, RGBcolors.color1);
+            this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
+            ACCOUNT acc = new ACCOUNT();
+
+            //pic = (byte[])acc.getImage(txbUsername.Text);
+            //MemoryStream picture = new MemoryStream(pic);
+
+            if (acc.getImage(txbUsername.Text) != null)
+            {
+                this.profilePic.Image = acc.getImage(txbUsername.Text);
+            }
+            
+            
+            //this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
             //var ST = new clsStaff();
             //var nv = ST.CheckIfExist(account.username);
             //lblName.Text = nv.name;
@@ -152,7 +165,7 @@ namespace hotel_management
         {
             ActivateButton(sender, RGBcolors.color2);
             FormState.PreviousPage = this;
-            OpenFormInPanel(new EmployeeManeForm());
+            OpenFormInPanel(new EmployeeAccountManeForm());
         }
     }
 }

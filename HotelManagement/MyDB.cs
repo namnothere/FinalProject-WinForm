@@ -28,9 +28,6 @@ namespace hotel_management
         //static IMongoDatabase db = client.GetDatabase("HotelManagement");
 
 
-
-
-
         public SqlConnection getConnection
         {
             get { return con; }
@@ -72,21 +69,5 @@ namespace hotel_management
                 con.Close();
         }
 
-        public bool insertCustomer(Customer customer)
-        {
-            //var collection = db.GetCollection<Customer>("Customer");
-            //collection.UpdateOne(new BsonDocument("_id", customer.id), new BsonDocument("$set", customer.ToBsonDocument()));
-            //return true;
-            SqlCommand cmd = new SqlCommand("INSERT INTO Customer VALUES (@id, @name, @address, @phone)", con);
-            cmd.Parameters.AddWithValue("@id", customer.id);
-            cmd.Parameters.AddWithValue("@name", customer.name);
-            cmd.Parameters.AddWithValue("@address", customer.address);
-            cmd.Parameters.AddWithValue("@phone", customer.phone);
-            openConnection();
-            int result = cmd.ExecuteNonQuery();
-            if (result > 0)
-                return true;
-            return false;
-        }
     }
 }

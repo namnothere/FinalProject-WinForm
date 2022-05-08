@@ -30,20 +30,20 @@ namespace hotel_management
         private void InitializeComponent()
         {
             this.panel_sidebar = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnDangXuat = new FontAwesome.Sharp.IconButton();
+            this.btnQLKhachHang = new FontAwesome.Sharp.IconButton();
             this.btnTraPhong = new FontAwesome.Sharp.IconButton();
             this.btnNhanPhong = new FontAwesome.Sharp.IconButton();
             this.btnStaffMane = new FontAwesome.Sharp.IconButton();
             this.btnHome = new FontAwesome.Sharp.IconButton();
             this.panelInfo = new System.Windows.Forms.Panel();
             this.txbUsername = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.profilePic = new System.Windows.Forms.PictureBox();
             this.panel_workarea = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnQLKhachHang = new FontAwesome.Sharp.IconButton();
             this.panel_sidebar.SuspendLayout();
             this.panelInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_sidebar
@@ -62,6 +62,28 @@ namespace hotel_management
             this.panel_sidebar.Name = "panel_sidebar";
             this.panel_sidebar.Size = new System.Drawing.Size(292, 612);
             this.panel_sidebar.TabIndex = 3;
+            // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(0, 489);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
+            this.iconButton1.Size = new System.Drawing.Size(292, 63);
+            this.iconButton1.TabIndex = 16;
+            this.iconButton1.Text = "Quản lý khách hàng";
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
             // 
             // btnDangXuat
             // 
@@ -85,6 +107,29 @@ namespace hotel_management
             this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangXuat.UseVisualStyleBackColor = false;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // btnQLKhachHang
+            // 
+            this.btnQLKhachHang.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnQLKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQLKhachHang.FlatAppearance.BorderSize = 0;
+            this.btnQLKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLKhachHang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnQLKhachHang.ForeColor = System.Drawing.Color.White;
+            this.btnQLKhachHang.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            this.btnQLKhachHang.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnQLKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnQLKhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 426);
+            this.btnQLKhachHang.Name = "btnQLKhachHang";
+            this.btnQLKhachHang.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
+            this.btnQLKhachHang.Size = new System.Drawing.Size(292, 63);
+            this.btnQLKhachHang.TabIndex = 13;
+            this.btnQLKhachHang.Text = "Quản lý khách hàng";
+            this.btnQLKhachHang.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLKhachHang.UseVisualStyleBackColor = false;
+            this.btnQLKhachHang.Click += new System.EventHandler(this.btnQLKhachHang_Click);
             // 
             // btnTraPhong
             // 
@@ -183,7 +228,7 @@ namespace hotel_management
             this.panelInfo.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panelInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelInfo.Controls.Add(this.txbUsername);
-            this.panelInfo.Controls.Add(this.pictureBox1);
+            this.panelInfo.Controls.Add(this.profilePic);
             this.panelInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelInfo.Location = new System.Drawing.Point(0, 0);
             this.panelInfo.Name = "panelInfo";
@@ -205,15 +250,15 @@ namespace hotel_management
             this.txbUsername.TabStop = false;
             this.txbUsername.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pictureBox1
+            // profilePic
             // 
-            this.pictureBox1.Image = global::hotel_management.Properties.Resources.profileIcon;
-            this.pictureBox1.Location = new System.Drawing.Point(59, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(171, 150);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
+            this.profilePic.Location = new System.Drawing.Point(68, -1);
+            this.profilePic.Name = "profilePic";
+            this.profilePic.Size = new System.Drawing.Size(150, 150);
+            this.profilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePic.TabIndex = 0;
+            this.profilePic.TabStop = false;
             // 
             // panel_workarea
             // 
@@ -224,60 +269,15 @@ namespace hotel_management
             this.panel_workarea.BackColor = System.Drawing.Color.LightGray;
             this.panel_workarea.Location = new System.Drawing.Point(292, 0);
             this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(1062, 612);
+            this.panel_workarea.Size = new System.Drawing.Size(1270, 612);
             this.panel_workarea.TabIndex = 4;
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.IdCard;
-            this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 489);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
-            this.iconButton1.Size = new System.Drawing.Size(292, 63);
-            this.iconButton1.TabIndex = 16;
-            this.iconButton1.Text = "Quản lý khách hàng";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton1.UseVisualStyleBackColor = false;
-            // 
-            // btnQLKhachHang
-            // 
-            this.btnQLKhachHang.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnQLKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQLKhachHang.FlatAppearance.BorderSize = 0;
-            this.btnQLKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQLKhachHang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnQLKhachHang.ForeColor = System.Drawing.Color.White;
-            this.btnQLKhachHang.IconChar = FontAwesome.Sharp.IconChar.IdCard;
-            this.btnQLKhachHang.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnQLKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnQLKhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 426);
-            this.btnQLKhachHang.Name = "btnQLKhachHang";
-            this.btnQLKhachHang.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
-            this.btnQLKhachHang.Size = new System.Drawing.Size(292, 63);
-            this.btnQLKhachHang.TabIndex = 13;
-            this.btnQLKhachHang.Text = "Quản lý khách hàng";
-            this.btnQLKhachHang.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQLKhachHang.UseVisualStyleBackColor = false;
-            this.btnQLKhachHang.Click += new System.EventHandler(this.btnQLKhachHang_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1354, 612);
+            this.ClientSize = new System.Drawing.Size(1562, 612);
             this.ControlBox = false;
             this.Controls.Add(this.panel_workarea);
             this.Controls.Add(this.panel_sidebar);
@@ -291,7 +291,7 @@ namespace hotel_management
             this.panel_sidebar.ResumeLayout(false);
             this.panelInfo.ResumeLayout(false);
             this.panelInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,7 +306,7 @@ namespace hotel_management
         private FontAwesome.Sharp.IconButton btnStaffMane;
         private FontAwesome.Sharp.IconButton btnHome;
         private Panel panelInfo;
-        private PictureBox pictureBox1;
+        private PictureBox profilePic;
         private TextBox txbUsername;
         private IconButton iconButton1;
         private IconButton btnQLKhachHang;
