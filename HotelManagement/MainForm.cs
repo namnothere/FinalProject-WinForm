@@ -124,13 +124,6 @@ namespace hotel_management
             //OpenFormInPanel(new frmHome());
         }
 
-        private void btnDatPhong_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color2);
-            FormState.PreviousPage = this;
-            //OpenFormInPanel(new frmBookRoom());
-        }
-
         private void btnNhanPhong_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBcolors.color3);
@@ -153,6 +146,13 @@ namespace hotel_management
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnStaffMane_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBcolors.color2);
+            FormState.PreviousPage = this;
+            OpenFormInPanel(new EmployeeManeForm());
         }
     }
 }

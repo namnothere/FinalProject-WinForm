@@ -29,20 +29,27 @@ namespace hotel_management
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.usernameExistPic = new System.Windows.Forms.PictureBox();
+            this.lbNewAccount = new System.Windows.Forms.Label();
             this.lbForgotPassword = new System.Windows.Forms.Label();
             this.viewPasswordbox = new System.Windows.Forms.PictureBox();
             this.lbExit = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txbUsername = new System.Windows.Forms.TextBox();
             this.txbPassword = new System.Windows.Forms.TextBox();
+            this.UsernametoolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usernameExistPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewPasswordbox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.groupBox1.Controls.Add(this.usernameExistPic);
+            this.groupBox1.Controls.Add(this.lbNewAccount);
             this.groupBox1.Controls.Add(this.lbForgotPassword);
             this.groupBox1.Controls.Add(this.viewPasswordbox);
             this.groupBox1.Controls.Add(this.lbExit);
@@ -61,13 +68,41 @@ namespace hotel_management
             this.groupBox1.Text = "Login";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // usernameExistPic
+            // 
+            this.usernameExistPic.BackColor = System.Drawing.Color.Transparent;
+            this.usernameExistPic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.usernameExistPic.ErrorImage = null;
+            this.usernameExistPic.Image = global::hotel_management.Properties.Resources.RedXbutton;
+            this.usernameExistPic.Location = new System.Drawing.Point(285, 97);
+            this.usernameExistPic.Name = "usernameExistPic";
+            this.usernameExistPic.Size = new System.Drawing.Size(28, 24);
+            this.usernameExistPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.usernameExistPic.TabIndex = 6;
+            this.usernameExistPic.TabStop = false;
+            this.UsernametoolTip.SetToolTip(this.usernameExistPic, "Username does not exist");
+            this.usernameExistPic.Visible = false;
+            // 
+            // lbNewAccount
+            // 
+            this.lbNewAccount.AutoSize = true;
+            this.lbNewAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbNewAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lbNewAccount.ForeColor = System.Drawing.Color.Black;
+            this.lbNewAccount.Location = new System.Drawing.Point(6, 219);
+            this.lbNewAccount.Name = "lbNewAccount";
+            this.lbNewAccount.Size = new System.Drawing.Size(117, 20);
+            this.lbNewAccount.TabIndex = 4;
+            this.lbNewAccount.Text = "New account";
+            this.lbNewAccount.Click += new System.EventHandler(this.lbNewAccount_Click);
+            // 
             // lbForgotPassword
             // 
             this.lbForgotPassword.AutoSize = true;
             this.lbForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.lbForgotPassword.ForeColor = System.Drawing.Color.Black;
-            this.lbForgotPassword.Location = new System.Drawing.Point(120, 220);
+            this.lbForgotPassword.Location = new System.Drawing.Point(154, 219);
             this.lbForgotPassword.Name = "lbForgotPassword";
             this.lbForgotPassword.Size = new System.Drawing.Size(159, 20);
             this.lbForgotPassword.TabIndex = 2;
@@ -164,6 +199,7 @@ namespace hotel_management
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.usernameExistPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewPasswordbox)).EndInit();
             this.ResumeLayout(false);
 
@@ -180,5 +216,9 @@ namespace hotel_management
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private PictureBox viewPasswordbox;
         private Label lbForgotPassword;
+        private Label lbNewAccount;
+        private System.ComponentModel.IContainer components;
+        private PictureBox usernameExistPic;
+        private ToolTip UsernametoolTip;
     }
 }

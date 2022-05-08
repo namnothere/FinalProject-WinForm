@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -42,27 +43,37 @@ namespace hotel_management
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //account = new Account()
-            //{
-            //    username = txtUsername.Text.ToUpper(),
-            //    password = txtPassword.Text
-            //};
 
-            //if (qlAccount.CheckAccount(account))
-            //{
-            //    this.DialogResult = DialogResult.Yes;
-            //}
-            //else
-            //{
-            //MessageBox.Show("Username hoặc Password không đúng!", "Thông báo");
-            //}
-            FormState.PreviousPage = this;
-            MainForm frm = new MainForm(this.txbUsername.Text);
-            frm.FormClosed += frm_FormClosed;
-            Clearfield();
-            txbPassword.TabStop = false;
-            frm.Show(this);
-            Hide();
+
+
+            string username = txbUsername.Text;
+            string password = txbPassword.Text;
+            ACCOUNT account = new ACCOUNT(username, password);
+
+
+            if (!account.usernameExist(username))
+            {
+                //MessageBox.Show("Username does not exist!");
+                usernameExistPic.Visible = true;
+                return;
+            }
+            
+            usernameExistPic.Visible = false;
+
+            if (account.login())
+            {
+                FormState.PreviousPage = this;
+                MainForm frm = new MainForm(this.txbUsername.Text);
+                frm.FormClosed += frm_FormClosed;
+                Clearfield();
+                txbPassword.TabStop = false;
+                frm.Show(this);
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Wrong password!", "Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         void frm_FormClosed(object sender, FormClosedEventArgs e)
@@ -106,7 +117,7 @@ namespace hotel_management
 
         private void lbForgotPassword_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ngoo", "Thông báo");
+            MessageBox.Show("ngoo", "Forgot Password");
         }
 
         private void txbUsername_MouseClick(object sender, EventArgs e)
@@ -114,5 +125,10 @@ namespace hotel_management
             txbPassword.TabStop = true;
         }
 
+        private void lbNewAccount_Click(object sender, EventArgs e)
+        {
+            //only manager can create new account
+            MessageBox.Show("Contact management to get your credentials!", "New Account");
+        }
     }
 }
