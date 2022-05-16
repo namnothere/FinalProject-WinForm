@@ -49,7 +49,7 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox4);
-            this.panel2.ForeColor = System.Drawing.Color.DarkGreen;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1063, 297);
@@ -65,7 +65,7 @@
             this.groupBox3.Controls.Add(this.txbPassword);
             this.groupBox3.Controls.Add(this.txbUsername);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.ForeColor = System.Drawing.Color.ForestGreen;
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.groupBox3.Location = new System.Drawing.Point(22, 26);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
@@ -94,7 +94,7 @@
             this.btnCreate.BackColor = System.Drawing.SystemColors.Window;
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCreate.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnCreate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.btnCreate.Location = new System.Drawing.Point(16, 186);
             this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCreate.Name = "btnCreate";
@@ -160,7 +160,7 @@
             // 
             this.groupBox4.Controls.Add(this.lvwListAccount);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.ForeColor = System.Drawing.Color.ForestGreen;
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.groupBox4.Location = new System.Drawing.Point(583, 26);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
@@ -188,7 +188,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1087, 321);
             this.Controls.Add(this.panel2);
-            this.ForeColor = System.Drawing.Color.DarkGreen;
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManageAccountForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -18,12 +18,14 @@ namespace hotel_management
         }
 
         ACCOUNT acc = new ACCOUNT();
-
+        Form A = new ManageAccountForm();
+        Form E = new EmployeeManageForm();
         string cur = "E";
         
         private void EmployeeManeForm_Load(object sender, EventArgs e)
         {
-            OpenFormInPanel(new EmployeeManageForm());
+            OpenFormInPanel(E);
+            currForm(cur);
         }
 
         private void OpenFormInPanel(object Formhijo)
@@ -45,8 +47,9 @@ namespace hotel_management
         {
             if (cur != "A")
             {
-                OpenFormInPanel(new ManageAccountForm());
+                OpenFormInPanel(A);
                 cur = "A";
+                currForm(cur);
             }
         }
 
@@ -54,9 +57,25 @@ namespace hotel_management
         {
             if (cur != "E")
             {
-                OpenFormInPanel(new EmployeeManageForm());
+                OpenFormInPanel(E);
                 cur = "E";
+                currForm(cur);
             }
         }
+
+        void currForm(string frm)
+        {
+            if (frm == "A")
+            {
+                btnEmployee.ForeColor = Color.White;
+                btnAccount.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
+            }
+            else if (frm == "E")
+            {
+                btnEmployee.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
+                btnAccount.ForeColor = Color.White;
+            }
+        }
+        
     }
 }

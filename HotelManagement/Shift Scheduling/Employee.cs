@@ -8,6 +8,7 @@ namespace hotel_management
 {
     internal class Staff
     {
+        //lưu id cũa staff là được
         int id;
         string name;
         string address;

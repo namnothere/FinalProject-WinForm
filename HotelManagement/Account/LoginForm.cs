@@ -53,7 +53,6 @@ namespace hotel_management
 
             if (!account.usernameExist(username))
             {
-                //MessageBox.Show("Username does not exist!");
                 usernameExistPic.Visible = true;
                 return;
             }
@@ -63,11 +62,22 @@ namespace hotel_management
             if (account.login())
             {
                 FormState.PreviousPage = this;
-                MainForm frm = new MainForm(this.txbUsername.Text);
-                frm.FormClosed += frm_FormClosed;
+
+                if (account.admin())
+                {
+                    MainFormAdmin frm = new MainFormAdmin(username);
+                    frm.FormClosed += frm_FormClosed;
+                    frm.Show(this);
+                }
+                else
+                {
+                    MainFormStaff frm = new MainFormStaff(username);
+                    frm.FormClosed += frm_FormClosed;
+                    frm.Show(this);
+                }
+
                 Clearfield();
                 txbPassword.TabStop = false;
-                frm.Show(this);
                 Hide();
             }
             else

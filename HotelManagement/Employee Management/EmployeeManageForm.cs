@@ -88,6 +88,13 @@ namespace hotel_management
         
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
+            //check if staff id is a number or text
+            if (!txbID.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("This is not a valid ID", "Add staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (staff.existed(txbID.Text))
             {

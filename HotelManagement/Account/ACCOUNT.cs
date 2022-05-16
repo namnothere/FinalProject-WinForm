@@ -176,5 +176,49 @@ namespace hotel_management
             }
             return false;
         }
+
+        public bool admin(string username)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT admin FROM login WHERE username = @username", mydb.getConnection);
+            cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
+            mydb.openConnection();
+
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            if (table.Rows.Count > 0)
+            {
+                if (table.Rows[0]["admin"].ToString() == "1")
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        public bool admin()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT admin FROM login WHERE username = @username", mydb.getConnection);
+            cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = this.username;
+            mydb.openConnection();
+
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            if (table.Rows.Count > 0)
+            {
+                if (table.Rows[0]["admin"].ToString() == "1")
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+
     }
 }

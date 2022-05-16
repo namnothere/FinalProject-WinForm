@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnAccount = new System.Windows.Forms.Button();
-            this.btnEmployee = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAccount = new System.Windows.Forms.Label();
+            this.btnEmployee = new System.Windows.Forms.Label();
             this.imgAvatar = new System.Windows.Forms.ImageList(this.components);
             this.panel_workarea = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -43,47 +43,43 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // btnAccount
-            // 
-            this.btnAccount.BackColor = System.Drawing.SystemColors.Window;
-            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAccount.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnAccount.Location = new System.Drawing.Point(141, 29);
-            this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(114, 35);
-            this.btnAccount.TabIndex = 24;
-            this.btnAccount.Text = "Account";
-            this.btnAccount.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAccount.UseVisualStyleBackColor = false;
-            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
-            // 
-            // btnEmployee
-            // 
-            this.btnEmployee.BackColor = System.Drawing.SystemColors.Window;
-            this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEmployee.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.btnEmployee.Location = new System.Drawing.Point(21, 29);
-            this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(114, 35);
-            this.btnEmployee.TabIndex = 25;
-            this.btnEmployee.Text = "Employee";
-            this.btnEmployee.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEmployee.UseVisualStyleBackColor = false;
-            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
-            // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.panel1.Controls.Add(this.btnEmployee);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.panel1.Controls.Add(this.btnAccount);
+            this.panel1.Controls.Add(this.btnEmployee);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1252, 64);
             this.panel1.TabIndex = 22;
+            // 
+            // btnAccount
+            // 
+            this.btnAccount.AutoSize = true;
+            this.btnAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAccount.ForeColor = System.Drawing.Color.White;
+            this.btnAccount.Location = new System.Drawing.Point(179, 28);
+            this.btnAccount.Name = "btnAccount";
+            this.btnAccount.Size = new System.Drawing.Size(120, 31);
+            this.btnAccount.TabIndex = 27;
+            this.btnAccount.Text = "Account";
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            // 
+            // btnEmployee
+            // 
+            this.btnEmployee.AutoSize = true;
+            this.btnEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnEmployee.ForeColor = System.Drawing.Color.White;
+            this.btnEmployee.Location = new System.Drawing.Point(12, 28);
+            this.btnEmployee.Name = "btnEmployee";
+            this.btnEmployee.Size = new System.Drawing.Size(142, 31);
+            this.btnEmployee.TabIndex = 26;
+            this.btnEmployee.Text = "Employee";
+            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
             // imgAvatar
             // 
@@ -118,6 +114,7 @@
             this.Load += new System.EventHandler(this.EmployeeManeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -127,8 +124,8 @@
         private ErrorProvider errorProvider1;
         private Panel panel_workarea;
         private Panel panel1;
-        private Button btnEmployee;
-        private Button btnAccount;
         private ImageList imgAvatar;
+        private Label btnEmployee;
+        private Label btnAccount;
     }
 }

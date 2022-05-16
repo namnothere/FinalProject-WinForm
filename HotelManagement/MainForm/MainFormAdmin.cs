@@ -10,13 +10,13 @@ using System.Text;
 using System.Windows.Forms;
 namespace hotel_management
 {
-    public partial class MainForm : Form
+    public partial class MainFormAdmin : Form
     {
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         //private Account account;
 
-        public MainForm()
+        public MainFormAdmin()
         {
             InitializeComponent();
             leftBorderBtn = new Panel();
@@ -38,14 +38,13 @@ namespace hotel_management
         //    this.account = account;
         //}
 
-        public MainForm(string username)
+        public MainFormAdmin(string username)
         {
             InitializeComponent();
-            this.txbUsername.Text = username;
+            txbUsername.Text = username;
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panel_sidebar.Controls.Add(leftBorderBtn);
-            //this.txbUsername.Text = "Welcome";
         }
 
         //struct
@@ -83,7 +82,7 @@ namespace hotel_management
         {
             if (currentBtn != null)
             {
-                currentBtn.BackColor = Color.FromArgb(37, 36, 81);
+                currentBtn.BackColor = Color.FromArgb(0, 55, 55);
                 currentBtn.ForeColor = Color.Gainsboro;
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.IconColor = Color.Gainsboro;
@@ -107,8 +106,9 @@ namespace hotel_management
             {
                 this.profilePic.Image = acc.getImage(txbUsername.Text);
             }
-            
-            
+
+            txbUsername.ForeColor = Color.White;
+
             //this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
             //var ST = new clsStaff();
             //var nv = ST.CheckIfExist(account.username);
@@ -144,21 +144,10 @@ namespace hotel_management
             //OpenFormInPanel(new frmCheckIn());
         }
 
-        private void btnTraPhong_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color4);
-            //OpenFormInPanel(new frmCheckOut());
-        }
-
         private void btnQLKhachHang_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBcolors.color5);
             //OpenFormInPanel(new frmCustomerManagement());
-        }
-
-        private void btnDangXuat_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnStaffMane_Click(object sender, EventArgs e)
@@ -166,6 +155,17 @@ namespace hotel_management
             ActivateButton(sender, RGBcolors.color2);
             FormState.PreviousPage = this;
             OpenFormInPanel(new EmployeeAccountManeForm());
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRoomManagement_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBcolors.color4);
+            OpenFormInPanel(new RoomManageForm());
         }
     }
 }

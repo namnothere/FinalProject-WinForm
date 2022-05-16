@@ -1,7 +1,6 @@
-﻿using FontAwesome.Sharp;
-namespace hotel_management
+﻿namespace hotel_management.Room_Management
 {
-    partial class BookroomForm
+    partial class ReservationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,21 +28,17 @@ namespace hotel_management
         /// </summary>
         private void InitializeComponent()
         {
-            this.label12 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txbRoom = new System.Windows.Forms.TextBox();
-            this.btnFindRoom = new System.Windows.Forms.Button();
-            this.btnAllList = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.txbFindRoom = new System.Windows.Forms.TextBox();
+            this.btnFindRoom = new System.Windows.Forms.Button();
             this.btnBook = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.LVBookList = new System.Windows.Forms.ListView();
+            this.label21 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
             this.txbPhone = new System.Windows.Forms.TextBox();
@@ -79,173 +74,116 @@ namespace hotel_management
             this.dBookDate = new System.Windows.Forms.DateTimePicker();
             this.dClaimRoom = new System.Windows.Forms.DateTimePicker();
             this.comboBoxRoomType = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.BackColor = System.Drawing.Color.DeepPink;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(1378, 10);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 35);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "x";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightGreen;
-            this.panel1.Controls.Add(this.iconPictureBox1);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1420, 56);
-            this.panel1.TabIndex = 2;
-            // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.LightGreen;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.LuggageCart;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 41;
-            this.iconPictureBox1.Location = new System.Drawing.Point(14, 10);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(41, 44);
-            this.iconPictureBox1.TabIndex = 4;
-            this.iconPictureBox1.TabStop = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(66, 10);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(179, 31);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "Reservation ";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
-            this.panel2.Controls.Add(this.flowLayoutPanel1);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.txbRoom);
-            this.panel2.Controls.Add(this.btnFindRoom);
-            this.panel2.Controls.Add(this.btnAllList);
+            this.panel2.Controls.Add(this.groupBox4);
             this.panel2.Controls.Add(this.btnDel);
             this.panel2.Controls.Add(this.btnEdit);
+            this.panel2.Controls.Add(this.txbFindRoom);
+            this.panel2.Controls.Add(this.btnFindRoom);
             this.panel2.Controls.Add(this.btnBook);
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.ForeColor = System.Drawing.Color.ForestGreen;
-            this.panel2.Location = new System.Drawing.Point(0, 51);
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1420, 939);
-            this.panel2.TabIndex = 3;
+            this.panel2.Size = new System.Drawing.Size(1415, 810);
+            this.panel2.TabIndex = 4;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.flowLayoutPanel1);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.groupBox4.Location = new System.Drawing.Point(14, 393);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(448, 328);
+            this.groupBox4.TabIndex = 11;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Room List";
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(561, 108);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 30);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(268, 703);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(436, 287);
             this.flowLayoutPanel1.TabIndex = 10;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(625, 7);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(128, 29);
-            this.label21.TabIndex = 9;
-            this.label21.Text = "Room List";
-            // 
-            // txbRoom
-            // 
-            this.txbRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbRoom.Location = new System.Drawing.Point(561, 53);
-            this.txbRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txbRoom.Name = "txbRoom";
-            this.txbRoom.Size = new System.Drawing.Size(165, 36);
-            this.txbRoom.TabIndex = 1;
-            // 
-            // btnFindRoom
-            // 
-            this.btnFindRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnFindRoom.Location = new System.Drawing.Point(732, 53);
-            this.btnFindRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFindRoom.Name = "btnFindRoom";
-            this.btnFindRoom.Size = new System.Drawing.Size(97, 38);
-            this.btnFindRoom.TabIndex = 2;
-            this.btnFindRoom.Text = "Find";
-            this.btnFindRoom.UseVisualStyleBackColor = true;
-            // 
-            // btnAllList
-            // 
-            this.btnAllList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAllList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAllList.Location = new System.Drawing.Point(858, 760);
-            this.btnAllList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAllList.Name = "btnAllList";
-            this.btnAllList.Size = new System.Drawing.Size(552, 51);
-            this.btnAllList.TabIndex = 8;
-            this.btnAllList.Text = "All List Book Room";
-            this.btnAllList.UseVisualStyleBackColor = true;
             // 
             // btnDel
             // 
             this.btnDel.BackColor = System.Drawing.SystemColors.Window;
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDel.Location = new System.Drawing.Point(1172, 831);
+            this.btnDel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.btnDel.Location = new System.Drawing.Point(523, 709);
             this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(212, 61);
             this.btnDel.TabIndex = 7;
             this.btnDel.Text = "Remove Order";
             this.btnDel.UseVisualStyleBackColor = false;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.SystemColors.Window;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEdit.Location = new System.Drawing.Point(885, 831);
+            this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.btnEdit.Location = new System.Drawing.Point(523, 624);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(212, 61);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Edit ";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // txbFindRoom
+            // 
+            this.txbFindRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txbFindRoom.Location = new System.Drawing.Point(194, 732);
+            this.txbFindRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbFindRoom.Name = "txbFindRoom";
+            this.txbFindRoom.Size = new System.Drawing.Size(165, 36);
+            this.txbFindRoom.TabIndex = 1;
+            // 
+            // btnFindRoom
+            // 
+            this.btnFindRoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFindRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnFindRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.btnFindRoom.Location = new System.Drawing.Point(365, 732);
+            this.btnFindRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnFindRoom.Name = "btnFindRoom";
+            this.btnFindRoom.Size = new System.Drawing.Size(97, 38);
+            this.btnFindRoom.TabIndex = 2;
+            this.btnFindRoom.Text = "Find";
+            this.btnFindRoom.UseVisualStyleBackColor = true;
+            this.btnFindRoom.Click += new System.EventHandler(this.btnFindRoom_Click);
             // 
             // btnBook
             // 
             this.btnBook.BackColor = System.Drawing.SystemColors.Window;
             this.btnBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnBook.Location = new System.Drawing.Point(595, 831);
+            this.btnBook.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.btnBook.Location = new System.Drawing.Point(523, 542);
             this.btnBook.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(212, 61);
@@ -257,13 +195,14 @@ namespace hotel_management
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.LVBookList);
+            this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.ForeColor = System.Drawing.Color.ForestGreen;
-            this.groupBox3.Location = new System.Drawing.Point(858, 36);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.groupBox3.Location = new System.Drawing.Point(798, 36);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(550, 716);
+            this.groupBox3.Size = new System.Drawing.Size(610, 734);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Booked Room";
@@ -271,12 +210,22 @@ namespace hotel_management
             // LVBookList
             // 
             this.LVBookList.FullRowSelect = true;
-            this.LVBookList.Location = new System.Drawing.Point(13, 38);
+            this.LVBookList.Location = new System.Drawing.Point(6, 38);
             this.LVBookList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LVBookList.Name = "LVBookList";
-            this.LVBookList.Size = new System.Drawing.Size(531, 663);
+            this.LVBookList.Size = new System.Drawing.Size(598, 692);
             this.LVBookList.TabIndex = 0;
             this.LVBookList.UseCompatibleStateImageBehavior = false;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(257, -49);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(128, 29);
+            this.label21.TabIndex = 9;
+            this.label21.Text = "Room List";
             // 
             // groupBox2
             // 
@@ -294,18 +243,19 @@ namespace hotel_management
             this.groupBox2.Controls.Add(this.dateDOB);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.ForeColor = System.Drawing.Color.ForestGreen;
-            this.groupBox2.Location = new System.Drawing.Point(14, 403);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.groupBox2.Location = new System.Drawing.Point(468, 36);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(512, 489);
+            this.groupBox2.Size = new System.Drawing.Size(324, 489);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Client\'s Infomarion";
             // 
             // comboBoxSex
             // 
+            this.comboBoxSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSex.FormattingEnabled = true;
             this.comboBoxSex.Items.AddRange(new object[] {
             "M",
@@ -352,7 +302,7 @@ namespace hotel_management
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 244);
+            this.label9.Location = new System.Drawing.Point(22, 243);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(85, 25);
             this.label9.TabIndex = 0;
@@ -361,7 +311,7 @@ namespace hotel_management
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(23, 410);
+            this.label19.Location = new System.Drawing.Point(23, 409);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(65, 25);
             this.label19.TabIndex = 0;
@@ -370,7 +320,7 @@ namespace hotel_management
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 324);
+            this.label8.Location = new System.Drawing.Point(23, 323);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(143, 25);
             this.label8.TabIndex = 0;
@@ -379,7 +329,7 @@ namespace hotel_management
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 164);
+            this.label6.Location = new System.Drawing.Point(23, 163);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 25);
             this.label6.TabIndex = 0;
@@ -388,7 +338,7 @@ namespace hotel_management
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 97);
+            this.label5.Location = new System.Drawing.Point(23, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 25);
             this.label5.TabIndex = 0;
@@ -408,7 +358,7 @@ namespace hotel_management
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 31);
+            this.label4.Location = new System.Drawing.Point(23, 30);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 25);
             this.label4.TabIndex = 0;
@@ -429,19 +379,19 @@ namespace hotel_management
             this.groupBox1.Controls.Add(this.dClaimRoom);
             this.groupBox1.Controls.Add(this.comboBoxRoomType);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.groupBox1.Location = new System.Drawing.Point(14, 36);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(510, 338);
+            this.groupBox1.Size = new System.Drawing.Size(448, 338);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Room\'s Info";
             // 
             // txbRoomNumber
             // 
-            this.txbRoomNumber.Location = new System.Drawing.Point(242, 97);
+            this.txbRoomNumber.Location = new System.Drawing.Point(198, 96);
             this.txbRoomNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbRoomNumber.Name = "txbRoomNumber";
             this.txbRoomNumber.Size = new System.Drawing.Size(235, 30);
@@ -517,7 +467,7 @@ namespace hotel_management
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(22, 192);
+            this.label7.Location = new System.Drawing.Point(22, 191);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 25);
             this.label7.TabIndex = 0;
@@ -526,7 +476,7 @@ namespace hotel_management
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(23, 272);
+            this.label15.Location = new System.Drawing.Point(23, 271);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(126, 25);
             this.label15.TabIndex = 0;
@@ -535,7 +485,7 @@ namespace hotel_management
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(23, 112);
+            this.label16.Location = new System.Drawing.Point(23, 111);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(72, 25);
             this.label16.TabIndex = 0;
@@ -544,7 +494,7 @@ namespace hotel_management
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(327, 31);
+            this.label17.Location = new System.Drawing.Point(327, 30);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(82, 25);
             this.label17.TabIndex = 0;
@@ -553,7 +503,7 @@ namespace hotel_management
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(23, 31);
+            this.label18.Location = new System.Drawing.Point(23, 30);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(69, 25);
             this.label18.TabIndex = 0;
@@ -562,7 +512,7 @@ namespace hotel_management
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 284);
+            this.label3.Location = new System.Drawing.Point(15, 282);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 25);
             this.label3.TabIndex = 2;
@@ -571,7 +521,7 @@ namespace hotel_management
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(52, 163);
+            this.label14.Location = new System.Drawing.Point(8, 161);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(167, 25);
             this.label14.TabIndex = 2;
@@ -580,7 +530,7 @@ namespace hotel_management
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 226);
+            this.label2.Location = new System.Drawing.Point(31, 224);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 25);
             this.label2.TabIndex = 2;
@@ -589,7 +539,7 @@ namespace hotel_management
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(76, 102);
+            this.label10.Location = new System.Drawing.Point(32, 100);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(143, 25);
             this.label10.TabIndex = 2;
@@ -598,7 +548,7 @@ namespace hotel_management
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(156, 44);
+            this.label1.Location = new System.Drawing.Point(112, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 25);
             this.label1.TabIndex = 2;
@@ -608,7 +558,7 @@ namespace hotel_management
             // 
             this.dReturnDate.CustomFormat = "dd/MM/yyyy";
             this.dReturnDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dReturnDate.Location = new System.Drawing.Point(240, 279);
+            this.dReturnDate.Location = new System.Drawing.Point(196, 278);
             this.dReturnDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dReturnDate.Name = "dReturnDate";
             this.dReturnDate.Size = new System.Drawing.Size(235, 30);
@@ -620,7 +570,7 @@ namespace hotel_management
             this.dBookDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dBookDate.CustomFormat = "dd/MM/yyyy";
             this.dBookDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dBookDate.Location = new System.Drawing.Point(242, 158);
+            this.dBookDate.Location = new System.Drawing.Point(198, 157);
             this.dBookDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dBookDate.Name = "dBookDate";
             this.dBookDate.Size = new System.Drawing.Size(235, 30);
@@ -632,7 +582,7 @@ namespace hotel_management
             this.dClaimRoom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dClaimRoom.CustomFormat = "dd/MM/yyyy";
             this.dClaimRoom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dClaimRoom.Location = new System.Drawing.Point(242, 221);
+            this.dClaimRoom.Location = new System.Drawing.Point(198, 220);
             this.dClaimRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dClaimRoom.Name = "dClaimRoom";
             this.dClaimRoom.Size = new System.Drawing.Size(235, 30);
@@ -641,37 +591,37 @@ namespace hotel_management
             // 
             // comboBoxRoomType
             // 
+            this.comboBoxRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRoomType.FormattingEnabled = true;
             this.comboBoxRoomType.Items.AddRange(new object[] {
             "STD",
             "SUP",
             "DLX",
             "SUT",
-            "Junior Suite"});
-            this.comboBoxRoomType.Location = new System.Drawing.Point(242, 36);
+            "JST"});
+            this.comboBoxRoomType.Location = new System.Drawing.Point(198, 35);
             this.comboBoxRoomType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxRoomType.Name = "comboBoxRoomType";
             this.comboBoxRoomType.Size = new System.Drawing.Size(235, 33);
             this.comboBoxRoomType.TabIndex = 0;
+            this.comboBoxRoomType.SelectedIndexChanged += new System.EventHandler(this.comboBoxRoomType_SelectedIndexChanged);
             // 
-            // BookroomForm
+            // ReservationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1420, 971);
+            this.ClientSize = new System.Drawing.Size(1414, 784);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "BookroomForm";
-            this.Text = "Đặt phòng";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
+            this.Name = "ReservationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ReservationForm";
+            this.Load += new System.EventHandler(this.ReservationForm_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -683,56 +633,52 @@ namespace hotel_management
         }
 
         #endregion
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txbAddress;
-        private System.Windows.Forms.TextBox txbID;
-        private System.Windows.Forms.TextBox txbName;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dReturnDate;
-        private System.Windows.Forms.DateTimePicker dClaimRoom;
-        private System.Windows.Forms.ComboBox comboBoxRoomType;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ListView LVBookList;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txbRoomNumber;
-        private System.Windows.Forms.TextBox txbPhone;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBoxSex;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dBookDate;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DateTimePicker dateDOB;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button btnBook;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnAllList;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox txbRoom;
-        private System.Windows.Forms.Button btnFindRoom;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+
+        private Panel panel2;
+        private GroupBox groupBox4;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Button btnDel;
+        private Button btnEdit;
+        private TextBox txbFindRoom;
+        private Button btnFindRoom;
+        private Button btnBook;
+        private GroupBox groupBox3;
+        private ListView LVBookList;
+        private Label label21;
+        private GroupBox groupBox2;
+        private ComboBox comboBoxSex;
+        private TextBox txbPhone;
+        private TextBox txbAddress;
+        private TextBox txbID;
+        private TextBox txbName;
+        private Label label9;
+        private Label label19;
+        private Label label8;
+        private Label label6;
+        private Label label5;
+        private DateTimePicker dateDOB;
+        private Label label4;
+        private GroupBox groupBox1;
+        private TextBox txbRoomNumber;
+        private GroupBox groupBox5;
+        private ComboBox comboBox1;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private Label label7;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private Label label18;
+        private Label label3;
+        private Label label14;
+        private Label label2;
+        private Label label10;
+        private Label label1;
+        private DateTimePicker dReturnDate;
+        private DateTimePicker dBookDate;
+        private DateTimePicker dClaimRoom;
+        private ComboBox comboBoxRoomType;
     }
 }
-
