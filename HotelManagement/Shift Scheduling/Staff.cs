@@ -13,8 +13,13 @@ namespace hotel_management
         string name;
         string address;
         string phone;
-        string type;
+        public string type { get; set; }
         Image image;
         
+    }
+    internal class StaffList
+    {
+        public string type { get; set; }
+        public List<Staff> staffs { get; set; }
     }
 }
