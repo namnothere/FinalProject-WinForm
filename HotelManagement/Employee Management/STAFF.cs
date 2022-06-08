@@ -54,9 +54,9 @@ namespace hotel_management
         }
 
 
-        public bool insertEmployee(string staff_id, string staff_name, DateTime DOB, string staff_address, string staff_phone, string staff_type, string username, MemoryStream staff_img)
+        public bool insertEmployee(string staff_id, string staff_name, DateTime DOB, string staff_address, string staff_phone, string staff_sex, string staff_type, string username, MemoryStream staff_img)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO staffs VALUES(@Id, @name, @DOB, @address, @phone, @sex, @type, @username, @img)", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("INSERT INTO staffs VALUES(@Id, @name, @DOB, @address, @phone, @sex, @type, @img, @username)", mydb.getConnection);
 
             cmd.Parameters.AddWithValue("@Id", staff_id);
             cmd.Parameters.AddWithValue("@name", staff_name);
@@ -66,9 +66,7 @@ namespace hotel_management
             cmd.Parameters.AddWithValue("@sex", staff_sex);
             cmd.Parameters.AddWithValue("@type", staff_type);
             cmd.Parameters.AddWithValue("@img", staff_img.ToArray());
-
-            cmd.Parameters.AddWithValue("@sex", sex);
->>>>>>> fa9d19723868403d5432931c72af4b4906e82121
+            cmd.Parameters.AddWithValue("@username", username);
             mydb.openConnection();
             if (cmd.ExecuteNonQuery() == 1)
             {
