@@ -93,7 +93,7 @@ namespace hotel_management
 
         public int getID(string username)
         {
-            string query = "SELECT usernameID FROM staffs WHERE username = @username";
+            string query = "SELECT Id FROM login WHERE username = @username";
             SqlCommand cmd = new SqlCommand(query, mydb.getConnection);
 
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
@@ -107,7 +107,7 @@ namespace hotel_management
 
             if (table.Rows.Count > 0)
             {
-                return Convert.ToInt32(table.Rows[0]["usernameID"].ToString());
+                return Convert.ToInt32(table.Rows[0]["Id"].ToString());
             }
             return -1;
         }

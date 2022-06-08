@@ -15,13 +15,14 @@ namespace hotel_management
     {
         private IconButton currentBtn;
         private Panel leftBorderBtn;
-
+        int id;
         ACCOUNT acc = new ACCOUNT();
         
         public MainFormStaff(string username)
         {
             InitializeComponent();
             txbUsername.Text = username;
+            this.id = acc.getID(username);
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panel_sidebar.Controls.Add(leftBorderBtn);
@@ -93,6 +94,27 @@ namespace hotel_management
 
             txbUsername.ForeColor = Color.White;
 
+        }
+
+        private void OpenFormInPanel(object Formhijo)
+        {
+            if (this.panel_workarea.Controls.Count > 0)
+            {
+                this.panel_workarea.Controls.RemoveAt(0);
+            }
+            Form fm = Formhijo as Form;
+            fm.TopLevel = false;
+            fm.Dock = DockStyle.Fill;
+            fm.WindowState = FormWindowState.Normal;
+            this.panel_workarea.Controls.Add(fm);
+            this.panel_workarea.Tag = fm;
+            fm.Show();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBcolors.color2);
+            OpenFormInPanel(new HomePage(this.id));
         }
     }
 }

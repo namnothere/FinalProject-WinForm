@@ -90,7 +90,7 @@ namespace hotel_management
         
         public bool updateCustomer()
         {
-            SqlCommand cmd = new SqlCommand("UPDATE Customer SET ID = @id, Address = @address, Phone = @phone, Sex = @sex, DOB = @dob, roomNo = @roomNo, Name = @name", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("UPDATE Customer SET Address = @address, Phone = @phone, Sex = @sex, DOB = @dob, roomNo = @roomNo, Name = @name WHERE ID = @id", mydb.getConnection);
             cmd.Parameters.AddWithValue("@id", SqlDbType.Int).Value = this.id;
             cmd.Parameters.AddWithValue("@name", SqlDbType.NVarChar).Value = this.name;
             cmd.Parameters.AddWithValue("@address", SqlDbType.NVarChar).Value = this.address;

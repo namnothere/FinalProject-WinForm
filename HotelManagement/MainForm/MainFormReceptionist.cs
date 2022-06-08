@@ -16,7 +16,7 @@ namespace hotel_management
         private IconButton currentBtn;
         private Panel leftBorderBtn;
 
-        
+        int id;
         public MainFormReceptionist()
         {
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace hotel_management
         public MainFormReceptionist(string username)
         {
             InitializeComponent();
+            this.id = new ACCOUNT().getID(username);
             txbUsername.Text = username;
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
@@ -119,5 +120,10 @@ namespace hotel_management
             this.Close();
         }
 
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBcolors.color2);
+            OpenFormInPanel(new HomePage(this.id));
+        }
     }
 }
