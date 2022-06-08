@@ -25,9 +25,16 @@ namespace hotel_management.Room_Management
 
         private void ReservationForm_Load(object sender, EventArgs e)
         {
-            createTitle(LVBookList);
             CreateRoomButton(room.getAllRooms());
             loadOrder();
+            CreateHeader();
+            dataGridView1.ForeColor = Color.Black;
+        }
+
+        public void roombutton()
+        {
+            ROOM r = new ROOM();
+            CreateRoomButton(r.getAllRooms());
         }
 
         private Customer CreateCustomer()
@@ -48,13 +55,24 @@ namespace hotel_management.Room_Management
         {
             //return false if any of the text box is empty
             if (txbAddress.Text == "" || txbName.Text == "" || txbPhone.Text == "" || txbID.Text == "" || comboBoxSex.Text == ""
-                || dateDOB.Text == "" || dBookDate.Text == "" || dClaimRoom.Text == "" || dReturnDate.Text == "")
+                || dateDOB.Text == "" || dBookDate.Text == "" || dClaimRoom.Text == "" || dReturnDate.Text == ""
+                || txbRoomNumber.Text == "" || comboBoxRoomType.SelectedIndex == -1)
             {
                 return false;
             }
             return true;
         }
 
+        bool DateValidation()
+        {
+            //check if the date is valid
+            if (dBookDate.Value > dClaimRoom.Value || dClaimRoom.Value > dReturnDate.Value || dBookDate.Value > dReturnDate.Value)
+            {
+                MessageBox.Show("The date is invalid", "Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
 
         void CreateRoomButton(DataTable table)
         {
@@ -80,32 +98,27 @@ namespace hotel_management.Room_Management
             }
         }
 
-        void loadOrder()
+        void CreateHeader()
         {
-            DataTable table = ord.getAllOrders();
-            foreach (DataRow r in table.Rows)
-            {
-                ListViewItem item = new ListViewItem(r["ID"].ToString());
-                item.SubItems.Add(r["dCreate"].ToString());
-                item.SubItems.Add(r["dCheckIn"].ToString());
-                item.SubItems.Add(r["dCheckOut"].ToString());
-                item.SubItems.Add(r["RoomNumber"].ToString());
-                item.SubItems.Add(r["CID"].ToString());
-
-                LVBookList.Items.Add(item);
-            }
+            dataGridView1.Columns[0].HeaderText = "Order ID";
+            dataGridView1.Columns[1].HeaderText = "Customer ID";
+            dataGridView1.Columns[2].HeaderText = "RoomNo";
+            dataGridView1.Columns[3].HeaderText = "BookDate";
+            dataGridView1.Columns[4].HeaderText = "Check-in Date";
+            dataGridView1.Columns[5].HeaderText = "Check-out Date";
+            dataGridView1.Columns[6].HeaderText = "Total";
+            dataGridView1.Columns[6].Visible = false;
+            dataGridView1.Columns[7].Visible = false;
+            dataGridView1.Columns[8].Visible = false;
+            dataGridView1.Columns[8].HeaderText = "Status";
 
         }
 
-        ListViewItem createOrderItem(order o)
+        public void loadOrder()
         {
-            ListViewItem item = new ListViewItem(o.order_id.ToString());
-            item.SubItems.Add(o.order_date.ToString());
-            item.SubItems.Add(o.check_in_date.ToString());
-            item.SubItems.Add(o.check_out_date.ToString());
-            item.SubItems.Add(o.room_id.ToString());
-            item.SubItems.Add(o.customer_id.ToString());
-            return item;
+            DataTable table = ord.getAllReservations();
+            dataGridView1.DataSource = table;
+
 
         }
 
@@ -146,37 +159,57 @@ namespace hotel_management.Room_Management
         {
             if (verif())
             {
+                if (DateValidation() == false) return;
+
+
+                
                 Customer customer = CreateCustomer();
                 if (!room.roomExist(Convert.ToInt32(txbRoomNumber.Text)) || !room.getRoomStatus(Convert.ToInt32(txbRoomNumber.Text)))
                 {
                     MessageBox.Show("This room is not available. Please choose another room", "Book Room");
                     return;
                 }
-                if (customer.CustomerExisted(txbID.Text))
-                {
-                    MessageBox.Show("This customer is already booked a room here", "Book Room");
-                    return;
-                }
                 customer.RoomNumber = Convert.ToInt32(txbRoomNumber.Text);
                 order o = createOrder();
-                MessageBox.Show("Current order ID: " + o.order_id.ToString(), "Book Room");
+                //MessageBox.Show("Current order ID: " + o.order_id.ToString(), "Book Room");
                 ORDER order = new ORDER();
 
 
-
-                if (order.newBook(customer, o))
+                if (customer.CustomerExisted(txbID.Text))
                 {
-                    MessageBox.Show("Booking successfull", "Book Room");
-                    LVBookList.Items.Add(createOrderItem(o));
-                    ClearFields();
-                    flowLayoutPanel1.Controls.Clear();
-                    CreateRoomButton(room.getAllRooms());
+                    if (order.newBook(o))
+                    {
+                        MessageBox.Show("Booking successfull", "Book Room", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadOrder();
+                        userC = false;
+                        ClearFields();
+                        userC = true;
+                        flowLayoutPanel1.Controls.Clear();
+                        CreateRoomButton(room.getAllRooms());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Booking failed", "Book Room", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Booking failed", "Book Room");
-                    flowLayoutPanel1.Controls.Clear();
-                    CreateRoomButton(room.getAllRooms());
+                    if (order.newBook(customer, o))
+                    {
+                        MessageBox.Show("Booking successful", "Book Room", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadOrder();
+                        userC = false;
+                        ClearFields();
+                        userC = true;
+                        flowLayoutPanel1.Controls.Clear();
+                        CreateRoomButton(room.getAllRooms());
+                    }
+                    else
+                    {
+                        MessageBox.Show("Booking failed", "Book Room");
+                        flowLayoutPanel1.Controls.Clear();
+                        CreateRoomButton(room.getAllRooms());
+                    }
                 }
 
             }
@@ -188,7 +221,6 @@ namespace hotel_management.Room_Management
 
 
         }
-
 
         private order createOrder()
         {
@@ -206,17 +238,6 @@ namespace hotel_management.Room_Management
             return o;
         }
 
-        private void createTitle(ListView lvwBookRoomList)
-        {
-            lvwBookRoomList.Columns.Add("Order ID", 90);
-            lvwBookRoomList.Columns.Add("Reservation", 115);
-            lvwBookRoomList.Columns.Add("Check-in", 95);
-            lvwBookRoomList.Columns.Add("Check-out", 110);
-            lvwBookRoomList.Columns.Add("RoomNo", 100);
-            lvwBookRoomList.Columns.Add("CID", 60);
-
-            lvwBookRoomList.View = View.Details;
-        }
 
 
         private void btnFindRoom_Click(object sender, EventArgs e)
@@ -260,27 +281,7 @@ namespace hotel_management.Room_Management
             }
         }
 
-        private void LVBookList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (LVBookList.SelectedItems.Count > 0)
-            {
-                Customer c = new Customer();
-                ListViewItem item = LVBookList.SelectedItems[0];
-                txbRoomNumber.Text = item.SubItems[4].Text;
-                txbID.Text = item.SubItems[5].Text;
-                c = c.getCustomerByID(Convert.ToInt32(txbID.Text));
-                txbName.Text = c.name;
-                txbAddress.Text = c.address;
-                txbPhone.Text = c.phone;
-                comboBoxSex.SelectedItem = c.sex.ToString();
-                dateDOB.Text = c.DOB.ToString();
-                dBookDate.Text = item.SubItems[1].Text;
-                dClaimRoom.Text = item.SubItems[2].Text;
-                dReturnDate.Text = item.SubItems[3].Text;
-                currentOrderID = Convert.ToInt32(item.SubItems[0].Text);
-            }
-
-        }
+    
 
         private void btnDel_Click(object sender, EventArgs e)
         {
@@ -297,9 +298,10 @@ namespace hotel_management.Room_Management
                     ord.deleteOrder((int)currentOrderID);
                     MessageBox.Show("Delete successfully", "Book Room");
                     //currentOrderID = null;
+                    userC = false;
                     ClearFields();
+                    userC = true;
                     flowLayoutPanel1.Controls.Clear();
-                    LVBookList.Items.Clear();
                     loadOrder();
                     CreateRoomButton(room.getAllRooms());
                 }
@@ -322,15 +324,6 @@ namespace hotel_management.Room_Management
             comboBoxRoomType.SelectedIndex = -1;
         }
 
-        private void dReturnDate_ValueChanged(object sender, EventArgs e)
-        {
-            if (dReturnDate.Value < dClaimRoom.Value)
-            {
-                MessageBox.Show("Check-out date must be greater than check-in date", "Book Room");
-                dReturnDate.Text = "";
-            }
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (currentOrderID != null)
@@ -340,18 +333,56 @@ namespace hotel_management.Room_Management
                     MessageBox.Show("This order does not exist", "Book Room");
                     return;
                 }
+
+                if (!verif()) return;
+
+                if (DateValidation() == false) return;
+
                 if (MessageBox.Show("Are you sure you want to update this order?", "Book Room", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ord.updateOrder(ord.getOrderByID((int)currentOrderID));
+                    order o = createOrder();
+                    o.order_id = (int)currentOrderID;
+                    o.status = "Not Paid";
+                    ord.updateOrder(o);
                     MessageBox.Show("Update successfully", "Book Room");
-                    //currentOrderID = null;
+                    userC = false;
                     ClearFields();
+                    userC = true;
                     flowLayoutPanel1.Controls.Clear();
-                    LVBookList.Items.Clear();
                     loadOrder();
                     CreateRoomButton(room.getAllRooms());
                 }
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex < 0) return;
+            int index = dataGridView1.SelectedCells[0].RowIndex;
+            if (index >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.Rows[index];
+                txbRoomNumber.Text = selectedRow.Cells[2].Value.ToString();
+                txbID.Text = selectedRow.Cells[1].Value.ToString();
+                string type = new ROOM().getRoomType(Convert.ToInt16(txbRoomNumber.Text));
+                Customer c = new Customer();
+                c = c.getCustomerByID(Convert.ToInt32(txbID.Text));
+                txbName.Text = c.name;
+                txbAddress.Text = c.address;
+                txbPhone.Text = c.phone;
+                comboBoxSex.SelectedItem = c.sex;
+                userC = false;
+                comboBoxRoomType.SelectedItem = type;
+                userC = true;
+                dateDOB.Text = c.DOB.ToString();
+                dBookDate.Text = selectedRow.Cells[3].Value.ToString();
+                dClaimRoom.Text = selectedRow.Cells[4].Value.ToString();
+                dReturnDate.Text = selectedRow.Cells[5].Value.ToString();
+                currentOrderID = Convert.ToInt32(selectedRow.Cells[0].Value);
+            }
+
+
         }
     }
 }

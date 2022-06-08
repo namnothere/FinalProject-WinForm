@@ -20,9 +20,9 @@ namespace hotel_management
 
         string curr = "R";
 
-        Form R = new ReservationForm();
-        Form CI = new CheckInForm();
-
+        ReservationForm R = new ReservationForm();
+        CheckInForm CI = new CheckInForm();
+        CheckOutForm CO = new CheckOutForm();
 
 
         private void BookroomForm_Load(object sender, EventArgs e)
@@ -77,6 +77,8 @@ namespace hotel_management
                 currForm(curr);
                 OpenFormInPanel(R);
             }
+            R.loadOrder();
+            R.roombutton();
         }
 
         private void lbCheckIn_Click(object sender, EventArgs e)
@@ -87,6 +89,7 @@ namespace hotel_management
                 currForm(curr);
                 OpenFormInPanel(CI);
             }
+            CI.loadOrder();
         }
 
         private void lbCheckOut_Click(object sender, EventArgs e)
@@ -95,7 +98,7 @@ namespace hotel_management
             {
                 curr = "CO";
                 currForm(curr);
-                
+                OpenFormInPanel(CO);
             }
         }
     }

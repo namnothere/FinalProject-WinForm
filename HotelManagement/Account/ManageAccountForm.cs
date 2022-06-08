@@ -26,25 +26,23 @@ namespace hotel_management
 
         private void loadListView()
         {
-            lvwListAccount.Items.Clear();
-            lvwListAccount.Columns.Clear();
-            lvwListAccount.Columns.Add("ID", 70, HorizontalAlignment.Center);
-            lvwListAccount.Columns.Add("Username", 150, HorizontalAlignment.Center);
-
+            //dataListAccount
+            this.dataListAccount.DataSource = null;
+            dataListAccount.Refresh();
             DataTable accounts = acc.getAllAccounts();
-            string[] arr = new string[2];
-            ListViewItem item;
-            lvwListAccount.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            //loop through all accounts and add to listview
-            foreach (DataRow row in accounts.Rows)
-            {
 
-                arr[0] = row["Id"].ToString();
-                arr[1] = row["Username"].ToString();
+            dataListAccount.ForeColor = Color.Black;
+            dataListAccount.DataSource = accounts;
 
-                item = new ListViewItem(arr);
-                lvwListAccount.Items.Add(item);
-            }
+
+            dataListAccount.Columns[0].HeaderText = "ID";
+            dataListAccount.Columns[1].HeaderText = "Username";
+            dataListAccount.Columns[2].HeaderText = "Perms";
+            dataListAccount.Columns[2].Visible = false;
+            dataListAccount.Columns[3].HeaderText = "Password";
+            dataListAccount.Columns[3].Visible = false;
+            
+
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -57,41 +55,60 @@ namespace hotel_management
                 MessageBox.Show("Username already exists", "Create account", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (acc.insertAccount(txbUsername.Text, txbPassword.Text))
+            if (acc.insertAccount(txbUsername.Text, txbPassword.Text, perm()))
             {
                 MessageBox.Show("Account created", "Create account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadListView();
             }
             else
             {
                 MessageBox.Show("Failed to create account", "Create account", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            loadListView();
         }
+
+        int perm()
+        {
+            //Admin: 1
+            //Recept: 2
+            //Staff: 0
+            
+            if (cbAdmin.Checked && cbRecept.Checked)
+                return 1;
+            else if (cbRecept.Checked)
+                return 2;
+            else
+                return 0;
+            
+        }
+
 
         private void btnUpdatePassword_Click(object sender, EventArgs e)
         {
             if (!verif())
                 return;
-            
+            //if (acc.Available(txbUsername.Text, acc.getID(txbUsername.Text)) == false)
+            //{
+            //    MessageBox.Show("Username not available", "Update account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
             if (!acc.usernameExist(txbUsername.Text))
             {
-                MessageBox.Show("Username does not exist", "Create account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username does not exist", "Update account", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (acc.updateAccount(txbUsername.Text, txbPassword.Text))
+            if (acc.updateAccount(txbUsername.Text, txbPassword.Text, perm()))
             {
-                MessageBox.Show("Password updated", "Update password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Successfully updated", "Update account", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Failed to update password", "Update password", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to update", "Update account", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             loadListView();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (!verif())
+            if (txbUsername.Text.Trim() == "")
                 return;
             
             if (!acc.usernameExist(txbUsername.Text))
@@ -102,6 +119,7 @@ namespace hotel_management
             if (acc.deleteAccount(txbUsername.Text))
             {
                 MessageBox.Show("Account deleted", "Delete account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadListView();
             }
             else
             {
@@ -125,5 +143,32 @@ namespace hotel_management
             return true;
         }
 
+       
+
+        private void dataListAccount_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+            if (index < 0)
+                return;
+            DataGridViewRow row = dataListAccount.Rows[index];
+            txbUsername.Text = row.Cells[1].Value.ToString();
+            txbPassword.Text = row.Cells[3].Value.ToString();
+            if (row.Cells[2].Value.ToString() == "1")
+            {
+                cbAdmin.Checked = true;
+                cbRecept.Checked = true;
+            }
+            else if (row.Cells[2].Value.ToString() == "2")
+            {
+                cbRecept.Checked = true;
+                cbAdmin.Checked = false;
+            }
+            else
+            {
+                cbAdmin.Checked = false;
+                cbRecept.Checked = false;
+            }
+
+        }
     }
 }

@@ -90,9 +90,70 @@ namespace hotel_management
             return false;
         }
 
+
+        public int getID(string username)
+        {
+            string query = "SELECT usernameID FROM staffs WHERE username = @username";
+            SqlCommand cmd = new SqlCommand(query, mydb.getConnection);
+
+            cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
+            mydb.openConnection();
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+
+            adapter.SelectCommand = cmd;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                return Convert.ToInt32(table.Rows[0]["usernameID"].ToString());
+            }
+            return -1;
+        }
+
+
+        //public bool Available(string username, int id)
+        //{
+        //    //update include username
+        //    //1. không thây đổi username (đang update thông tin khác)
+        //    //2. thay đổi username (đang update thông tin của username đó)
+        //    string query = "SELECT * FROM staffs WHERE username = @username";
+        //    SqlCommand cmd = new SqlCommand(query, mydb.getConnection);
+
+        //    cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
+        //    mydb.openConnection();
+
+        //    SqlDataAdapter adapter = new SqlDataAdapter();
+        //    DataTable table = new DataTable();
+
+        //    adapter.SelectCommand = cmd;
+        //    adapter.Fill(table);
+
+        //    //this username hasn't been taken in staffs table
+        //    if (table.Rows.Count == 0)
+        //    {
+        //        //but did exist in login table (maybe it's a temp account)
+        //        if (usernameExist(username) == false)
+        //            return true;
+        //        return false;
+        //    }
+
+        //    //this username belong to this ID
+        //    if (table.Rows[0]["usernameID"].ToString() == id.ToString() && table.Rows.Count == 1)
+        //    {
+        //        return true;
+        //    }
+        //    else //this username did exist and belong to another ID
+        //    {
+        //        return false;
+        //    }
+        //}
+
+
         public DataTable getAllAccounts()
         {
-            SqlCommand command = new SqlCommand("SELECT Id, username FROM login", mydb.getConnection);
+            SqlCommand command = new SqlCommand("SELECT Id, username, admin, password FROM login", mydb.getConnection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
             adapter.Fill(table);
@@ -116,12 +177,13 @@ namespace hotel_management
             return false;
         }
 
-        public bool insertAccount(string username, string password)
+        public bool insertAccount(string username, string password, int perm)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO login (username, password) VALUES (@username, @password)", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("INSERT INTO login (username, password, admin) VALUES (@username, @password, @perm)", mydb.getConnection);
 
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
             cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
+            cmd.Parameters.Add("@perm", SqlDbType.Int).Value = perm;
             mydb.openConnection();
 
             if (cmd.ExecuteNonQuery() > 0)
@@ -149,11 +211,12 @@ namespace hotel_management
             return null;
         }
 
-        public bool updateAccount(string username, string password)
+        public bool updateAccount(string username, string password, int perm)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE login SET username = @username, password = @password WHERE username = @username", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("UPDATE login SET username = @username, password = @password, admin = @perm WHERE username = @username", mydb.getConnection);
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
             cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
+            cmd.Parameters.Add("@perm", SqlDbType.Int).Value = perm;
             mydb.openConnection();
 
             if (cmd.ExecuteNonQuery() == 1)
@@ -176,7 +239,8 @@ namespace hotel_management
             return false;
         }
 
-        public bool admin(string username)
+
+        public int admin(string username)
         {
             SqlCommand cmd = new SqlCommand("SELECT admin FROM login WHERE username = @username", mydb.getConnection);
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
@@ -188,16 +252,12 @@ namespace hotel_management
             adapter.Fill(table);
             if (table.Rows.Count > 0)
             {
-                if (table.Rows[0]["admin"].ToString() == "1")
-                {
-                    return true;
-                }
-
+                return Convert.ToInt32(table.Rows[0]["admin"].ToString());
             }
-            return false;
+            return -1;
         }
 
-        public bool admin()
+        public int admin()
         {
             SqlCommand cmd = new SqlCommand("SELECT admin FROM login WHERE username = @username", mydb.getConnection);
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = this.username;
@@ -209,15 +269,10 @@ namespace hotel_management
             adapter.Fill(table);
             if (table.Rows.Count > 0)
             {
-                if (table.Rows[0]["admin"].ToString() == "1")
-                {
-                    return true;
-                }
-
+                return Convert.ToInt32(table.Rows[0]["admin"].ToString());
             }
-            return false;
+            return -1;
         }
-
 
     }
 }

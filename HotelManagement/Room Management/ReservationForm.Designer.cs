@@ -37,7 +37,7 @@
             this.btnFindRoom = new System.Windows.Forms.Button();
             this.btnBook = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.LVBookList = new System.Windows.Forms.ListView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxSex = new System.Windows.Forms.ComboBox();
@@ -77,6 +77,7 @@
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -194,7 +195,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.LVBookList);
+            this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
@@ -207,15 +208,23 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Booked Room";
             // 
-            // LVBookList
+            // dataGridView1
             // 
-            this.LVBookList.FullRowSelect = true;
-            this.LVBookList.Location = new System.Drawing.Point(6, 38);
-            this.LVBookList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LVBookList.Name = "LVBookList";
-            this.LVBookList.Size = new System.Drawing.Size(598, 692);
-            this.LVBookList.TabIndex = 0;
-            this.LVBookList.UseCompatibleStateImageBehavior = false;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 39);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(598, 690);
+            this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label21
             // 
@@ -563,7 +572,7 @@
             this.dReturnDate.Name = "dReturnDate";
             this.dReturnDate.Size = new System.Drawing.Size(235, 30);
             this.dReturnDate.TabIndex = 1;
-            this.dReturnDate.Value = new System.DateTime(2021, 6, 28, 0, 0, 0, 0);
+            this.dReturnDate.Value = new System.DateTime(2022, 6, 28, 0, 0, 0, 0);
             // 
             // dBookDate
             // 
@@ -587,7 +596,7 @@
             this.dClaimRoom.Name = "dClaimRoom";
             this.dClaimRoom.Size = new System.Drawing.Size(235, 30);
             this.dClaimRoom.TabIndex = 1;
-            this.dClaimRoom.Value = new System.DateTime(2021, 6, 21, 0, 0, 0, 0);
+            this.dClaimRoom.Value = new System.DateTime(2022, 6, 21, 0, 0, 0, 0);
             // 
             // comboBoxRoomType
             // 
@@ -622,6 +631,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -643,7 +653,6 @@
         private Button btnFindRoom;
         private Button btnBook;
         private GroupBox groupBox3;
-        private ListView LVBookList;
         private Label label21;
         private GroupBox groupBox2;
         private ComboBox comboBoxSex;
@@ -680,5 +689,6 @@
         private DateTimePicker dBookDate;
         private DateTimePicker dClaimRoom;
         private ComboBox comboBoxRoomType;
+        private DataGridView dataGridView1;
     }
 }

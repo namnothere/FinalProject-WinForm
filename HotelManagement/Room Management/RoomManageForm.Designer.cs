@@ -50,7 +50,7 @@ namespace hotel_management
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1420, 47);
+            this.panel1.Size = new System.Drawing.Size(1406, 47);
             this.panel1.TabIndex = 2;
             // 
             // lbCheckOut
@@ -113,20 +113,20 @@ namespace hotel_management
             this.panel_workarea.Location = new System.Drawing.Point(0, 43);
             this.panel_workarea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(1420, 807);
+            this.panel_workarea.Size = new System.Drawing.Size(1406, 807);
             this.panel_workarea.TabIndex = 3;
             // 
-            // BookroomForm
+            // RoomManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(1420, 848);
+            this.ClientSize = new System.Drawing.Size(1406, 848);
             this.Controls.Add(this.panel_workarea);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "BookroomForm";
+            this.Name = "RoomManageForm";
             this.Text = "Đặt phòng";
             this.Load += new System.EventHandler(this.BookroomForm_Load);
             this.panel1.ResumeLayout(false);

@@ -258,22 +258,18 @@ namespace hotel_management
             // 
             // panel_workarea
             // 
-            this.panel_workarea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel_workarea.AutoSize = true;
-            this.panel_workarea.BackColor = System.Drawing.Color.LightGray;
+            this.panel_workarea.BackColor = System.Drawing.Color.Gray;
             this.panel_workarea.Location = new System.Drawing.Point(292, 0);
             this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(1418, 859);
-            this.panel_workarea.TabIndex = 4;
+            this.panel_workarea.Size = new System.Drawing.Size(1406, 859);
+            this.panel_workarea.TabIndex = 18;
             // 
             // MainFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1710, 833);
+            this.ClientSize = new System.Drawing.Size(1697, 833);
             this.ControlBox = false;
             this.Controls.Add(this.panel_workarea);
             this.Controls.Add(this.panel_sidebar);
@@ -289,13 +285,11 @@ namespace hotel_management
             this.panelInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel_sidebar;
-        private System.Windows.Forms.Panel panel_workarea;
         private FontAwesome.Sharp.IconButton btnDangXuat;
         private FontAwesome.Sharp.IconButton btnRoomManagement;
         private FontAwesome.Sharp.IconButton btnSched;
@@ -306,5 +300,6 @@ namespace hotel_management
         private IconButton btnQLKhachHang;
         private IconButton btnLogout;
         private Label txbUsername;
+        private Panel panel_workarea;
     }
 }
