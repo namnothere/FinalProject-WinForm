@@ -1,4 +1,4 @@
-﻿namespace hotel_management.Shift_Scheduling
+﻿namespace hotel_management
 {
     partial class CreateSchedule
     {
@@ -29,55 +29,56 @@
         private void InitializeComponent()
         {
             this.labelNoOfShift = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.labelStartDay = new System.Windows.Forms.Label();
             this.labelShift = new System.Windows.Forms.Label();
-            this.textBoxNoOfShift = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStartDay = new System.Windows.Forms.DateTimePicker();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.numericUpDownJanitorAmount = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownReceptionistAmount = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownManagerAmount = new System.Windows.Forms.NumericUpDown();
+            this.panelWeekday = new System.Windows.Forms.Panel();
             this.labelWeekday = new System.Windows.Forms.Label();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.buttonSaveShift = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.labelSet = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelAmountOfSet = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBoxInterchangableEmployee = new System.Windows.Forms.CheckBox();
+            this.checkBoxSunday = new System.Windows.Forms.CheckBox();
+            this.checkBoxMonday = new System.Windows.Forms.CheckBox();
+            this.checkBoxSaturday = new System.Windows.Forms.CheckBox();
+            this.checkBoxTuesday = new System.Windows.Forms.CheckBox();
+            this.checkBoxFriday = new System.Windows.Forms.CheckBox();
+            this.checkBoxWednesday = new System.Windows.Forms.CheckBox();
+            this.checkBoxThursday = new System.Windows.Forms.CheckBox();
+            this.panelInterchangebleStaff = new System.Windows.Forms.Panel();
+            this.numericUpDownAmountOfStaff = new System.Windows.Forms.NumericUpDown();
+            this.labelAmountOfStaff = new System.Windows.Forms.Label();
+            this.checkBoxIEReceptionist = new System.Windows.Forms.CheckBox();
+            this.checkBoxIEManager = new System.Windows.Forms.CheckBox();
+            this.labelStaffTypes = new System.Windows.Forms.Label();
+            this.checkBoxIEJanitor = new System.Windows.Forms.CheckBox();
+            this.checkBoxInterchangableStaff = new System.Windows.Forms.CheckBox();
             this.checkBoxShiftJanitor = new System.Windows.Forms.CheckBox();
             this.checkBoxShiftReceptionist = new System.Windows.Forms.CheckBox();
             this.checkBoxShiftManager = new System.Windows.Forms.CheckBox();
-            this.labelEmployee = new System.Windows.Forms.Label();
+            this.labelStaff = new System.Windows.Forms.Label();
             this.labelTo = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.labelTimeSpan = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxShift = new System.Windows.Forms.ComboBox();
             this.buttonSaveScheduleInfo = new System.Windows.Forms.Button();
             this.labelMaxHourPerShift = new System.Windows.Forms.Label();
-            this.textBoxMaxHourPerShift = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.radioButtonSpecialDaysSetting = new System.Windows.Forms.RadioButton();
             this.radioButtonNormalDaysSetting = new System.Windows.Forms.RadioButton();
-            this.panel1.SuspendLayout();
+            this.numericUpDownShiftPerDay = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownMaxHourPerShift = new System.Windows.Forms.NumericUpDown();
             this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownJanitorAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownReceptionistAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownManagerAmount)).BeginInit();
+            this.panelWeekday.SuspendLayout();
+            this.panelInterchangebleStaff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmountOfStaff)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShiftPerDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxHourPerShift)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNoOfShift
@@ -89,37 +90,6 @@
             this.labelNoOfShift.Size = new System.Drawing.Size(182, 21);
             this.labelNoOfShift.TabIndex = 0;
             this.labelNoOfShift.Text = "Number of Shift Per Day:";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.checkBox2);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Location = new System.Drawing.Point(329, 36);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(211, 65);
-            this.panel1.TabIndex = 1;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox2.Location = new System.Drawing.Point(12, 34);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(162, 25);
-            this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "Same Requirement";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(12, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(133, 25);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Same Duration";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // labelStartDay
             // 
@@ -141,59 +111,96 @@
             this.labelShift.TabIndex = 3;
             this.labelShift.Text = "Shift";
             // 
-            // textBoxNoOfShift
+            // dateTimePickerStartDay
             // 
-            this.textBoxNoOfShift.Location = new System.Drawing.Point(200, 18);
-            this.textBoxNoOfShift.Name = "textBoxNoOfShift";
-            this.textBoxNoOfShift.Size = new System.Drawing.Size(112, 23);
-            this.textBoxNoOfShift.TabIndex = 5;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(200, 50);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(112, 29);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dateTimePickerStartDay.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerStartDay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerStartDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStartDay.Location = new System.Drawing.Point(200, 50);
+            this.dateTimePickerStartDay.Name = "dateTimePickerStartDay";
+            this.dateTimePickerStartDay.Size = new System.Drawing.Size(114, 29);
+            this.dateTimePickerStartDay.TabIndex = 7;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.buttonSaveShift);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.checkBoxInterchangableEmployee);
+            this.panel2.Controls.Add(this.numericUpDownJanitorAmount);
+            this.panel2.Controls.Add(this.numericUpDownReceptionistAmount);
+            this.panel2.Controls.Add(this.numericUpDownManagerAmount);
+            this.panel2.Controls.Add(this.panelWeekday);
+            this.panel2.Controls.Add(this.panelInterchangebleStaff);
+            this.panel2.Controls.Add(this.checkBoxInterchangableStaff);
             this.panel2.Controls.Add(this.checkBoxShiftJanitor);
             this.panel2.Controls.Add(this.checkBoxShiftReceptionist);
             this.panel2.Controls.Add(this.checkBoxShiftManager);
-            this.panel2.Controls.Add(this.labelEmployee);
+            this.panel2.Controls.Add(this.labelStaff);
             this.panel2.Controls.Add(this.labelTo);
-            this.panel2.Controls.Add(this.dateTimePicker3);
-            this.panel2.Controls.Add(this.dateTimePicker2);
+            this.panel2.Controls.Add(this.dateTimePickerTo);
+            this.panel2.Controls.Add(this.dateTimePickerFrom);
             this.panel2.Controls.Add(this.labelTimeSpan);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.comboBoxShift);
             this.panel2.Controls.Add(this.labelShift);
             this.panel2.Location = new System.Drawing.Point(12, 163);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(528, 479);
+            this.panel2.Size = new System.Drawing.Size(528, 353);
             this.panel2.TabIndex = 8;
             // 
-            // panel6
+            // numericUpDownJanitorAmount
             // 
-            this.panel6.Controls.Add(this.labelWeekday);
-            this.panel6.Controls.Add(this.checkBox19);
-            this.panel6.Controls.Add(this.checkBox13);
-            this.panel6.Controls.Add(this.checkBox18);
-            this.panel6.Controls.Add(this.checkBox14);
-            this.panel6.Controls.Add(this.checkBox17);
-            this.panel6.Controls.Add(this.checkBox15);
-            this.panel6.Controls.Add(this.checkBox16);
-            this.panel6.Location = new System.Drawing.Point(236, 94);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(267, 161);
-            this.panel6.TabIndex = 27;
-            this.panel6.Visible = false;
+            this.numericUpDownJanitorAmount.Enabled = false;
+            this.numericUpDownJanitorAmount.Location = new System.Drawing.Point(146, 199);
+            this.numericUpDownJanitorAmount.Name = "numericUpDownJanitorAmount";
+            this.numericUpDownJanitorAmount.Size = new System.Drawing.Size(73, 23);
+            this.numericUpDownJanitorAmount.TabIndex = 29;
+            this.numericUpDownJanitorAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownJanitorAmount.ValueChanged += new System.EventHandler(this.numericUpDownJanitorAmount_ValueChanged);
+            // 
+            // numericUpDownReceptionistAmount
+            // 
+            this.numericUpDownReceptionistAmount.Enabled = false;
+            this.numericUpDownReceptionistAmount.Location = new System.Drawing.Point(146, 168);
+            this.numericUpDownReceptionistAmount.Name = "numericUpDownReceptionistAmount";
+            this.numericUpDownReceptionistAmount.Size = new System.Drawing.Size(73, 23);
+            this.numericUpDownReceptionistAmount.TabIndex = 28;
+            this.numericUpDownReceptionistAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownReceptionistAmount.ValueChanged += new System.EventHandler(this.numericUpDownReceptionistAmount_ValueChanged);
+            // 
+            // numericUpDownManagerAmount
+            // 
+            this.numericUpDownManagerAmount.Enabled = false;
+            this.numericUpDownManagerAmount.Location = new System.Drawing.Point(146, 137);
+            this.numericUpDownManagerAmount.Name = "numericUpDownManagerAmount";
+            this.numericUpDownManagerAmount.Size = new System.Drawing.Size(73, 23);
+            this.numericUpDownManagerAmount.TabIndex = 25;
+            this.numericUpDownManagerAmount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownManagerAmount.ValueChanged += new System.EventHandler(this.numericUpDownManagerAmount_ValueChanged);
+            // 
+            // panelWeekday
+            // 
+            this.panelWeekday.Controls.Add(this.labelWeekday);
+            this.panelWeekday.Controls.Add(this.checkBoxSunday);
+            this.panelWeekday.Controls.Add(this.checkBoxMonday);
+            this.panelWeekday.Controls.Add(this.checkBoxSaturday);
+            this.panelWeekday.Controls.Add(this.checkBoxTuesday);
+            this.panelWeekday.Controls.Add(this.checkBoxFriday);
+            this.panelWeekday.Controls.Add(this.checkBoxWednesday);
+            this.panelWeekday.Controls.Add(this.checkBoxThursday);
+            this.panelWeekday.Location = new System.Drawing.Point(236, 94);
+            this.panelWeekday.Name = "panelWeekday";
+            this.panelWeekday.Size = new System.Drawing.Size(267, 161);
+            this.panelWeekday.TabIndex = 27;
+            this.panelWeekday.Visible = false;
             // 
             // labelWeekday
             // 
@@ -205,216 +212,177 @@
             this.labelWeekday.TabIndex = 19;
             this.labelWeekday.Text = "Weekday:";
             // 
-            // checkBox19
+            // checkBoxSunday
             // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox19.Location = new System.Drawing.Point(154, 105);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(81, 25);
-            this.checkBox19.TabIndex = 26;
-            this.checkBox19.Text = "Sunday";
-            this.checkBox19.UseVisualStyleBackColor = true;
+            this.checkBoxSunday.AutoSize = true;
+            this.checkBoxSunday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxSunday.Location = new System.Drawing.Point(154, 105);
+            this.checkBoxSunday.Name = "checkBoxSunday";
+            this.checkBoxSunday.Size = new System.Drawing.Size(81, 25);
+            this.checkBoxSunday.TabIndex = 26;
+            this.checkBoxSunday.Text = "Sunday";
+            this.checkBoxSunday.UseVisualStyleBackColor = true;
             // 
-            // checkBox13
+            // checkBoxMonday
             // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox13.Location = new System.Drawing.Point(20, 43);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(86, 25);
-            this.checkBox13.TabIndex = 20;
-            this.checkBox13.Text = "Monday";
-            this.checkBox13.UseVisualStyleBackColor = true;
+            this.checkBoxMonday.AutoSize = true;
+            this.checkBoxMonday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxMonday.Location = new System.Drawing.Point(20, 43);
+            this.checkBoxMonday.Name = "checkBoxMonday";
+            this.checkBoxMonday.Size = new System.Drawing.Size(86, 25);
+            this.checkBoxMonday.TabIndex = 20;
+            this.checkBoxMonday.Text = "Monday";
+            this.checkBoxMonday.UseVisualStyleBackColor = true;
             // 
-            // checkBox18
+            // checkBoxSaturday
             // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox18.Location = new System.Drawing.Point(154, 74);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(91, 25);
-            this.checkBox18.TabIndex = 25;
-            this.checkBox18.Text = "Saturday";
-            this.checkBox18.UseVisualStyleBackColor = true;
+            this.checkBoxSaturday.AutoSize = true;
+            this.checkBoxSaturday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxSaturday.Location = new System.Drawing.Point(154, 74);
+            this.checkBoxSaturday.Name = "checkBoxSaturday";
+            this.checkBoxSaturday.Size = new System.Drawing.Size(91, 25);
+            this.checkBoxSaturday.TabIndex = 25;
+            this.checkBoxSaturday.Text = "Saturday";
+            this.checkBoxSaturday.UseVisualStyleBackColor = true;
             // 
-            // checkBox14
+            // checkBoxTuesday
             // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox14.Location = new System.Drawing.Point(20, 74);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(86, 25);
-            this.checkBox14.TabIndex = 21;
-            this.checkBox14.Text = "Tuesday";
-            this.checkBox14.UseVisualStyleBackColor = true;
+            this.checkBoxTuesday.AutoSize = true;
+            this.checkBoxTuesday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxTuesday.Location = new System.Drawing.Point(20, 74);
+            this.checkBoxTuesday.Name = "checkBoxTuesday";
+            this.checkBoxTuesday.Size = new System.Drawing.Size(86, 25);
+            this.checkBoxTuesday.TabIndex = 21;
+            this.checkBoxTuesday.Text = "Tuesday";
+            this.checkBoxTuesday.UseVisualStyleBackColor = true;
             // 
-            // checkBox17
+            // checkBoxFriday
             // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox17.Location = new System.Drawing.Point(154, 43);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(72, 25);
-            this.checkBox17.TabIndex = 24;
-            this.checkBox17.Text = "Friday";
-            this.checkBox17.UseVisualStyleBackColor = true;
+            this.checkBoxFriday.AutoSize = true;
+            this.checkBoxFriday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxFriday.Location = new System.Drawing.Point(154, 43);
+            this.checkBoxFriday.Name = "checkBoxFriday";
+            this.checkBoxFriday.Size = new System.Drawing.Size(72, 25);
+            this.checkBoxFriday.TabIndex = 24;
+            this.checkBoxFriday.Text = "Friday";
+            this.checkBoxFriday.UseVisualStyleBackColor = true;
             // 
-            // checkBox15
+            // checkBoxWednesday
             // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox15.Location = new System.Drawing.Point(20, 105);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(109, 25);
-            this.checkBox15.TabIndex = 22;
-            this.checkBox15.Text = "Wednesday";
-            this.checkBox15.UseVisualStyleBackColor = true;
+            this.checkBoxWednesday.AutoSize = true;
+            this.checkBoxWednesday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxWednesday.Location = new System.Drawing.Point(20, 105);
+            this.checkBoxWednesday.Name = "checkBoxWednesday";
+            this.checkBoxWednesday.Size = new System.Drawing.Size(109, 25);
+            this.checkBoxWednesday.TabIndex = 22;
+            this.checkBoxWednesday.Text = "Wednesday";
+            this.checkBoxWednesday.UseVisualStyleBackColor = true;
             // 
-            // checkBox16
+            // checkBoxThursday
             // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox16.Location = new System.Drawing.Point(20, 134);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(93, 25);
-            this.checkBox16.TabIndex = 23;
-            this.checkBox16.Text = "Thursday";
-            this.checkBox16.UseVisualStyleBackColor = true;
+            this.checkBoxThursday.AutoSize = true;
+            this.checkBoxThursday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxThursday.Location = new System.Drawing.Point(20, 134);
+            this.checkBoxThursday.Name = "checkBoxThursday";
+            this.checkBoxThursday.Size = new System.Drawing.Size(93, 25);
+            this.checkBoxThursday.TabIndex = 23;
+            this.checkBoxThursday.Text = "Thursday";
+            this.checkBoxThursday.UseVisualStyleBackColor = true;
             // 
-            // buttonSaveShift
+            // panelInterchangebleStaff
             // 
-            this.buttonSaveShift.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSaveShift.Location = new System.Drawing.Point(200, 433);
-            this.buttonSaveShift.Name = "buttonSaveShift";
-            this.buttonSaveShift.Size = new System.Drawing.Size(121, 39);
-            this.buttonSaveShift.TabIndex = 18;
-            this.buttonSaveShift.Text = "Save Shift";
-            this.buttonSaveShift.UseVisualStyleBackColor = true;
+            this.panelInterchangebleStaff.Controls.Add(this.numericUpDownAmountOfStaff);
+            this.panelInterchangebleStaff.Controls.Add(this.labelAmountOfStaff);
+            this.panelInterchangebleStaff.Controls.Add(this.checkBoxIEReceptionist);
+            this.panelInterchangebleStaff.Controls.Add(this.checkBoxIEManager);
+            this.panelInterchangebleStaff.Controls.Add(this.labelStaffTypes);
+            this.panelInterchangebleStaff.Controls.Add(this.checkBoxIEJanitor);
+            this.panelInterchangebleStaff.Location = new System.Drawing.Point(26, 261);
+            this.panelInterchangebleStaff.Name = "panelInterchangebleStaff";
+            this.panelInterchangebleStaff.Size = new System.Drawing.Size(477, 82);
+            this.panelInterchangebleStaff.TabIndex = 17;
+            this.panelInterchangebleStaff.Visible = false;
             // 
-            // panel3
+            // numericUpDownAmountOfStaff
             // 
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Controls.Add(this.comboBox3);
-            this.panel3.Controls.Add(this.labelSet);
-            this.panel3.Controls.Add(this.comboBox2);
-            this.panel3.Controls.Add(this.checkBox5);
-            this.panel3.Controls.Add(this.checkBox4);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.labelAmountOfSet);
-            this.panel3.Controls.Add(this.checkBox3);
-            this.panel3.Location = new System.Drawing.Point(26, 261);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(477, 166);
-            this.panel3.TabIndex = 17;
+            this.numericUpDownAmountOfStaff.Location = new System.Drawing.Point(174, 17);
+            this.numericUpDownAmountOfStaff.Name = "numericUpDownAmountOfStaff";
+            this.numericUpDownAmountOfStaff.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDownAmountOfStaff.TabIndex = 24;
+            this.numericUpDownAmountOfStaff.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownAmountOfStaff.ValueChanged += new System.EventHandler(this.numericUpDownAmountOfStaff_ValueChanged);
             // 
-            // label1
+            // labelAmountOfStaff
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(14, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 21);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Amount of Employee:";
+            this.labelAmountOfStaff.AutoSize = true;
+            this.labelAmountOfStaff.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelAmountOfStaff.Location = new System.Drawing.Point(14, 17);
+            this.labelAmountOfStaff.Name = "labelAmountOfStaff";
+            this.labelAmountOfStaff.Size = new System.Drawing.Size(122, 21);
+            this.labelAmountOfStaff.TabIndex = 23;
+            this.labelAmountOfStaff.Text = "Amount of Staff:";
             // 
-            // comboBox3
+            // checkBoxIEReceptionist
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboBox3.Location = new System.Drawing.Point(133, 48);
-            this.comboBox3.MaxDropDownItems = 4;
-            this.comboBox3.MaxLength = 4;
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(55, 29);
-            this.comboBox3.TabIndex = 22;
+            this.checkBoxIEReceptionist.AutoSize = true;
+            this.checkBoxIEReceptionist.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIEReceptionist.Location = new System.Drawing.Point(278, 49);
+            this.checkBoxIEReceptionist.Name = "checkBoxIEReceptionist";
+            this.checkBoxIEReceptionist.Size = new System.Drawing.Size(114, 25);
+            this.checkBoxIEReceptionist.TabIndex = 18;
+            this.checkBoxIEReceptionist.Text = "Receptionist";
+            this.checkBoxIEReceptionist.UseVisualStyleBackColor = true;
+            this.checkBoxIEReceptionist.CheckedChanged += new System.EventHandler(this.checkBoxIEReceptionist_CheckedChanged);
             // 
-            // labelSet
+            // checkBoxIEManager
             // 
-            this.labelSet.AutoSize = true;
-            this.labelSet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelSet.Location = new System.Drawing.Point(92, 51);
-            this.labelSet.Name = "labelSet";
-            this.labelSet.Size = new System.Drawing.Size(35, 21);
-            this.labelSet.TabIndex = 21;
-            this.labelSet.Text = "Set:";
+            this.checkBoxIEManager.AutoSize = true;
+            this.checkBoxIEManager.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIEManager.Location = new System.Drawing.Point(183, 49);
+            this.checkBoxIEManager.Name = "checkBoxIEManager";
+            this.checkBoxIEManager.Size = new System.Drawing.Size(91, 25);
+            this.checkBoxIEManager.TabIndex = 18;
+            this.checkBoxIEManager.Text = "Manager";
+            this.checkBoxIEManager.UseVisualStyleBackColor = true;
+            this.checkBoxIEManager.CheckedChanged += new System.EventHandler(this.checkBoxIEManager_CheckedChanged);
             // 
-            // comboBox2
+            // labelStaffTypes
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.comboBox2.Location = new System.Drawing.Point(133, 9);
-            this.comboBox2.MaxDropDownItems = 4;
-            this.comboBox2.MaxLength = 4;
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(55, 29);
-            this.comboBox2.TabIndex = 20;
+            this.labelStaffTypes.AutoSize = true;
+            this.labelStaffTypes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelStaffTypes.Location = new System.Drawing.Point(14, 49);
+            this.labelStaffTypes.Name = "labelStaffTypes";
+            this.labelStaffTypes.Size = new System.Drawing.Size(87, 21);
+            this.labelStaffTypes.TabIndex = 19;
+            this.labelStaffTypes.Text = "Staff Types:";
             // 
-            // checkBox5
+            // checkBoxIEJanitor
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox5.Location = new System.Drawing.Point(278, 128);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(114, 25);
-            this.checkBox5.TabIndex = 18;
-            this.checkBox5.Text = "Receptionist";
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBoxIEJanitor.AutoSize = true;
+            this.checkBoxIEJanitor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxIEJanitor.Location = new System.Drawing.Point(400, 49);
+            this.checkBoxIEJanitor.Name = "checkBoxIEJanitor";
+            this.checkBoxIEJanitor.Size = new System.Drawing.Size(76, 25);
+            this.checkBoxIEJanitor.TabIndex = 18;
+            this.checkBoxIEJanitor.Text = "Janitor";
+            this.checkBoxIEJanitor.UseVisualStyleBackColor = true;
+            this.checkBoxIEJanitor.CheckedChanged += new System.EventHandler(this.checkBoxIEJanitor_CheckedChanged);
             // 
-            // checkBox4
+            // checkBoxInterchangableStaff
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox4.Location = new System.Drawing.Point(183, 128);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(91, 25);
-            this.checkBox4.TabIndex = 18;
-            this.checkBox4.Text = "Manager";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(14, 128);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 21);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Employee Types:";
-            // 
-            // labelAmountOfSet
-            // 
-            this.labelAmountOfSet.AutoSize = true;
-            this.labelAmountOfSet.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelAmountOfSet.Location = new System.Drawing.Point(14, 12);
-            this.labelAmountOfSet.Name = "labelAmountOfSet";
-            this.labelAmountOfSet.Size = new System.Drawing.Size(113, 21);
-            this.labelAmountOfSet.TabIndex = 18;
-            this.labelAmountOfSet.Text = "Amount of Set:";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox3.Location = new System.Drawing.Point(400, 128);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(76, 25);
-            this.checkBox3.TabIndex = 18;
-            this.checkBox3.Text = "Janitor";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxInterchangableEmployee
-            // 
-            this.checkBoxInterchangableEmployee.AutoSize = true;
-            this.checkBoxInterchangableEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxInterchangableEmployee.Location = new System.Drawing.Point(26, 230);
-            this.checkBoxInterchangableEmployee.Name = "checkBoxInterchangableEmployee";
-            this.checkBoxInterchangableEmployee.Size = new System.Drawing.Size(204, 25);
-            this.checkBoxInterchangableEmployee.TabIndex = 16;
-            this.checkBoxInterchangableEmployee.Text = "Interchangable Employee";
-            this.checkBoxInterchangableEmployee.UseVisualStyleBackColor = true;
+            this.checkBoxInterchangableStaff.AutoSize = true;
+            this.checkBoxInterchangableStaff.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBoxInterchangableStaff.Location = new System.Drawing.Point(26, 230);
+            this.checkBoxInterchangableStaff.Name = "checkBoxInterchangableStaff";
+            this.checkBoxInterchangableStaff.Size = new System.Drawing.Size(167, 25);
+            this.checkBoxInterchangableStaff.TabIndex = 16;
+            this.checkBoxInterchangableStaff.Text = "Interchangable Staff";
+            this.checkBoxInterchangableStaff.UseVisualStyleBackColor = true;
+            this.checkBoxInterchangableStaff.CheckedChanged += new System.EventHandler(this.checkBoxInterchangableStaff_CheckedChanged);
             // 
             // checkBoxShiftJanitor
             // 
@@ -449,15 +417,15 @@
             this.checkBoxShiftManager.Text = "Manager";
             this.checkBoxShiftManager.UseVisualStyleBackColor = true;
             // 
-            // labelEmployee
+            // labelStaff
             // 
-            this.labelEmployee.AutoSize = true;
-            this.labelEmployee.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelEmployee.Location = new System.Drawing.Point(26, 102);
-            this.labelEmployee.Name = "labelEmployee";
-            this.labelEmployee.Size = new System.Drawing.Size(81, 21);
-            this.labelEmployee.TabIndex = 13;
-            this.labelEmployee.Text = "Employee:";
+            this.labelStaff.AutoSize = true;
+            this.labelStaff.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelStaff.Location = new System.Drawing.Point(26, 102);
+            this.labelStaff.Name = "labelStaff";
+            this.labelStaff.Size = new System.Drawing.Size(44, 21);
+            this.labelStaff.TabIndex = 13;
+            this.labelStaff.Text = "Staff:";
             // 
             // labelTo
             // 
@@ -469,25 +437,30 @@
             this.labelTo.TabIndex = 12;
             this.labelTo.Text = "to";
             // 
-            // dateTimePicker3
+            // dateTimePickerTo
             // 
-            this.dateTimePicker3.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker3.Location = new System.Drawing.Point(266, 57);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(112, 29);
-            this.dateTimePicker3.TabIndex = 11;
+            this.dateTimePickerTo.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerTo.CustomFormat = "HH:mm";
+            this.dateTimePickerTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerTo.Location = new System.Drawing.Point(266, 57);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(112, 29);
+            this.dateTimePickerTo.TabIndex = 11;
+            this.dateTimePickerTo.Value = new System.DateTime(2022, 8, 6, 0, 1, 0, 0);
+            this.dateTimePickerTo.ValueChanged += new System.EventHandler(this.dateTimePickerTo_ValueChanged);
             // 
-            // dateTimePicker2
+            // dateTimePickerFrom
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(118, 57);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(112, 29);
-            this.dateTimePicker2.TabIndex = 9;
+            this.dateTimePickerFrom.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerFrom.CustomFormat = "HH:mm";
+            this.dateTimePickerFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(118, 57);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(112, 29);
+            this.dateTimePickerFrom.TabIndex = 9;
+            this.dateTimePickerFrom.Value = new System.DateTime(2022, 6, 8, 0, 0, 0, 0);
             // 
             // labelTimeSpan
             // 
@@ -499,24 +472,26 @@
             this.labelTimeSpan.TabIndex = 10;
             this.labelTimeSpan.Text = "Time Span:";
             // 
-            // comboBox1
+            // comboBoxShift
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(70, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(47, 29);
-            this.comboBox1.TabIndex = 9;
+            this.comboBoxShift.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBoxShift.FormattingEnabled = true;
+            this.comboBoxShift.Location = new System.Drawing.Point(70, 17);
+            this.comboBoxShift.Name = "comboBoxShift";
+            this.comboBoxShift.Size = new System.Drawing.Size(47, 29);
+            this.comboBoxShift.TabIndex = 9;
+            this.comboBoxShift.SelectedIndexChanged += new System.EventHandler(this.comboBoxShift_SelectedIndexChanged);
             // 
             // buttonSaveScheduleInfo
             // 
             this.buttonSaveScheduleInfo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSaveScheduleInfo.Location = new System.Drawing.Point(171, 648);
+            this.buttonSaveScheduleInfo.Location = new System.Drawing.Point(169, 522);
             this.buttonSaveScheduleInfo.Name = "buttonSaveScheduleInfo";
             this.buttonSaveScheduleInfo.Size = new System.Drawing.Size(208, 39);
             this.buttonSaveScheduleInfo.TabIndex = 19;
             this.buttonSaveScheduleInfo.Text = "Save Schedule Info";
             this.buttonSaveScheduleInfo.UseVisualStyleBackColor = true;
+            this.buttonSaveScheduleInfo.Click += new System.EventHandler(this.buttonSaveScheduleInfo_Click);
             // 
             // labelMaxHourPerShift
             // 
@@ -527,13 +502,6 @@
             this.labelMaxHourPerShift.Size = new System.Drawing.Size(144, 21);
             this.labelMaxHourPerShift.TabIndex = 20;
             this.labelMaxHourPerShift.Text = "Max Hour per Shift:";
-            // 
-            // textBoxMaxHourPerShift
-            // 
-            this.textBoxMaxHourPerShift.Location = new System.Drawing.Point(202, 88);
-            this.textBoxMaxHourPerShift.Name = "textBoxMaxHourPerShift";
-            this.textBoxMaxHourPerShift.Size = new System.Drawing.Size(112, 23);
-            this.textBoxMaxHourPerShift.TabIndex = 21;
             // 
             // panel4
             // 
@@ -555,6 +523,7 @@
             this.radioButtonSpecialDaysSetting.TabStop = true;
             this.radioButtonSpecialDaysSetting.Text = "Special Day(s) Setting";
             this.radioButtonSpecialDaysSetting.UseVisualStyleBackColor = true;
+            this.radioButtonSpecialDaysSetting.CheckedChanged += new System.EventHandler(this.radioButtonSpecialDaysSetting_CheckedChanged);
             // 
             // radioButtonNormalDaysSetting
             // 
@@ -569,35 +538,65 @@
             this.radioButtonNormalDaysSetting.Text = "Normal Day(s) Setting";
             this.radioButtonNormalDaysSetting.UseVisualStyleBackColor = true;
             // 
+            // numericUpDownShiftPerDay
+            // 
+            this.numericUpDownShiftPerDay.Location = new System.Drawing.Point(200, 18);
+            this.numericUpDownShiftPerDay.Name = "numericUpDownShiftPerDay";
+            this.numericUpDownShiftPerDay.Size = new System.Drawing.Size(114, 23);
+            this.numericUpDownShiftPerDay.TabIndex = 23;
+            this.numericUpDownShiftPerDay.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownShiftPerDay.ValueChanged += new System.EventHandler(this.numericUpDownShiftPerDay_ValueChanged);
+            // 
+            // numericUpDownMaxHourPerShift
+            // 
+            this.numericUpDownMaxHourPerShift.Location = new System.Drawing.Point(200, 88);
+            this.numericUpDownMaxHourPerShift.Name = "numericUpDownMaxHourPerShift";
+            this.numericUpDownMaxHourPerShift.Size = new System.Drawing.Size(114, 23);
+            this.numericUpDownMaxHourPerShift.TabIndex = 24;
+            this.numericUpDownMaxHourPerShift.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownMaxHourPerShift.ValueChanged += new System.EventHandler(this.numericUpDownMaxHourPerShift_ValueChanged);
+            // 
             // CreateSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(552, 699);
+            this.ClientSize = new System.Drawing.Size(552, 576);
+            this.Controls.Add(this.numericUpDownMaxHourPerShift);
+            this.Controls.Add(this.numericUpDownShiftPerDay);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.buttonSaveScheduleInfo);
-            this.Controls.Add(this.textBoxMaxHourPerShift);
             this.Controls.Add(this.labelMaxHourPerShift);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBoxNoOfShift);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dateTimePickerStartDay);
             this.Controls.Add(this.labelNoOfShift);
             this.Controls.Add(this.labelStartDay);
             this.Name = "CreateSchedule";
             this.Text = "CreateSchedule";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.CreateSchedule_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownJanitorAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownReceptionistAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownManagerAmount)).EndInit();
+            this.panelWeekday.ResumeLayout(false);
+            this.panelWeekday.PerformLayout();
+            this.panelInterchangebleStaff.ResumeLayout(false);
+            this.panelInterchangebleStaff.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAmountOfStaff)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShiftPerDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxHourPerShift)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,49 +605,45 @@
         #endregion
 
         private Label labelNoOfShift;
-        private Panel panel1;
         private Label labelStartDay;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
         private Label labelShift;
-        private TextBox textBoxNoOfShift;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePickerStartDay;
         private Panel panel2;
         private CheckBox checkBoxShiftJanitor;
         private CheckBox checkBoxShiftReceptionist;
         private CheckBox checkBoxShiftManager;
-        private Label labelEmployee;
+        private Label labelStaff;
         private Label labelTo;
-        private DateTimePicker dateTimePicker3;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePickerTo;
+        private DateTimePicker dateTimePickerFrom;
         private Label labelTimeSpan;
-        private ComboBox comboBox1;
-        private Panel panel3;
-        private ComboBox comboBox3;
-        private Label labelSet;
-        private ComboBox comboBox2;
-        private CheckBox checkBox5;
-        private CheckBox checkBox4;
-        private Label label2;
-        private Label labelAmountOfSet;
-        private CheckBox checkBox3;
-        private CheckBox checkBoxInterchangableEmployee;
-        private Label label1;
+        private ComboBox comboBoxShift;
+        private Panel panelInterchangebleStaff;
+        private CheckBox checkBoxIEReceptionist;
+        private CheckBox checkBoxIEManager;
+        private Label labelStaffTypes;
+        private CheckBox checkBoxIEJanitor;
+        private CheckBox checkBoxInterchangableStaff;
+        private Label labelAmountOfStaff;
         private Button buttonSaveScheduleInfo;
-        private Button buttonSaveShift;
         private Label labelMaxHourPerShift;
-        private TextBox textBoxMaxHourPerShift;
         private Panel panel4;
         private RadioButton radioButtonSpecialDaysSetting;
         private RadioButton radioButtonNormalDaysSetting;
         private Label labelWeekday;
-        private Panel panel6;
-        private CheckBox checkBox19;
-        private CheckBox checkBox13;
-        private CheckBox checkBox18;
-        private CheckBox checkBox14;
-        private CheckBox checkBox17;
-        private CheckBox checkBox15;
-        private CheckBox checkBox16;
+        private Panel panelWeekday;
+        private CheckBox checkBoxSunday;
+        private CheckBox checkBoxMonday;
+        private CheckBox checkBoxSaturday;
+        private CheckBox checkBoxTuesday;
+        private CheckBox checkBoxFriday;
+        private CheckBox checkBoxWednesday;
+        private CheckBox checkBoxThursday;
+        private NumericUpDown numericUpDownShiftPerDay;
+        private NumericUpDown numericUpDownMaxHourPerShift;
+        private NumericUpDown numericUpDownAmountOfStaff;
+        private NumericUpDown numericUpDownJanitorAmount;
+        private NumericUpDown numericUpDownReceptionistAmount;
+        private NumericUpDown numericUpDownManagerAmount;
     }
 }
