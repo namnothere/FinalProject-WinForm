@@ -52,7 +52,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1252, 64);
+            this.panel1.Size = new System.Drawing.Size(1427, 64);
             this.panel1.TabIndex = 22;
             // 
             // btnAccount
@@ -91,7 +91,7 @@
             // 
             this.panel_workarea.Location = new System.Drawing.Point(0, 69);
             this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(1252, 523);
+            this.panel_workarea.Size = new System.Drawing.Size(1426, 523);
             this.panel_workarea.TabIndex = 23;
             // 
             // EmployeeAccountManeForm
@@ -100,7 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1252, 590);
+            this.ClientSize = new System.Drawing.Size(1427, 590);
             this.Controls.Add(this.panel_workarea);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

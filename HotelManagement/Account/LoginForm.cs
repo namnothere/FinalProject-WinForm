@@ -63,13 +63,19 @@ namespace hotel_management
             {
                 FormState.PreviousPage = this;
 
-                if (account.admin())
+                if (account.admin() == 1)
                 {
                     MainFormAdmin frm = new MainFormAdmin(username);
                     frm.FormClosed += frm_FormClosed;
                     frm.Show(this);
                 }
-                else
+                else if (account.admin() == 2)
+                {
+                    MainFormReceptionist frm = new MainFormReceptionist(username);
+                    frm.FormClosed += frm_FormClosed;
+                    frm.Show(this);
+                }
+                else if (account.admin() == 0)
                 {
                     MainFormStaff frm = new MainFormStaff(username);
                     frm.FormClosed += frm_FormClosed;

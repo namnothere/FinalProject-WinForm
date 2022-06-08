@@ -19,7 +19,7 @@ namespace hotel_management
 
         MyDB mydb = new MyDB();
         STAFF staff = new STAFF();
-        
+        ACCOUNT acc = new ACCOUNT();
         private void EmployeeManageForm_Load(object sender, EventArgs e)
         {
             fillListview();
@@ -27,26 +27,15 @@ namespace hotel_management
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            DataTable table = staff.getEmployee(txbSearch.Text);
-            lvwStaffList.Items.Clear();
-            string[] arr = new string[4];
-            ListViewItem item = new ListViewItem();
-
-
-            
-            foreach (DataRow row in table.Rows)
+            if (txbSearch.Text.Trim() != "")
             {
-                arr[0] = row["Id"].ToString();
-                arr[1] = row["name"].ToString();
-                //arr[2] = row["dob"].ToString();
-                //arr[3] = row["address"].ToString();
-                //arr[4] = row["phone"].ToString();
-                arr[2] = row["type"].ToString();
-                arr[3] = row["username"].ToString();
-                item = new ListViewItem(arr);
-                lvwStaffList.Items.Add(item);
-                
+                DataTable table = staff.getEmployee(txbSearch.Text);
+                dataEmployeeList.DataSource = table;
             }
+            //else
+            //{
+            //    fillListview();
+            //}
         }
 
         
@@ -54,38 +43,33 @@ namespace hotel_management
 
         private void fillListview()
         {
-            lvwStaffList.Columns.Clear();
-            lvwStaffList.Items.Clear();
+            this.dataEmployeeList.DataSource = null;
+            dataEmployeeList.Refresh();
             DataTable table = staff.getAllEmployees();
-            string[] arr = new string[4];
-            ListViewItem item;
-            lvwStaffList.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            lvwStaffList.Columns.Add("ID", 70, HorizontalAlignment.Center);
-            lvwStaffList.Columns.Add("Name", 100, HorizontalAlignment.Center);
-            //lvwStaffList.Columns.Add("D.O.B", 100, HorizontalAlignment.Center);
-            //lvwStaffList.Columns.Add("Address", 100, HorizontalAlignment.Center);
-            //lvwStaffList.Columns.Add("Phone", 100, HorizontalAlignment.Center);
-            lvwStaffList.Columns.Add("Position", 100, HorizontalAlignment.Center);
-            lvwStaffList.Columns.Add("Username", 100, HorizontalAlignment.Center);
+            dataEmployeeList.ForeColor = Color.Black;
+            
+            dataEmployeeList.DataSource = table;
+            
+            dataEmployeeList.Columns[0].HeaderText = "ID";
+            dataEmployeeList.Columns[1].HeaderText = "Name";
+            dataEmployeeList.Columns[2].HeaderText = "DOB";
+            dataEmployeeList.Columns[2].DefaultCellStyle.Format = "MM/dd/yy";
+            dataEmployeeList.Columns[3].HeaderText = "Address";
+            dataEmployeeList.Columns[4].HeaderText = "Phone";
+            dataEmployeeList.Columns[5].HeaderText = "Sex";
+            dataEmployeeList.Columns[6].HeaderText = "Type";
+            dataEmployeeList.Columns[7].HeaderText = "Username";
+            dataEmployeeList.Columns[8].HeaderText = "Pic";
+            dataEmployeeList.Columns[8].Visible = false;
+            dataEmployeeList.Columns[9].HeaderText = "UsernameID";
+            dataEmployeeList.Columns[9].Visible = false;
 
 
-            foreach (DataRow row in table.Rows)
-            {
-                arr[0] = row["Id"].ToString();
-                arr[1] = row["name"].ToString();
-                //arr[2] = row["dob"].ToString();
-                //arr[3] = row["address"].ToString();
-                //arr[4] = row["phone"].ToString();
-                arr[2] = row["type"].ToString();
-                arr[3] = row["username"].ToString();
-                
-                item = new ListViewItem(arr);
-                lvwStaffList.Items.Add(item);
-            }
+
         }
-        
-        
+
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             
@@ -101,7 +85,11 @@ namespace hotel_management
                 MessageBox.Show("A staff with this ID already exists", "Add staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            if (acc.usernameExist(txbUsername.Text))
+            {
+                MessageBox.Show("This username has been taken", "Add staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (picBox.Image == null)
             {
                 MessageBox.Show("Please choose a picture", "Edit staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -111,11 +99,12 @@ namespace hotel_management
             MemoryStream pic = new MemoryStream();
             picBox.Image.Save(pic, picBox.Image.RawFormat);
 
-            if (staff.insertEmployee(txbID.Text, txbName.Text, dtpDOB.Value, txbAddress.Text, txbPhone.Text, "N/A", txbUsername.Text, pic))
+            if (staff.insertEmployee(txbID.Text, txbName.Text, dtpDOB.Value, txbAddress.Text, txbPhone.Text, comboBoxSex.SelectedItem.ToString(), comboBoxType.SelectedItem.ToString(),txbUsername.Text, pic))
             {
                 MessageBox.Show("Add new staff successfully!", "Add staff");
                 ACCOUNT acc = new ACCOUNT();
-                acc.insertAccount(txbUsername.Text, "123456");
+                acc.insertAccount(txbUsername.Text, "123456", 0);
+                staff.setUsernameID(txbUsername.Text);
                     
             }
             else
@@ -138,12 +127,25 @@ namespace hotel_management
                 return;
             }
 
+            //if (acc.usernameExist(txbUsername.Text))
+            //{
+            //    MessageBox.Show("This username has been taken", "Add staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //if (acc.Available(txbUsername.Text, acc.getID(txbUsername.Text)) == false)
+            //{
+            //    MessageBox.Show("Username not available", "Update account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
             MemoryStream pic = new MemoryStream();
             picBox.Image.Save(pic, picBox.Image.RawFormat);
 
-            if (staff.updateEmployee(txbID.Text, txbName.Text, dtpDOB.Value, txbAddress.Text, txbPhone.Text, "N/A", txbUsername.Text, pic))
+            if (staff.updateEmployee(txbID.Text, txbName.Text, dtpDOB.Value, txbAddress.Text, txbPhone.Text, comboBoxSex.SelectedItem.ToString(), comboBoxType.SelectedItem.ToString(), txbUsername.Text, pic))
             {
                 MessageBox.Show("Edit staff successfully!", "Edit staff");
+                fillListview();
             }
             else
             {
@@ -161,6 +163,7 @@ namespace hotel_management
             if (staff.deleteEmployee(txbID.Text))
             {
                 MessageBox.Show("Delete staff successfully!", "Delete staff");
+                fillListview();
             }
             else
             {
@@ -170,7 +173,7 @@ namespace hotel_management
 
         private void btnViewList_Click(object sender, EventArgs e)
         {
-
+            fillListview();
         }
 
         private void txbImg_Click(object sender, EventArgs e)
@@ -189,33 +192,46 @@ namespace hotel_management
             txbImg_Click(sender, e);
         }
 
-        //private void lvwStaffList_ColumnClick(object sender, ColumnClickEventArgs e)
-        //{
-        //    //fill data in column to textbox
-        //    if (lvwStaffList.SelectedItems.Count > 0)
-        //    {
-        //        txbID.Text = lvwStaffList.SelectedItems[0].SubItems[0].Text;
-        //        txbName.Text = lvwStaffList.SelectedItems[0].SubItems[1].Text;
-        //        //dtpDOB.Text = lvwStaffList.SelectedItems[0].SubItems[2].Text;
-        //        //txbAddress.Text = lvwStaffList.SelectedItems[0].SubItems[3].Text;
-        //        //txbPhone.Text = lvwStaffList.SelectedItems[0].SubItems[4].Text;
-        //        comboBoxType.SelectedItem = lvwStaffList.SelectedItems[0].SubItems[2].Text;
-        //        txbUsername.Text = lvwStaffList.SelectedItems[0].SubItems[3].Text;
-        //    }
-        //}
-
-        private void lvwStaffList_ColumnClick(object sender, EventArgs e)
+        private void dataEmployeeList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (lvwStaffList.SelectedItems.Count > 0)
+            txbImg.Text = "";
+            int index = e.RowIndex;
+            if (index >= 0)
             {
-                txbID.Text = lvwStaffList.SelectedItems[0].SubItems[0].Text;
-                txbName.Text = lvwStaffList.SelectedItems[0].SubItems[1].Text;
-                //dtpDOB.Text = lvwStaffList.SelectedItems[0].SubItems[2].Text;
-                //txbAddress.Text = lvwStaffList.SelectedItems[0].SubItems[3].Text;
-                //txbPhone.Text = lvwStaffList.SelectedItems[0].SubItems[4].Text;
-                comboBoxType.SelectedItem = lvwStaffList.SelectedItems[0].SubItems[2].Text;
-                txbUsername.Text = lvwStaffList.SelectedItems[0].SubItems[3].Text;
+                DataGridViewRow row = dataEmployeeList.Rows[index];
+                txbID.Text = row.Cells[0].Value.ToString();
+                txbID.Enabled = false;
+                txbName.Text = row.Cells[1].Value.ToString();
+                dtpDOB.Value = DateTime.Parse(row.Cells[2].Value.ToString());
+                txbAddress.Text = row.Cells[3].Value.ToString();
+                txbPhone.Text = row.Cells[4].Value.ToString();
+                comboBoxSex.SelectedItem = row.Cells[5].Value;
+                comboBoxType.SelectedItem = row.Cells[6].Value;
+                txbUsername.Text = row.Cells[7].Value.ToString();
+                txbUsername.Enabled = false;
+
+                byte[] arr = (byte[])row.Cells[8].Value;
+                MemoryStream ms = new MemoryStream(arr);
+
+                picBox.Image = Image.FromStream(ms);
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            //clear all fields
+            txbID.Text = "";
+            txbID.Enabled = true;
+            txbName.Text = "";
+            dtpDOB.Value = DateTime.Now;
+            txbAddress.Text = "";
+            txbPhone.Text = "";
+            comboBoxSex.SelectedIndex = -1;
+            comboBoxType.SelectedIndex = -1;
+            txbUsername.Text = "";
+            txbUsername.Enabled = true;
+            picBox.Image = null;
+            txbImg.Text = "";
         }
     }
 }

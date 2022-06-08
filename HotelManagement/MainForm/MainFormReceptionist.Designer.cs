@@ -1,6 +1,6 @@
 ﻿namespace hotel_management
 {
-    partial class MainFormStaff
+    partial class MainFormReceptionist
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,8 @@
             this.panel_sidebar = new System.Windows.Forms.Panel();
             this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.btnDangXuat = new FontAwesome.Sharp.IconButton();
+            this.btnQLKhachHang = new FontAwesome.Sharp.IconButton();
+            this.btnRoomManagement = new FontAwesome.Sharp.IconButton();
             this.btnSched = new FontAwesome.Sharp.IconButton();
             this.btnHome = new FontAwesome.Sharp.IconButton();
             this.panelInfo = new System.Windows.Forms.Panel();
@@ -47,6 +49,8 @@
             this.panel_sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel_sidebar.Controls.Add(this.btnLogout);
             this.panel_sidebar.Controls.Add(this.btnDangXuat);
+            this.panel_sidebar.Controls.Add(this.btnQLKhachHang);
+            this.panel_sidebar.Controls.Add(this.btnRoomManagement);
             this.panel_sidebar.Controls.Add(this.btnSched);
             this.panel_sidebar.Controls.Add(this.btnHome);
             this.panel_sidebar.Controls.Add(this.panelInfo);
@@ -68,7 +72,7 @@
             this.btnLogout.IconColor = System.Drawing.Color.Gainsboro;
             this.btnLogout.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(0, 306);
+            this.btnLogout.Location = new System.Drawing.Point(0, 424);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnLogout.Size = new System.Drawing.Size(292, 60);
@@ -92,14 +96,59 @@
             this.btnDangXuat.IconColor = System.Drawing.Color.Gainsboro;
             this.btnDangXuat.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDangXuat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDangXuat.Location = new System.Drawing.Point(0, 366);
+            this.btnDangXuat.Location = new System.Drawing.Point(0, 484);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
-            this.btnDangXuat.Size = new System.Drawing.Size(292, 467);
+            this.btnDangXuat.Size = new System.Drawing.Size(292, 349);
             this.btnDangXuat.TabIndex = 14;
             this.btnDangXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangXuat.UseVisualStyleBackColor = false;
+            // 
+            // btnQLKhachHang
+            // 
+            this.btnQLKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnQLKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQLKhachHang.FlatAppearance.BorderSize = 0;
+            this.btnQLKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLKhachHang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnQLKhachHang.ForeColor = System.Drawing.Color.White;
+            this.btnQLKhachHang.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            this.btnQLKhachHang.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnQLKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnQLKhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 366);
+            this.btnQLKhachHang.Name = "btnQLKhachHang";
+            this.btnQLKhachHang.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
+            this.btnQLKhachHang.Size = new System.Drawing.Size(292, 63);
+            this.btnQLKhachHang.TabIndex = 13;
+            this.btnQLKhachHang.Text = "Client Management";
+            this.btnQLKhachHang.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLKhachHang.UseVisualStyleBackColor = false;
+            // 
+            // btnRoomManagement
+            // 
+            this.btnRoomManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnRoomManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRoomManagement.FlatAppearance.BorderSize = 0;
+            this.btnRoomManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRoomManagement.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRoomManagement.ForeColor = System.Drawing.Color.White;
+            this.btnRoomManagement.IconChar = FontAwesome.Sharp.IconChar.Key;
+            this.btnRoomManagement.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnRoomManagement.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRoomManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRoomManagement.Location = new System.Drawing.Point(0, 306);
+            this.btnRoomManagement.Name = "btnRoomManagement";
+            this.btnRoomManagement.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
+            this.btnRoomManagement.Size = new System.Drawing.Size(292, 60);
+            this.btnRoomManagement.TabIndex = 12;
+            this.btnRoomManagement.Text = "Room Management";
+            this.btnRoomManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRoomManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRoomManagement.UseVisualStyleBackColor = false;
+            this.btnRoomManagement.Click += new System.EventHandler(this.btnRoomManagement_Click);
             // 
             // btnSched
             // 
@@ -122,7 +171,6 @@
             this.btnSched.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSched.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSched.UseVisualStyleBackColor = false;
-            this.btnSched.Click += new System.EventHandler(this.btnSched_Click);
             // 
             // btnHome
             // 
@@ -162,11 +210,10 @@
             // 
             this.txbUsername.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txbUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txbUsername.ForeColor = System.Drawing.Color.White;
             this.txbUsername.Location = new System.Drawing.Point(0, 152);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(290, 25);
-            this.txbUsername.TabIndex = 3;
+            this.txbUsername.TabIndex = 4;
             this.txbUsername.Text = "label1";
             this.txbUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -187,21 +234,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_workarea.AutoSize = true;
             this.panel_workarea.BackColor = System.Drawing.Color.LightGray;
-            this.panel_workarea.Location = new System.Drawing.Point(292, -13);
+            this.panel_workarea.Location = new System.Drawing.Point(292, 0);
             this.panel_workarea.Name = "panel_workarea";
-            this.panel_workarea.Size = new System.Drawing.Size(1418, 859);
+            this.panel_workarea.Size = new System.Drawing.Size(1418, 833);
             this.panel_workarea.TabIndex = 6;
             // 
-            // MainFormStaff
+            // MainFormReceptionist
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1710, 833);
             this.Controls.Add(this.panel_sidebar);
             this.Controls.Add(this.panel_workarea);
-            this.Name = "MainFormStaff";
+            this.ForeColor = System.Drawing.Color.White;
+            this.Name = "MainFormReceptionist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StaffForm";
+            this.Text = "MainFormReception";
             this.Load += new System.EventHandler(this.MainFormStaff_Load);
             this.panel_sidebar.ResumeLayout(false);
             this.panelInfo.ResumeLayout(false);
@@ -216,11 +264,13 @@
         private Panel panel_sidebar;
         private FontAwesome.Sharp.IconButton btnLogout;
         private FontAwesome.Sharp.IconButton btnDangXuat;
+        private FontAwesome.Sharp.IconButton btnQLKhachHang;
+        private FontAwesome.Sharp.IconButton btnRoomManagement;
         private FontAwesome.Sharp.IconButton btnSched;
         private FontAwesome.Sharp.IconButton btnHome;
         private Panel panelInfo;
-        private Label txbUsername;
         private PictureBox profilePic;
         private Panel panel_workarea;
+        private Label txbUsername;
     }
 }

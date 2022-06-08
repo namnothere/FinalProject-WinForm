@@ -1,5 +1,4 @@
-﻿#nullable enable // at the top of the file
-using FontAwesome.Sharp;
+﻿using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,38 +6,30 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace hotel_management
 {
-    public partial class MainFormAdmin : Form
+    public partial class MainFormReceptionist : Form
     {
         private IconButton currentBtn;
         private Panel leftBorderBtn;
-        //private Account account;
 
-        public MainFormAdmin()
+        
+        public MainFormReceptionist()
         {
             InitializeComponent();
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
             panel_sidebar.Controls.Add(leftBorderBtn);
         }
-
         public static class FormState
         {
             public static Form PreviousPage;
         }
-
-        //public frmMain(Account account)
-        //{
-        //    InitializeComponent();
-        //    leftBorderBtn = new Panel();
-        //    leftBorderBtn.Size = new Size(7, 60);
-        //    panel_sidebar.Controls.Add(leftBorderBtn);
-        //    this.account = account;
-        //}
-
-        public MainFormAdmin(string username)
+        
+        public MainFormReceptionist(string username)
         {
             InitializeComponent();
             txbUsername.Text = username;
@@ -46,8 +37,6 @@ namespace hotel_management
             leftBorderBtn.Size = new Size(7, 60);
             panel_sidebar.Controls.Add(leftBorderBtn);
         }
-
-        //struct
         private struct RGBcolors
         {
             public static Color color1 = Color.FromArgb(172, 126, 241);
@@ -77,7 +66,7 @@ namespace hotel_management
                 leftBorderBtn.BringToFront();
             }
         }
-
+        
         private void DissableButton()
         {
             if (currentBtn != null)
@@ -91,73 +80,32 @@ namespace hotel_management
             }
         }
 
-
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainFormStaff_Load(object sender, EventArgs e)
         {
-            //OpenFormInPanel(new frmHome());
             ActivateButton(btnHome, RGBcolors.color1);
             this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
             ACCOUNT acc = new ACCOUNT();
-
-            //pic = (byte[])acc.getImage(txbUsername.Text);
-            //MemoryStream picture = new MemoryStream(pic);
 
             if (acc.getImage(txbUsername.Text) != null)
             {
                 this.profilePic.Image = acc.getImage(txbUsername.Text);
             }
-
             txbUsername.ForeColor = Color.White;
-
-            //this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
-            //var ST = new clsStaff();
-            //var nv = ST.CheckIfExist(account.username);
-            //lblName.Text = nv.name;
         }
 
         private void OpenFormInPanel(object Formhijo)
         {
-            this.panel_workarea.Controls.Clear();
+            if (this.panel_workarea.Controls.Count > 0)
+            {
+                this.panel_workarea.Controls.RemoveAt(0);
+            }
             Form fm = Formhijo as Form;
             fm.TopLevel = false;
-            fm.FormBorderStyle = FormBorderStyle.None;
             fm.Dock = DockStyle.Fill;
-            //fm.WindowState = FormWindowState.Normal;
+            fm.WindowState = FormWindowState.Normal;
             this.panel_workarea.Controls.Add(fm);
             this.panel_workarea.Tag = fm;
             fm.Show();
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color1);
-            FormState.PreviousPage = this;
-            //OpenFormInPanel(new frmHome());
-        }
-
-        private void btnNhanPhong_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color3);
-
-            //OpenFormInPanel(new frmCheckIn());
-        }
-
-        private void btnQLKhachHang_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color5);
-            //OpenFormInPanel(new frmCustomerManagement());
-        }
-
-        private void btnStaffMane_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color2);
-            FormState.PreviousPage = this;
-            OpenFormInPanel(new EmployeeAccountManeForm());
-        }
-
-        private void btnLogout_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void btnRoomManagement_Click(object sender, EventArgs e)
@@ -165,5 +113,11 @@ namespace hotel_management
             ActivateButton(sender, RGBcolors.color4);
             OpenFormInPanel(new RoomManageForm());
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

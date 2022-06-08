@@ -22,7 +22,7 @@ namespace hotel_management
 
         Form R = new ReservationForm();
         Form CI = new CheckInForm();
-
+        Form CO = new CheckOutForm();
 
 
         private void BookroomForm_Load(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace hotel_management
             {
                 curr = "CO";
                 currForm(curr);
-                
+                OpenFormInPanel(CO);
             }
         }
     }

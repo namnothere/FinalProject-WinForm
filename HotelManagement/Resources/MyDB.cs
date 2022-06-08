@@ -37,6 +37,12 @@ namespace hotel_management
 
         public bool existedKey(string cll, string col, string key)
         {
+            /*
+             * cll is database name
+             * col is column to compare
+             * key is value to compare
+             * Example: SELECT TOP 1 col FROM cll WHERE col = key
+             */
             //var collection = db.GetCollection<Entity>(cll);
             //var collection = db.GetCollection<BsonDocument>("Customer");
             //var filter = Builders<BsonDocument>.Filter.Eq("Name", key);
@@ -45,8 +51,8 @@ namespace hotel_management
             //    return true;
             //else
             //    return false;
-            
-            SqlCommand cmd = new SqlCommand("SELECT TOP 1" + cll + "." + col + " FROM + " + cll + " WHERE " + cll + "." + col + " = @key", con);
+
+            SqlCommand cmd = new SqlCommand("SELECT TOP 1" + col + " FROM " + cll + " WHERE " + col + " = @key", con);
             cmd.Parameters.AddWithValue("@key", key);
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);

@@ -16,18 +16,7 @@ namespace hotel_management
         private IconButton currentBtn;
         private Panel leftBorderBtn;
 
-        
-        public MainFormStaff()
-        {
-            InitializeComponent();
-            leftBorderBtn = new Panel();
-            leftBorderBtn.Size = new Size(7, 60);
-            panel_sidebar.Controls.Add(leftBorderBtn);
-        }
-        public static class FormState
-        {
-            public static Form PreviousPage;
-        }
+        ACCOUNT acc = new ACCOUNT();
         
         public MainFormStaff(string username)
         {
@@ -37,6 +26,7 @@ namespace hotel_management
             leftBorderBtn.Size = new Size(7, 60);
             panel_sidebar.Controls.Add(leftBorderBtn);
         }
+
         private struct RGBcolors
         {
             public static Color color1 = Color.FromArgb(172, 126, 241);
@@ -66,7 +56,7 @@ namespace hotel_management
                 leftBorderBtn.BringToFront();
             }
         }
-        
+
         private void DissableButton()
         {
             if (currentBtn != null)
@@ -80,38 +70,10 @@ namespace hotel_management
             }
         }
 
-        private void MainFormStaff_Load(object sender, EventArgs e)
-        {
-            ActivateButton(btnHome, RGBcolors.color1);
-            this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
-            ACCOUNT acc = new ACCOUNT();
 
-            if (acc.getImage(txbUsername.Text) != null)
-            {
-                this.profilePic.Image = acc.getImage(txbUsername.Text);
-            }
-            txbUsername.ForeColor = Color.White;
-        }
-
-        private void OpenFormInPanel(object Formhijo)
+        private void btnSched_Click(object sender, EventArgs e)
         {
-            if (this.panel_workarea.Controls.Count > 0)
-            {
-                this.panel_workarea.Controls.RemoveAt(0);
-            }
-            Form fm = Formhijo as Form;
-            fm.TopLevel = false;
-            fm.Dock = DockStyle.Fill;
-            fm.WindowState = FormWindowState.Normal;
-            this.panel_workarea.Controls.Add(fm);
-            this.panel_workarea.Tag = fm;
-            fm.Show();
-        }
 
-        private void btnRoomManagement_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color4);
-            OpenFormInPanel(new RoomManageForm());
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -119,5 +81,18 @@ namespace hotel_management
             this.Close();
         }
 
+        private void MainFormStaff_Load(object sender, EventArgs e)
+        {
+            ActivateButton(btnHome, RGBcolors.color1);
+            this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
+
+            if (acc.getImage(txbUsername.Text) != null)
+            {
+                this.profilePic.Image = acc.getImage(txbUsername.Text);
+            }
+
+            txbUsername.ForeColor = Color.White;
+
+        }
     }
 }

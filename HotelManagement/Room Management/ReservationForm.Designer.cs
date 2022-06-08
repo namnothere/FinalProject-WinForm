@@ -216,6 +216,7 @@
             this.LVBookList.Size = new System.Drawing.Size(598, 692);
             this.LVBookList.TabIndex = 0;
             this.LVBookList.UseCompatibleStateImageBehavior = false;
+            this.LVBookList.SelectedIndexChanged += new System.EventHandler(this.LVBookList_SelectedIndexChanged);
             // 
             // label21
             // 

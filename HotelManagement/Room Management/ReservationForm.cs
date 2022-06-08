@@ -168,7 +168,9 @@ namespace hotel_management.Room_Management
                 {
                     MessageBox.Show("Booking successfull", "Book Room");
                     LVBookList.Items.Add(createOrderItem(o));
+                    userC = false;
                     ClearFields();
+                    userC = true;
                     flowLayoutPanel1.Controls.Clear();
                     CreateRoomButton(room.getAllRooms());
                 }
@@ -353,5 +355,6 @@ namespace hotel_management.Room_Management
                 }
             }
         }
+
     }
 }

@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lvwStaffList = new System.Windows.Forms.ListView();
+            this.dataEmployeeList = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.imgAvatar = new System.Windows.Forms.ImageList(this.components);
             this.txbSearch = new System.Windows.Forms.TextBox();
@@ -48,6 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.picBox = new System.Windows.Forms.PictureBox();
@@ -58,9 +60,9 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEmployeeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
@@ -68,29 +70,37 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lvwStaffList);
+            this.groupBox2.Controls.Add(this.dataEmployeeList);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
             this.groupBox2.Location = new System.Drawing.Point(519, 76);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(700, 450);
+            this.groupBox2.Size = new System.Drawing.Size(860, 450);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Employees List";
             // 
-            // lvwStaffList
+            // dataEmployeeList
             // 
-            this.lvwStaffList.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lvwStaffList.Location = new System.Drawing.Point(19, 40);
-            this.lvwStaffList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lvwStaffList.Name = "lvwStaffList";
-            this.lvwStaffList.Size = new System.Drawing.Size(665, 390);
-            this.lvwStaffList.TabIndex = 0;
-            this.lvwStaffList.UseCompatibleStateImageBehavior = false;
-            this.lvwStaffList.View = System.Windows.Forms.View.Details;
-            this.lvwStaffList.SelectedIndexChanged += new System.EventHandler(this.lvwStaffList_ColumnClick);
+            this.dataEmployeeList.AllowUserToAddRows = false;
+            this.dataEmployeeList.AllowUserToDeleteRows = false;
+            this.dataEmployeeList.AllowUserToResizeColumns = false;
+            this.dataEmployeeList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dataEmployeeList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataEmployeeList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataEmployeeList.Location = new System.Drawing.Point(19, 39);
+            this.dataEmployeeList.Name = "dataEmployeeList";
+            this.dataEmployeeList.ReadOnly = true;
+            this.dataEmployeeList.RowHeadersVisible = false;
+            this.dataEmployeeList.RowHeadersWidth = 51;
+            this.dataEmployeeList.RowTemplate.Height = 29;
+            this.dataEmployeeList.Size = new System.Drawing.Size(835, 391);
+            this.dataEmployeeList.TabIndex = 1;
+            this.dataEmployeeList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEmployeeList_CellClick);
             // 
             // errorProvider1
             // 
@@ -105,7 +115,7 @@
             // txbSearch
             // 
             this.txbSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbSearch.Location = new System.Drawing.Point(831, 34);
+            this.txbSearch.Location = new System.Drawing.Point(1007, 30);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.PlaceholderText = "Search by ID or staff name";
@@ -250,6 +260,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.comboBoxType);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.picBox);
@@ -283,6 +294,19 @@
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee information";
+            // 
+            // btnClear
+            // 
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnClear.Location = new System.Drawing.Point(381, 52);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(29, 30);
+            this.btnClear.TabIndex = 14;
+            this.btnClear.Text = "X";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // comboBoxType
             // 
@@ -397,27 +421,12 @@
             this.btnDel.UseVisualStyleBackColor = true;
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.button1.Location = new System.Drawing.Point(1088, -42);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 31);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Search";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btnSearch
             // 
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
-            this.btnSearch.Location = new System.Drawing.Point(1099, 34);
+            this.btnSearch.Location = new System.Drawing.Point(1275, 30);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(104, 30);
@@ -431,18 +440,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1232, 536);
+            this.ClientSize = new System.Drawing.Size(1418, 859);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txbSearch);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EmployeeManageForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EmployeeManageForm";
             this.Load += new System.EventHandler(this.EmployeeManageForm_Load);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataEmployeeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -454,7 +463,6 @@
 
         #endregion
         private GroupBox groupBox2;
-        private ListView lvwStaffList;
         private ErrorProvider errorProvider1;
         private TextBox txbSearch;
         private GroupBox groupBox1;
@@ -475,7 +483,6 @@
         private Label label4;
         private Label label3;
         private ImageList imgAvatar;
-        private Button button1;
         private Button btnSearch;
         private Label label1;
         private TextBox txbUsername;
@@ -484,5 +491,7 @@
         private PictureBox picBox;
         private Label label9;
         private ComboBox comboBoxType;
+        private DataGridView dataEmployeeList;
+        private Button btnClear;
     }
 }
