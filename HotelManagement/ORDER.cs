@@ -17,7 +17,7 @@ namespace hotel_management
         
         public bool insertOrder(order o)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO Orders VALUES (@order_id, @customer_id, @room_id, @order_date, @check_in_date, @check_out_date, @total, @discount, @status)", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Orders VALUES (@order_id, @customer_id, @room_id, @order_date, @check_in_date, @check_out_date, @total, @discount, @status, @note)", mydb.getConnection);
 
             cmd.Parameters.AddWithValue("@order_id", SqlDbType.Int).Value = o.order_id;
             cmd.Parameters.AddWithValue("@customer_id", SqlDbType.Int).Value = o.customer_id;
@@ -28,6 +28,7 @@ namespace hotel_management
             cmd.Parameters.AddWithValue("@total", SqlDbType.Int).Value = o.total_price;
             cmd.Parameters.AddWithValue("@discount", SqlDbType.Int).Value = o.discount;
             cmd.Parameters.AddWithValue("@status", SqlDbType.NVarChar).Value = "Not Paid";
+            cmd.Parameters.AddWithValue("@note", SqlDbType.NVarChar).Value = "";
             mydb.openConnection();
             
             if (cmd.ExecuteNonQuery() == 1)
@@ -76,15 +77,28 @@ namespace hotel_management
 
         public bool updateOrder(order o)
         {
-            SqlCommand cmd = new SqlCommand("update Orders set dCreate=@order_date, dCheckIn=@check_in_date, dCheckOut=@check_out_date, RoomNumber=@room_id, CID=@customer_id where Id=@order_id", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("update Orders set dCreate=@order_date, dCheckIn=@check_in_date, dCheckOut=@check_out_date, RoomNumber=@room_id, CID=@customer_id, status = @status where Id=@order_id", mydb.getConnection);
             cmd.Parameters.AddWithValue("@order_id", SqlDbType.Int).Value = o.order_id;
             cmd.Parameters.AddWithValue("@order_date", SqlDbType.DateTime).Value = o.order_date;
             cmd.Parameters.AddWithValue("@check_in_date", SqlDbType.DateTime).Value = o.check_in_date;
             cmd.Parameters.AddWithValue("@check_out_date", SqlDbType.DateTime).Value = o.check_out_date;
             cmd.Parameters.AddWithValue("@room_id", SqlDbType.Int).Value = o.room_id;
             cmd.Parameters.AddWithValue("@customer_id", SqlDbType.Int).Value = o.customer_id;
+            if (o.status == null) o.status = "";
+            cmd.Parameters.AddWithValue("@status", SqlDbType.NVarChar).Value = o.status;
             mydb.openConnection();
-            
+
+            //if new room number is different from old room number, update room status
+
+            int old_room_id = new ORDER().getOrderByID(o.order_id).room_id;
+
+            if (o.room_id != old_room_id)
+            {
+                ROOM r = new ROOM();
+                r.updateRoomStatus(old_room_id, 1);
+                r.updateRoomStatus(o.room_id, 0);
+            }
+
             if (cmd.ExecuteNonQuery() == 1)
             {
                 mydb.closeConnection();
@@ -99,11 +113,18 @@ namespace hotel_management
 
         public bool deleteOrder(int order_id)
         {
+
+            ROOM room = new ROOM();
+            int roomNo = getOrderByID(order_id).room_id;
+            
+
             SqlCommand cmd = new SqlCommand("delete from Orders where Id=@order_id", mydb.getConnection);
             cmd.Parameters.AddWithValue("@order_id", SqlDbType.Int).Value = order_id;
             mydb.openConnection();
+
             if (cmd.ExecuteNonQuery() == 1)
             {
+                room.updateRoomStatus(roomNo, 1);
                 mydb.closeConnection();
                 return true;
             }
@@ -135,6 +156,19 @@ namespace hotel_management
             return false;
         }
 
+
+        public bool newBook(order o)
+        {
+            ORDER ord = new ORDER();
+            if (ord.insertOrder(o))
+            {
+                ROOM room = new ROOM();
+                room.updateRoomStatus(o.room_id, 0);
+                return true;
+            }
+            return false;
+        }
+
         public DataTable getAllOrders()
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM Orders", mydb.getConnection);
@@ -144,6 +178,30 @@ namespace hotel_management
             adapter.Fill(table);
             return table;
         }
+
+        public DataTable getAllReservations()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Orders WHERE Status <> 'Paid' AND Status <> 'Checked In'", mydb.getConnection);
+            //Status = 'Not Paid' OR 
+            mydb.openConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+
+        public DataTable getAllCheckedIn()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Orders WHERE Status = 'Checked In'", mydb.getConnection);
+            //Status = 'Not Paid' OR 
+            mydb.openConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+
+
 
         public order getOrderByID(int ID)
         {
@@ -165,11 +223,56 @@ namespace hotel_management
             return o;
         }
 
-        public bool Paid(int order_id)
+        public DataTable searchOrderbyRoom(int room_id)
         {
-            SqlCommand cmd = new SqlCommand("update Orders set status=@status where Id=@order_id", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Orders WHERE RoomNumber LIKE '%" + room_id.ToString() + "%'", mydb.getConnection);
+            cmd.Parameters.AddWithValue("@room_id", SqlDbType.Int).Value = room_id;
+            mydb.openConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+
+        public bool Paid(int order_id, int total, int discount)
+        {
+            SqlCommand cmd = new SqlCommand("update Orders set status=@status, total = @total, discount = @discount where Id=@order_id", mydb.getConnection);
             cmd.Parameters.AddWithValue("@order_id", SqlDbType.Int).Value = order_id;
+            cmd.Parameters.AddWithValue("@total", SqlDbType.Int).Value = total;
+            cmd.Parameters.AddWithValue("@discount", SqlDbType.Int).Value = discount;
             cmd.Parameters.AddWithValue("@status", SqlDbType.NVarChar).Value = "Paid";
+            mydb.openConnection();
+            if (cmd.ExecuteNonQuery() == 1)
+            {
+                ROOM r = new ROOM();
+                int RoomNo = getOrderByID(order_id).room_id;
+                r.updateRoomStatus(RoomNo, 1);
+                
+                mydb.closeConnection();
+                return true;
+            }
+            else
+            {
+                mydb.closeConnection();
+                return false;
+            }
+        }
+
+        public bool checkIn(int order_id)
+        {
+            order o = getOrderByID(order_id);
+            o.status = "Checked In";
+            updateOrder(o);
+            return true;
+        }
+
+        public bool addNote(int order_id, string note)
+        {
+            int len = note.ToCharArray().Count(c => c == 'a');
+            if (len > 140) return false;
+            SqlCommand cmd = new SqlCommand("update Orders set note=@note where Id=@order_id", mydb.getConnection);
+            cmd.Parameters.AddWithValue("@order_id", SqlDbType.Int).Value = order_id;
+            cmd.Parameters.AddWithValue("@note", SqlDbType.NVarChar).Value = note;
             mydb.openConnection();
             if (cmd.ExecuteNonQuery() == 1)
             {
@@ -182,7 +285,6 @@ namespace hotel_management
                 return false;
             }
         }
-
 
     }
 
@@ -198,6 +300,7 @@ namespace hotel_management
         public int total_price { get; set; }
         public int discount { get; set; }
         public string status { get; set; }
+        public string note { get; set; }
 
         public order(int room_id, int customer_id, DateTime order_date, DateTime check_in_date, DateTime check_out_date, int discount, string status)
         {
@@ -210,6 +313,7 @@ namespace hotel_management
             this.no_of_days = (check_out_date - check_in_date).Days;
             this.discount = 0;
             this.status = status;
+            if (this.no_of_days == 0) this.no_of_days = 1;
         }
 
         public order()

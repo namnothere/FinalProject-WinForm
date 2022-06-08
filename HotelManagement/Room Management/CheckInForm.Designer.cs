@@ -72,13 +72,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.LVBookList = new System.Windows.Forms.ListView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label21 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -139,6 +140,7 @@
             // 
             // txbPhone
             // 
+            this.txbPhone.Enabled = false;
             this.txbPhone.Location = new System.Drawing.Point(413, 129);
             this.txbPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbPhone.Name = "txbPhone";
@@ -155,6 +157,7 @@
             // 
             // txbID
             // 
+            this.txbID.Enabled = false;
             this.txbID.Location = new System.Drawing.Point(41, 197);
             this.txbID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbID.Name = "txbID";
@@ -163,6 +166,7 @@
             // 
             // txbName
             // 
+            this.txbName.Enabled = false;
             this.txbName.Location = new System.Drawing.Point(41, 60);
             this.txbName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbName.Name = "txbName";
@@ -217,6 +221,7 @@
             // dateDOB
             // 
             this.dateDOB.CustomFormat = "dd/MM/yyyy";
+            this.dateDOB.Enabled = false;
             this.dateDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDOB.Location = new System.Drawing.Point(413, 197);
             this.dateDOB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -292,6 +297,7 @@
             // 
             // txbStatus
             // 
+            this.txbStatus.Enabled = false;
             this.txbStatus.Location = new System.Drawing.Point(197, 230);
             this.txbStatus.Name = "txbStatus";
             this.txbStatus.ReadOnly = true;
@@ -309,6 +315,7 @@
             // 
             // txbRoomNumber
             // 
+            this.txbRoomNumber.Enabled = false;
             this.txbRoomNumber.Location = new System.Drawing.Point(198, 182);
             this.txbRoomNumber.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbRoomNumber.Name = "txbRoomNumber";
@@ -468,6 +475,7 @@
             // 
             this.dBookDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dBookDate.CustomFormat = "dd/MM/yyyy";
+            this.dBookDate.Enabled = false;
             this.dBookDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dBookDate.Location = new System.Drawing.Point(198, 85);
             this.dBookDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -480,13 +488,14 @@
             // 
             this.dClaimRoom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dClaimRoom.CustomFormat = "dd/MM/yyyy";
+            this.dClaimRoom.Enabled = false;
             this.dClaimRoom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dClaimRoom.Location = new System.Drawing.Point(198, 134);
             this.dClaimRoom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dClaimRoom.Name = "dClaimRoom";
             this.dClaimRoom.Size = new System.Drawing.Size(235, 30);
             this.dClaimRoom.TabIndex = 1;
-            this.dClaimRoom.Value = new System.DateTime(2021, 6, 21, 0, 0, 0, 0);
+            this.dClaimRoom.Value = new System.DateTime(2022, 6, 21, 0, 0, 0, 0);
             // 
             // comboBoxRoomType
             // 
@@ -553,7 +562,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.LVBookList);
+            this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
@@ -566,16 +575,23 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Booked Room";
             // 
-            // LVBookList
+            // dataGridView1
             // 
-            this.LVBookList.FullRowSelect = true;
-            this.LVBookList.Location = new System.Drawing.Point(6, 38);
-            this.LVBookList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LVBookList.Name = "LVBookList";
-            this.LVBookList.Size = new System.Drawing.Size(598, 595);
-            this.LVBookList.TabIndex = 0;
-            this.LVBookList.UseCompatibleStateImageBehavior = false;
-            this.LVBookList.SelectedIndexChanged += new System.EventHandler(this.LVBookList_SelectedIndexChanged);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 28);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(598, 604);
+            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // label21
             // 
@@ -607,6 +623,7 @@
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -615,7 +632,6 @@
 
         private Panel panel1;
         private GroupBox groupBox3;
-        private ListView LVBookList;
         private Label label21;
         private TextBox txbSearch;
         private Button button1;
@@ -659,5 +675,6 @@
         private TextBox txbNote;
         private Label lbNote;
         private Button btnCheckIn;
+        private DataGridView dataGridView1;
     }
 }

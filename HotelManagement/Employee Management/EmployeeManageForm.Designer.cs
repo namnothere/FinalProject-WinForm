@@ -77,7 +77,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(860, 450);
+            this.groupBox2.Size = new System.Drawing.Size(860, 685);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Employees List";
@@ -98,7 +98,7 @@
             this.dataEmployeeList.RowHeadersVisible = false;
             this.dataEmployeeList.RowHeadersWidth = 51;
             this.dataEmployeeList.RowTemplate.Height = 29;
-            this.dataEmployeeList.Size = new System.Drawing.Size(835, 391);
+            this.dataEmployeeList.Size = new System.Drawing.Size(835, 618);
             this.dataEmployeeList.TabIndex = 1;
             this.dataEmployeeList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEmployeeList_CellClick);
             // 
@@ -126,7 +126,7 @@
             // 
             this.btnViewList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewList.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnViewList.Location = new System.Drawing.Point(390, 450);
+            this.btnViewList.Location = new System.Drawing.Point(381, 677);
             this.btnViewList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnViewList.Name = "btnViewList";
             this.btnViewList.Size = new System.Drawing.Size(91, 43);
@@ -140,7 +140,7 @@
             this.dtpDOB.CustomFormat = "dd/MM/yyyy";
             this.dtpDOB.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dtpDOB.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDOB.Location = new System.Drawing.Point(160, 146);
+            this.dtpDOB.Location = new System.Drawing.Point(160, 184);
             this.dtpDOB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(250, 30);
@@ -155,7 +155,7 @@
             "M",
             "FM",
             "Other"});
-            this.comboBoxSex.Location = new System.Drawing.Point(160, 194);
+            this.comboBoxSex.Location = new System.Drawing.Point(160, 235);
             this.comboBoxSex.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxSex.Name = "comboBoxSex";
             this.comboBoxSex.Size = new System.Drawing.Size(75, 30);
@@ -164,7 +164,7 @@
             // txbID
             // 
             this.txbID.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbID.Location = new System.Drawing.Point(160, 52);
+            this.txbID.Location = new System.Drawing.Point(160, 85);
             this.txbID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbID.Name = "txbID";
             this.txbID.Size = new System.Drawing.Size(250, 30);
@@ -173,7 +173,7 @@
             // txbName
             // 
             this.txbName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbName.Location = new System.Drawing.Point(160, 94);
+            this.txbName.Location = new System.Drawing.Point(160, 135);
             this.txbName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(250, 30);
@@ -182,7 +182,7 @@
             // txbAddress
             // 
             this.txbAddress.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbAddress.Location = new System.Drawing.Point(160, 239);
+            this.txbAddress.Location = new System.Drawing.Point(160, 289);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(250, 30);
@@ -191,7 +191,7 @@
             // txbPhone
             // 
             this.txbPhone.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbPhone.Location = new System.Drawing.Point(160, 296);
+            this.txbPhone.Location = new System.Drawing.Point(160, 343);
             this.txbPhone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbPhone.Name = "txbPhone";
             this.txbPhone.Size = new System.Drawing.Size(250, 30);
@@ -201,7 +201,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(13, 304);
+            this.label6.Location = new System.Drawing.Point(13, 351);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(132, 22);
             this.label6.TabIndex = 0;
@@ -211,7 +211,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(14, 247);
+            this.label5.Location = new System.Drawing.Point(14, 297);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 22);
             this.label5.TabIndex = 0;
@@ -221,7 +221,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(15, 61);
+            this.label7.Location = new System.Drawing.Point(15, 94);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 22);
             this.label7.TabIndex = 0;
@@ -231,7 +231,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(13, 103);
+            this.label2.Location = new System.Drawing.Point(13, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 22);
             this.label2.TabIndex = 0;
@@ -241,7 +241,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(14, 203);
+            this.label4.Location = new System.Drawing.Point(20, 243);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 22);
             this.label4.TabIndex = 0;
@@ -251,7 +251,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(14, 153);
+            this.label3.Location = new System.Drawing.Point(14, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 22);
             this.label3.TabIndex = 0;
@@ -290,7 +290,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(501, 513);
+            this.groupBox1.Size = new System.Drawing.Size(501, 748);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Employee information";
@@ -299,7 +299,7 @@
             // 
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnClear.Location = new System.Drawing.Point(381, 52);
+            this.btnClear.Location = new System.Drawing.Point(381, 85);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(29, 30);
@@ -317,7 +317,7 @@
             "Mor",
             "Noon",
             "Night"});
-            this.comboBoxType.Location = new System.Drawing.Point(316, 194);
+            this.comboBoxType.Location = new System.Drawing.Point(316, 235);
             this.comboBoxType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(94, 30);
@@ -327,7 +327,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(255, 198);
+            this.label9.Location = new System.Drawing.Point(255, 239);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 22);
             this.label9.TabIndex = 12;
@@ -335,17 +335,17 @@
             // 
             // picBox
             // 
-            this.picBox.Location = new System.Drawing.Point(416, 351);
+            this.picBox.Location = new System.Drawing.Point(160, 508);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(65, 81);
+            this.picBox.Size = new System.Drawing.Size(142, 142);
+            this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBox.TabIndex = 11;
             this.picBox.TabStop = false;
-            this.picBox.Visible = false;
             // 
             // txbImg
             // 
             this.txbImg.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbImg.Location = new System.Drawing.Point(160, 390);
+            this.txbImg.Location = new System.Drawing.Point(160, 453);
             this.txbImg.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbImg.Name = "txbImg";
             this.txbImg.Size = new System.Drawing.Size(250, 30);
@@ -357,7 +357,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(14, 398);
+            this.label8.Location = new System.Drawing.Point(14, 461);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(102, 22);
             this.label8.TabIndex = 9;
@@ -366,7 +366,7 @@
             // txbUsername
             // 
             this.txbUsername.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txbUsername.Location = new System.Drawing.Point(160, 343);
+            this.txbUsername.Location = new System.Drawing.Point(160, 398);
             this.txbUsername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(250, 30);
@@ -376,7 +376,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(14, 351);
+            this.label1.Location = new System.Drawing.Point(14, 406);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 22);
             this.label1.TabIndex = 7;
@@ -386,7 +386,7 @@
             // 
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAdd.Location = new System.Drawing.Point(20, 450);
+            this.btnAdd.Location = new System.Drawing.Point(11, 677);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(90, 43);
@@ -399,7 +399,7 @@
             // 
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEdit.Location = new System.Drawing.Point(145, 450);
+            this.btnEdit.Location = new System.Drawing.Point(136, 677);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(90, 43);
@@ -412,7 +412,7 @@
             // 
             this.btnDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDel.Location = new System.Drawing.Point(266, 450);
+            this.btnDel.Location = new System.Drawing.Point(257, 677);
             this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(90, 43);
@@ -440,7 +440,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1418, 859);
+            this.ClientSize = new System.Drawing.Size(1406, 779);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txbSearch);

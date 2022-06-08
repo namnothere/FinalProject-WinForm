@@ -59,7 +59,10 @@ namespace hotel_management.Room_Management
             txbCheckOutDate.Text = o.check_out_date.ToString("MM/dd/yyyy");
             txbRoomType.Text = r.roomType;
             txbRoomRate.Text = r.roomPrice.ToString();
-            txbDays.Text = (o.check_out_date - o.check_in_date).Days.ToString();
+            int days = (o.check_out_date - o.check_in_date).Days;
+            txbDays.Text = days.ToString();
+
+            if (days == 0) txbDays.Text = "1";
             
             LockFields();
             BillCalculate();
@@ -119,7 +122,6 @@ namespace hotel_management.Room_Management
             dataGridView1.Columns[1].HeaderText = "Type";
             dataGridView1.Columns[2].HeaderText = "Rate";
         }
-        
 
         bool DiscountAvailable()
         {
@@ -220,7 +222,12 @@ namespace hotel_management.Room_Management
             DialogResult result = MessageBox.Show("Do you want to reserve this room?", "Reserve", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (o.Paid(Convert.ToInt16(lbTransID.Text)))
+                int total = Convert.ToInt32(txbTotal.Text);
+                int discount = 0;
+                if (comboBoxDiscount.SelectedValue != null)
+                    discount = Convert.ToInt32(comboBoxDiscount.SelectedValue);
+                
+                if (o.Paid(Convert.ToInt16(lbTransID.Text), total, discount))
                 {
                     MessageBox.Show("Paid and check out successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ClearFields();

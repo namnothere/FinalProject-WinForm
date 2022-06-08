@@ -37,7 +37,7 @@ namespace hotel_management.Room_Management
         void loadOrder()
         {
             ORDER ord = new ORDER();
-            DataTable table = ord.getAllOrders();
+            DataTable table = ord.getAllCheckedIn();
             dataGridView1.DataSource = table;
         }
 
@@ -48,8 +48,28 @@ namespace hotel_management.Room_Management
             {
                 int index = dataGridView1.SelectedCells[0].RowIndex;
                 this.Tag = dataGridView1.Rows[index].Cells[0].Value.ToString();
-                //MessageBox.Show("This tag: " + this.Tag);
                 this.Close();
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            //search using concat
+            if (txbSearch.Text.Trim() != "")
+            {
+                ORDER o = new ORDER();
+
+                //check if search is int 
+                if (int.TryParse(txbSearch.Text, out int result))
+                {
+                    //search by id
+                    DataTable table = o.searchOrderbyRoom(Convert.ToInt16(txbSearch.Text));
+                    dataGridView1.DataSource = table;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid number", "Search", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

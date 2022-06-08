@@ -24,9 +24,6 @@ namespace hotel_management.Room_Management
 
         public bool DiscountExist(string type)
         {
-            //SqlCommand cmd = new SqlCommand("SELECT * FROM Discount WHERE Type = @type", mydb.getConnection);
-            //cmd.Parameters.AddWithValue("@type", SqlDbType.NVarChar).Value = type;
-            //SqlDataAdapter adapter = 
 
             var exists = mydb.existedKey("Discount", "Type", type);
             if (exists)
