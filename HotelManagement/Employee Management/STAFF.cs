@@ -143,5 +143,21 @@ namespace hotel_management
             adapter.Fill(table);
             return table;
         }
+
+        public void convertStaff(DataRow row)
+        {
+            staff_id = row[0].ToString();
+            staff_name = row[1].ToString();
+            staff_dob = row[2].ToString();
+            staff_address = row[3].ToString();
+            staff_phone = row[4].ToString();
+            staff_sex = row[5].ToString();
+            staff_type = row[6].ToString();
+            byte[] pic;
+            pic = (byte[])row[7];
+            MemoryStream picture = new MemoryStream(pic);
+            staff_img = Image.FromStream(picture);
+            staff_usernameID = row[8].ToString();
+        }
     }
 }
