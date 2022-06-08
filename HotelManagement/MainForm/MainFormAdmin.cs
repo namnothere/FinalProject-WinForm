@@ -135,13 +135,13 @@ namespace hotel_management
             ActivateButton(sender, RGBcolors.color1);
             FormState.PreviousPage = this;
             OpenFormInPanel(new HomePage(this.id));
+            
         }
 
         private void btnNhanPhong_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBcolors.color3);
-
-            //OpenFormInPanel(new frmCheckIn());
+            OpenFormInPanel(new CreateSchedule());
         }
 
         private void btnQLKhachHang_Click(object sender, EventArgs e)

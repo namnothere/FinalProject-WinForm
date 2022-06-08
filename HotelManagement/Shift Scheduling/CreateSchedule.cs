@@ -144,7 +144,7 @@ namespace hotel_management
             else
             {
                 dateTimePickerFrom.Value = DateTime.Today;
-                dateTimePickerTo.Value = DateTime.Today;
+                dateTimePickerTo.Value = DateTime.Today.AddMinutes(1);
                 checkBoxShiftManager.Checked = false;
                 checkBoxShiftReceptionist.Checked = false;
                 checkBoxShiftJanitor.Checked = false;
@@ -237,12 +237,13 @@ namespace hotel_management
 
         private void CreateSchedule_Load(object sender, EventArgs e)
         {
-            comboBoxShift.DataSource = 1;
+            
             List<int> index = new List<int>();
             for (int i = 1; i <= 4; i++)
             {
                 index.Add(i);
             }
+            comboBoxShift.DataSource = index;
             selectedShift = 1;
         }
 

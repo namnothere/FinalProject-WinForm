@@ -38,6 +38,7 @@
             this.btnEnd = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lbHours = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,12 +157,24 @@
             this.dataGridView1.Size = new System.Drawing.Size(397, 257);
             this.dataGridView1.TabIndex = 9;
             // 
+            // lbHours
+            // 
+            this.lbHours.AutoSize = true;
+            this.lbHours.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbHours.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.lbHours.Location = new System.Drawing.Point(1031, 529);
+            this.lbHours.Name = "lbHours";
+            this.lbHours.Size = new System.Drawing.Size(134, 31);
+            this.lbHours.TabIndex = 10;
+            this.lbHours.Text = "Total Hours:";
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1388, 812);
+            this.Controls.Add(this.lbHours);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnEnd);
@@ -195,5 +208,6 @@
         private Button btnEnd;
         private Label label2;
         private DataGridView dataGridView1;
+        private Label lbHours;
     }
 }

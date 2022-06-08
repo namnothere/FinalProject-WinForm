@@ -84,7 +84,8 @@ namespace hotel_management
             SqlCommand cmd = new SqlCommand("UPDATE attendance SET endT = @endT, duration = @duration WHERE Id = @id", mydb.getConnection);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@endT", end);
-            cmd.Parameters.AddWithValue("@duration", Math.Round(end.Subtract(getStart(id)).TotalMinutes, 2).ToString());
+            TimeSpan span = end - getStart(id);
+            cmd.Parameters.AddWithValue("@duration", Math.Round(span.TotalMinutes, 2).ToString());
             //cmd.Parameters.AddWithValue("@time", end);
 
             mydb.openConnection();
