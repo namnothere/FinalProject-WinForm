@@ -15,9 +15,8 @@ namespace hotel_management
 
         MyDB mydb = new MyDB();
 
-        public ACCOUNT()
-        {
-        }
+        public ACCOUNT() { }
+
         public ACCOUNT(string username, string password)
         {
             this.username = username;

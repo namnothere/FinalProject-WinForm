@@ -13,7 +13,21 @@ namespace hotel_management
     public partial class CreateSchedule : Form
     {
         Schedule schedule = new Schedule();
-        Staff staff = new Staff();
+        
+        STAFF staff = new STAFF();
+        List<STAFF> staffList = new List<STAFF>();
+
+        int workdays;
+
+        private void fillStaffList()
+        {
+            foreach (DataRow dr in staff.getAllEmployees().Rows)
+            {
+                staff.convertStaff(dr);
+                staffList.Add(staff);
+            }
+        }
+
         int selectedShift;
         List<ShiftState> shifts = new List<ShiftState>();
 
@@ -32,13 +46,6 @@ namespace hotel_management
             public int janitorAmount;
 
             public bool specialDay;
-            public bool monday;
-            public bool tuesday;
-            public bool wednesday;
-            public bool thursday;
-            public bool friday;
-            public bool saturday;
-            public bool sunday;
 
             public bool interchangebleStaff;
             public int amountOfStaff;
@@ -61,16 +68,6 @@ namespace hotel_management
             shift.janitorAmount = Convert.ToInt16(numericUpDownJanitorAmount.Value);
 
             shift.specialDay = radioButtonNormalDaysSetting.Checked;
-            if (shift.specialDay)
-            {
-                shift.monday = checkBoxMonday.Checked;
-                shift.tuesday = checkBoxTuesday.Checked;
-                shift.wednesday = checkBoxWednesday.Checked;
-                shift.thursday = checkBoxThursday.Checked;
-                shift.friday = checkBoxFriday.Checked;
-                shift.saturday = checkBoxSaturday.Checked;
-                shift.sunday = checkBoxSunday.Checked;
-            }
 
             shift.interchangebleStaff = checkBoxInterchangableStaff.Checked;
             if (shift.interchangebleStaff)
@@ -81,7 +78,44 @@ namespace hotel_management
                 shift.IEjanitor = checkBoxIEJanitor.Checked;
             }
 
-            shifts.Add(shift);
+            var checkExist = shifts.Where(p => p.shiftNum == shift.shiftNum);
+            if (checkExist.Count() == 0)
+            {
+                shifts.Add(shift);
+                shift.specialDay = !checkBoxInterchangableStaff.Checked;
+                shifts.Add(shift);
+            }
+            else
+            {
+                foreach (ShiftState state in checkExist)
+                {
+                    if (state.specialDay == shift.specialDay)
+                    {
+                        state.from = shift.from;
+                        state.to = shift.to;
+                        state.manager = shift.manager;
+                        state.managerAmount = shift.managerAmount;
+                        state.receptionist = shift.receptionist;
+                        state.receptionistAmount = shift.receptionistAmount;
+                        state.janitor = shift.janitor;
+                        state.janitorAmount = shift.janitorAmount;
+                        state.interchangebleStaff = shift.interchangebleStaff;
+                        if (state.interchangebleStaff)
+                        {
+                            state.amountOfStaff = shift.amountOfStaff;
+                            state.IEmanager = shift.IEmanager;
+                            state.IEreceptionist = shift.IEreceptionist;
+                            state.IEjanitor = shift.IEjanitor;
+                        }
+                    }
+                    else
+                    {
+                        state.from = shift.from;
+                        state.to = shift.to;
+                    }
+                }
+            }
+
         }
 
         private void loadState(int shiftNum, bool spec)
@@ -96,17 +130,6 @@ namespace hotel_management
                     checkBoxShiftManager.Checked = shift.manager;
                     checkBoxShiftReceptionist.Checked = shift.receptionist;
                     checkBoxShiftJanitor.Checked = shift.janitor;
-
-                    if (spec)
-                    {
-                        checkBoxMonday.Checked = shift.monday;
-                        checkBoxTuesday.Checked = shift.tuesday;
-                        checkBoxWednesday.Checked = shift.wednesday;
-                        checkBoxThursday.Checked = shift.thursday;
-                        checkBoxFriday.Checked = shift.friday;
-                        checkBoxSaturday.Checked = shift.saturday;
-                        checkBoxSunday.Checked = shift.sunday;
-                    }
 
                     checkBoxInterchangableStaff.Checked = shift.interchangebleStaff;
                     if (shift.interchangebleStaff)
@@ -125,16 +148,6 @@ namespace hotel_management
                 checkBoxShiftManager.Checked = false;
                 checkBoxShiftReceptionist.Checked = false;
                 checkBoxShiftJanitor.Checked = false;
-                if (spec)
-                {
-                    checkBoxMonday.Checked = false;
-                    checkBoxTuesday.Checked = false;
-                    checkBoxWednesday.Checked = false;
-                    checkBoxThursday.Checked = false;
-                    checkBoxFriday.Checked = false;
-                    checkBoxSaturday.Checked = false;
-                    checkBoxSunday.Checked = false;
-                }
                 checkBoxInterchangableStaff.Checked = false;
 
             }
@@ -216,23 +229,6 @@ namespace hotel_management
                 }
             }
         }
-
-        //finding total work days
-
-        //function to find least common multiple
-        static long LCM(List<long> numbers)
-        {
-            return numbers.Aggregate(lcm);
-        }
-        static long lcm(long a, long b)
-        {
-            return Math.Abs(a * b) / GCD(a, b);
-        }
-        static long GCD(long a, long b)
-        {
-            return b == 0 ? a : GCD(b, a % b);
-        }
-
 
         public CreateSchedule()
         {
@@ -422,6 +418,13 @@ namespace hotel_management
                 shiftSort(specShifts);
                 List<Requirement> reqNorm = convertStateToReqList(normShifts);
                 List<Requirement> reqSpec = convertStateToReqList(specShifts);
+                List<string> specDays = returnSpecialDays();
+                fillStaffList();
+                WorkingDays days = new WorkingDays(staffList, this);
+                days.Show();
+                schedule.createSchedule(start, maxHours, reqNorm, reqSpec, specDays, staffList, workdays);
+
+                
             }
         }
 
@@ -478,6 +481,46 @@ namespace hotel_management
                 req.Add(reqSingle);
             }
             return req;
+        }
+
+        private List<string> returnSpecialDays()
+        {
+            List<string> days = new List<string>();
+            
+            if (checkBoxMonday.Checked)
+            {
+                days.Add(checkBoxMonday.Text);
+            }
+            if (checkBoxTuesday.Checked)
+            {
+                days.Add(checkBoxTuesday.Text);
+            }
+            if (checkBoxWednesday.Checked)
+            {
+                days.Add(checkBoxWednesday.Text);
+            }
+            if (checkBoxThursday.Checked)
+            {
+                days.Add(checkBoxThursday.Text);
+            }
+            if (checkBoxFriday.Checked)
+            {
+                days.Add(checkBoxFriday.Text);
+            }
+            if (checkBoxSaturday.Checked)
+            {
+                days.Add(checkBoxSaturday.Text);
+            }
+            if (checkBoxSunday.Checked)
+            {
+                days.Add(checkBoxSunday.Text);
+            }
+            return days;
+        }
+
+        public void setWorkdays(int days)
+        {
+            workdays = days;
         }
     }
 }

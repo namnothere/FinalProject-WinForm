@@ -69,9 +69,6 @@
             this.radioButtonNormalDaysSetting = new System.Windows.Forms.RadioButton();
             this.numericUpDownShiftPerDay = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownMaxHourPerShift = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownJanitorAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownReceptionistAmount)).BeginInit();
@@ -82,7 +79,6 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShiftPerDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxHourPerShift)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNoOfShift
@@ -568,39 +564,6 @@
             0});
             this.numericUpDownMaxHourPerShift.ValueChanged += new System.EventHandler(this.numericUpDownMaxHourPerShift_ValueChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(330, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 21);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Amount of Days:";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(461, 93);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(79, 23);
-            this.numericUpDown1.TabIndex = 27;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.Location = new System.Drawing.Point(329, 50);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(154, 25);
-            this.checkBox1.TabIndex = 30;
-            this.checkBox1.Text = "Uneven Worktime";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // CreateSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -608,9 +571,6 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(552, 576);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.numericUpDownMaxHourPerShift);
             this.Controls.Add(this.numericUpDownShiftPerDay);
             this.Controls.Add(this.panel4);
@@ -637,7 +597,6 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownShiftPerDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxHourPerShift)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -686,8 +645,5 @@
         private NumericUpDown numericUpDownJanitorAmount;
         private NumericUpDown numericUpDownReceptionistAmount;
         private NumericUpDown numericUpDownManagerAmount;
-        private Label label2;
-        private NumericUpDown numericUpDown1;
-        private CheckBox checkBox1;
     }
 }

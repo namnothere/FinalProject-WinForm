@@ -10,14 +10,14 @@ namespace hotel_management
     {
         DateTime start = new DateTime();
         DateTime end = new DateTime();
-        List<Staff> staffs = new List<Staff>();
+        List<STAFF> staffs = new List<STAFF>();
         
 
-        public void setShiftInfo(DateTime start, DateTime end, List<Staff> staffs)
+        public void setShiftInfo(DateTime start, DateTime end, List<STAFF> staffs)
         {
             this.start = start;
             this.end = end;
-            foreach (Staff staff in staffs)
+            foreach (STAFF staff in staffs)
             {
                 this.staffs.Add(staff);
             }
@@ -33,7 +33,7 @@ namespace hotel_management
             return end;
         }
 
-        public List<Staff> getStaffs()
+        public List<STAFF> getStaffs()
         {
             return staffs;
         }

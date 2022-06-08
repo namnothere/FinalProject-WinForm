@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 
@@ -9,42 +11,19 @@ namespace hotel_management
 {
     internal class Schedule
     {
-        DateOnly start;
-        DateOnly end;
-        int maxHours;
-        List<Requirement> reqNorm = new List<Requirement>();
-        List<Requirement> reqSpec = new List<Requirement>();
-        List<string> specDays = new List<string>();
+        MyDB mydb = new MyDB();
+
         List<ShiftInfo> shiftInfos = new List<ShiftInfo>();
-        
 
-
-        public void addReqNorm(List<Requirement> reqNorm)
-        {
-            this.reqNorm = reqNorm.ToList();
-        }
-
-        public void addReqSpec(List<Requirement> reqSpec)
-        {
-            this.reqSpec = reqSpec.ToList();
-        }
-
-        private void addShift(DateTime start, DateTime end, List<Staff> staffs)
+        private void addShift(DateTime start, DateTime end, List<STAFF> staffs)
         {
             ShiftInfo shift = new ShiftInfo();
             shift.setShiftInfo(start, end, staffs);
             shiftInfos.Add(shift);
         }
 
-        public void createSchedule(DateOnly start, int maxHours, List<Requirement> reqNorm, List<Requirement> reqSpec, List<string> specDays, List<Staff> allStaffs, int workdays)
+        public void createSchedule(DateOnly start, int maxHours, List<Requirement> reqNorm, List<Requirement> reqSpec, List<string> specDays, List<STAFF> allStaffs, int workdays)
         {
-            this.start = start;
-            DateOnly tempEnd1 = start;
-            tempEnd1.AddDays(workdays);
-            this.end = tempEnd1;
-            this.maxHours = maxHours;
-            this.reqNorm = reqNorm.ToList();
-            this.reqSpec = reqSpec.ToList();
 
             //create lists of staffs in roles
             List<StaffList> staffsList = new List<StaffList>();
@@ -83,12 +62,12 @@ namespace hotel_management
             }
 
             //add staffs to each role
-            foreach (Staff staff in allStaffs)
+            foreach (STAFF staff in allStaffs)
             {
                 //create normal staff list
                 //check exist
                 bool exist;
-                var matches = staffsList.Where(p => String.Equals(p.type, p.type.Contains(staff.type)));
+                var matches = staffsList.Where(p => String.Equals(p.type, p.type.Contains(staff.staff_type)));
                 exist = matches.Count() > 0;
                 if (exist)
                 {
@@ -148,7 +127,7 @@ namespace hotel_management
                             first = false;
 
                             //assigning staffs
-                            List<Staff> staffs = new List<Staff>();
+                            List<STAFF> staffs = new List<STAFF>();
                             foreach (RoleAmount role in reqNorm[j].role)
                             {
                                 for (int k = 0; k < role.amount; k++)
@@ -206,7 +185,7 @@ namespace hotel_management
                             first = false;
 
                             //assigning staffs
-                            List<Staff> staffs = new List<Staff>();
+                            List<STAFF> staffs = new List<STAFF>();
                             foreach (RoleAmount role in reqSpec[j].role)
                             {
                                 for (int k = 0; k < role.amount; k++)
@@ -234,8 +213,139 @@ namespace hotel_management
             }
         }
 
+        public DataTable toDataTable()
+        {
+            DataTable dt = new DataTable();
+            if (shiftInfos.Count > 0)
+            {
+                DateOnly today = DateOnly.FromDateTime(shiftInfos[0].getStart());
+                bool first = true;
+                dt.Columns.Add("Time start", typeof(TimeOnly));
+                dt.Columns.Add("Time end", typeof(TimeOnly));
+                dt.Columns.Add(today.ToString(), typeof(string));
+                int index = 0;
+                foreach (ShiftInfo shiftInfo in shiftInfos)
+                {
+                    if (DateOnly.FromDateTime(shiftInfo.getStart()) == today && first == true)
+                    {
+                        DataRow row = dt.NewRow();
+                        row[0] = TimeOnly.FromDateTime(shiftInfo.getStart());
+                        row[1] = TimeOnly.FromDateTime(shiftInfo.getEnd());
+                        string names = "";
+                        foreach (STAFF staff in shiftInfo.getStaffs())
+                        {
+                            names += staff.staff_name + "\n";
+                        }
+                        names.Trim('\n');
+                        row[2] = names;
+                        dt.Rows.Add(row);
+                    }
+                    else if (DateOnly.FromDateTime(shiftInfo.getStart()) != today)
+                    {
+                        index = 0;
+                        today = DateOnly.FromDateTime(shiftInfo.getStart());
+                        dt.Columns.Add(today.ToString(), typeof(string));
+                        string names = "";
+                        foreach (STAFF staff in shiftInfo.getStaffs())
+                        {
+                            names += staff.staff_name + ", ";
+                        }
+                        dt.Rows[index][dt.Columns.Count - 1] = names;
+                        index++;
+                    }
+                    else if (DateOnly.FromDateTime(shiftInfo.getStart()) == today)
+                    {
+                        string names = "";
+                        foreach (STAFF staff in shiftInfo.getStaffs())
+                        {
+                            names += staff.staff_name + ", ";
+                        }
+                        dt.Rows[index][dt.Columns.Count - 1] = names;
+                        index++;
+                    }
+                }
+            }
+            return dt;
+        }
 
-        
+        public bool insertDatabase()
+        {
+            foreach (ShiftInfo info in shiftInfos)
+            {
+                DateTime start = info.getStart();
+                DateTime end = info.getEnd();
+                string id = "";
+                foreach (STAFF staff in info.getStaffs())
+                {
+                    id += staff.staff_id + " ";
+                }
+                id.Trim();
+                SqlCommand cmd = new SqlCommand("INSERT INTO schedule VALUES(@Start, @End, @StaffIDs)", mydb.getConnection);
+                cmd.Parameters.AddWithValue("@start", start);
+                cmd.Parameters.AddWithValue("@end", end);
+                cmd.Parameters.AddWithValue("@staffids", id);
+                mydb.openConnection();
+                if (cmd.ExecuteNonQuery() != 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void retrieveDatabase()
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM schedule", mydb.getConnection);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+
+            foreach(DataRow dr in table.Rows)
+            {
+                DateTime start = Convert.ToDateTime(dr["Start"]);
+                DateTime end = Convert.ToDateTime(dr["End"]);
+                List<STAFF> staffs = new List<STAFF>();
+                foreach (int id in separateIDs(dr["StaffIDs"].ToString()))
+                {
+                    STAFF staff = new STAFF();
+
+                    SqlCommand cmd2 = new SqlCommand("SELECT * FROM staffs WHERE Id = @staff_id", mydb.getConnection);
+                    cmd.Parameters.AddWithValue("@staff_id", id);
+                    SqlDataAdapter adapter2 = new SqlDataAdapter(cmd);
+                    DataTable table2 = new DataTable();
+                    adapter.Fill(table);
+                    if (table.Rows.Count > 0)
+                    {
+                        string name = table2.Rows[0]["name"].ToString();
+                        string dob = table2.Rows[0]["dob"].ToString();
+                        string address = table2.Rows[0]["address"].ToString();
+                        string phone = table2.Rows[0]["phone"].ToString();
+                        string sex = table2.Rows[0]["sex"].ToString();
+                        string type = table2.Rows[0]["type"].ToString();
+                        byte[] pic;
+                        pic = (byte[])table2.Rows[0]["profilePic"];
+                        MemoryStream picture = new MemoryStream(pic);
+                        Image img = Image.FromStream(picture);
+                        string usernameID = table2.Rows[0]["usernameID"].ToString();
+                        staff.setStaff(id.ToString(), name, dob, address, phone, sex, type, img, usernameID);
+                        staffs.Add(staff);
+                    }
+                }
+                addShift(start, end, staffs);
+            }
+        }
+
+        private List<int> separateIDs(string ids)
+        {
+            List<int> list = new List<int>();
+            string[] separated = ids.Split(' ');
+            for (int i = 0; i < separated.Length; i++)
+            {
+                list.Add(Convert.ToInt16(separated[i]));
+            }
+            return list;
+
+        }
     }
 
     internal class Requirement
