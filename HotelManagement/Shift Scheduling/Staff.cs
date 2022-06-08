@@ -21,5 +21,7 @@ namespace hotel_management
     {
         public string type { get; set; }
         public List<Staff> staffs { get; set; }
+
+
     }
 }

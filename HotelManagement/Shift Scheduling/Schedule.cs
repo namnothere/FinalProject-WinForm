@@ -235,19 +235,21 @@ namespace hotel_management
         }
 
 
-        internal class Requirement
-        {
-            public TimeOnly start { get; private set; }
-            public TimeOnly end { get; private set; }
-            public List<RoleAmount> role = new List<RoleAmount>();
-        }
-
-        internal class RoleAmount
-        {
-            public string roleName;
-            public int amount;
-        }
+        
     }
 
-    
+    internal class Requirement
+    {
+        public TimeOnly start { get; set; }
+        public TimeOnly end { get; set; }
+        public List<RoleAmount> role = new List<RoleAmount>();
+    }
+
+    internal class RoleAmount
+    {
+        public string roleName;
+        public int amount;
+    }
+
+
 }
