@@ -54,7 +54,7 @@ namespace hotel_management
         }
 
 
-        public bool insertEmployee(string staff_id, string staff_name, DateTime DOB, string staff_address, string staff_phone, string staff_sex, string staff_type, string username, MemoryStream staff_img)
+        public bool insertEmployee(string staff_id, string staff_name, DateTime DOB, string staff_address, string staff_phone, string staff_type, string username, MemoryStream staff_img)
         {
             SqlCommand cmd = new SqlCommand("INSERT INTO staffs VALUES(@Id, @name, @DOB, @address, @phone, @sex, @type, @username, @img)", mydb.getConnection);
 
@@ -66,11 +66,7 @@ namespace hotel_management
             cmd.Parameters.AddWithValue("@sex", staff_sex);
             cmd.Parameters.AddWithValue("@type", staff_type);
             cmd.Parameters.AddWithValue("@img", staff_img.ToArray());
-            cmd.Parameters.AddWithValue("@username", username);
-<<<<<<< HEAD
 
-=======
-            cmd.Parameters.AddWithValue("@DOB", DOB);
             cmd.Parameters.AddWithValue("@sex", sex);
 >>>>>>> fa9d19723868403d5432931c72af4b4906e82121
             mydb.openConnection();
@@ -148,22 +144,6 @@ namespace hotel_management
             DataTable table = new DataTable();
             adapter.Fill(table);
             return table;
-        }
-
-        public void convertStaff(DataRow row)
-        {
-            staff_id = row[0].ToString();
-            staff_name = row[1].ToString();
-            staff_dob = row[2].ToString();
-            staff_address = row[3].ToString();
-            staff_phone = row[4].ToString();
-            staff_sex = row[5].ToString();
-            staff_type = row[6].ToString();
-            byte[] pic;
-            pic = (byte[])row[7];
-            MemoryStream picture = new MemoryStream(pic);
-            staff_img = Image.FromStream(picture);
-            staff_usernameID = row[8].ToString();
         }
     }
 }
