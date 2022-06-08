@@ -16,6 +16,7 @@ namespace hotel_management
         private Panel leftBorderBtn;
         //private Account account;
 
+        int id;
         public MainFormAdmin()
         {
             InitializeComponent();
@@ -41,6 +42,8 @@ namespace hotel_management
         public MainFormAdmin(string username)
         {
             InitializeComponent();
+            ACCOUNT acc = new ACCOUNT();
+            this.id = acc.getID(username);
             txbUsername.Text = username;
             leftBorderBtn = new Panel();
             leftBorderBtn.Size = new Size(7, 60);
@@ -94,7 +97,6 @@ namespace hotel_management
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //OpenFormInPanel(new frmHome());
             ActivateButton(btnHome, RGBcolors.color1);
             this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
             ACCOUNT acc = new ACCOUNT();
@@ -132,7 +134,7 @@ namespace hotel_management
         {
             ActivateButton(sender, RGBcolors.color1);
             FormState.PreviousPage = this;
-            //OpenFormInPanel(new frmHome());
+            OpenFormInPanel(new HomePage(this.id));
         }
 
         private void btnNhanPhong_Click(object sender, EventArgs e)

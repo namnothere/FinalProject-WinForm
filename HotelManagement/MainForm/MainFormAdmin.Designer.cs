@@ -120,7 +120,7 @@ namespace hotel_management
             this.btnQLKhachHang.IconColor = System.Drawing.Color.Gainsboro;
             this.btnQLKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnQLKhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 426);
+            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 420);
             this.btnQLKhachHang.Name = "btnQLKhachHang";
             this.btnQLKhachHang.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnQLKhachHang.Size = new System.Drawing.Size(292, 63);
@@ -143,7 +143,7 @@ namespace hotel_management
             this.btnRoomManagement.IconColor = System.Drawing.Color.Gainsboro;
             this.btnRoomManagement.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnRoomManagement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRoomManagement.Location = new System.Drawing.Point(0, 366);
+            this.btnRoomManagement.Location = new System.Drawing.Point(0, 360);
             this.btnRoomManagement.Name = "btnRoomManagement";
             this.btnRoomManagement.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnRoomManagement.Size = new System.Drawing.Size(292, 60);
@@ -166,7 +166,7 @@ namespace hotel_management
             this.btnSched.IconColor = System.Drawing.Color.Gainsboro;
             this.btnSched.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnSched.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSched.Location = new System.Drawing.Point(0, 306);
+            this.btnSched.Location = new System.Drawing.Point(0, 300);
             this.btnSched.Name = "btnSched";
             this.btnSched.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnSched.Size = new System.Drawing.Size(292, 60);
@@ -189,7 +189,7 @@ namespace hotel_management
             this.btnStaffMane.IconColor = System.Drawing.Color.Gainsboro;
             this.btnStaffMane.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnStaffMane.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStaffMane.Location = new System.Drawing.Point(0, 246);
+            this.btnStaffMane.Location = new System.Drawing.Point(0, 240);
             this.btnStaffMane.Name = "btnStaffMane";
             this.btnStaffMane.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
             this.btnStaffMane.Size = new System.Drawing.Size(292, 60);
@@ -215,7 +215,7 @@ namespace hotel_management
             this.btnHome.Location = new System.Drawing.Point(0, 179);
             this.btnHome.Name = "btnHome";
             this.btnHome.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
-            this.btnHome.Size = new System.Drawing.Size(292, 67);
+            this.btnHome.Size = new System.Drawing.Size(292, 61);
             this.btnHome.TabIndex = 9;
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
