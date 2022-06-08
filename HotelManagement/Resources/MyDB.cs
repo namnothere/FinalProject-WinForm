@@ -21,7 +21,7 @@ namespace hotel_management
 
     internal class MyDB
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\ProjectModels;Initial Catalog=HotelManagement;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HotelManagement; Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
 
         //static MongoClient client = new MongoClient("mongodb://localhost:27017");
         //static MongoClient client = new MongoClient("mongodb+srv://aegis:Vipman123@cluster0.vu0jp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");

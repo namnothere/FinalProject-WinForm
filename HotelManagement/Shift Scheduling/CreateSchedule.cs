@@ -237,8 +237,10 @@ namespace hotel_management
 
         private void CreateSchedule_Load(object sender, EventArgs e)
         {
-            
             List<int> index = new List<int>();
+            index.Add(1);
+            comboBoxShift.DataSource = index;
+            index = new List<int>();
             for (int i = 1; i <= 4; i++)
             {
                 index.Add(i);
