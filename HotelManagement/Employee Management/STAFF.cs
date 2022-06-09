@@ -22,7 +22,7 @@ namespace hotel_management
 
         MyDB mydb = new MyDB();
 
-        public void setStaff(string id, string name, string dob, string address, string phone, string sex, string type, Image img, string usernameID)
+        public void setStaff(string id, string name, string dob, string address, string phone, string sex, string type, string usernameID, Image img)
         {
             staff_id = id;
             staff_name = name;
@@ -153,11 +153,12 @@ namespace hotel_management
             staff_phone = row[4].ToString();
             staff_sex = row[5].ToString();
             staff_type = row[6].ToString();
+            staff_usernameID = row[7].ToString();
             byte[] pic;
-            pic = (byte[])row[7];
+            pic = (byte[])row[8];
             MemoryStream picture = new MemoryStream(pic);
             staff_img = Image.FromStream(picture);
-            staff_usernameID = row[8].ToString();
+
         }
     }
 }

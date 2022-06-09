@@ -167,5 +167,11 @@ namespace hotel_management
             ActivateButton(sender, RGBcolors.color4);
             OpenFormInPanel(new RoomManageForm());
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            TimeTable tt = new TimeTable();
+            tt.Show();
+        }
     }
 }

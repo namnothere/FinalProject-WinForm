@@ -62,7 +62,7 @@
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.labelTimeSpan = new System.Windows.Forms.Label();
             this.comboBoxShift = new System.Windows.Forms.ComboBox();
-            this.buttonSaveScheduleInfo = new System.Windows.Forms.Button();
+            this.buttonCreateSchedule = new System.Windows.Forms.Button();
             this.labelMaxHourPerShift = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.radioButtonSpecialDaysSetting = new System.Windows.Forms.RadioButton();
@@ -116,7 +116,7 @@
             this.dateTimePickerStartDay.CalendarFont = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerStartDay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerStartDay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerStartDay.Location = new System.Drawing.Point(229, 67);
+            this.dateTimePickerStartDay.Location = new System.Drawing.Point(247, 67);
             this.dateTimePickerStartDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePickerStartDay.Name = "dateTimePickerStartDay";
             this.dateTimePickerStartDay.Size = new System.Drawing.Size(130, 34);
@@ -143,7 +143,7 @@
             this.panel2.Location = new System.Drawing.Point(14, 217);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(603, 471);
+            this.panel2.Size = new System.Drawing.Size(610, 471);
             this.panel2.TabIndex = 8;
             // 
             // numericUpDownJanitorAmount
@@ -151,6 +151,11 @@
             this.numericUpDownJanitorAmount.Enabled = false;
             this.numericUpDownJanitorAmount.Location = new System.Drawing.Point(167, 265);
             this.numericUpDownJanitorAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDownJanitorAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownJanitorAmount.Name = "numericUpDownJanitorAmount";
             this.numericUpDownJanitorAmount.Size = new System.Drawing.Size(83, 27);
             this.numericUpDownJanitorAmount.TabIndex = 29;
@@ -166,6 +171,11 @@
             this.numericUpDownReceptionistAmount.Enabled = false;
             this.numericUpDownReceptionistAmount.Location = new System.Drawing.Point(167, 224);
             this.numericUpDownReceptionistAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDownReceptionistAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownReceptionistAmount.Name = "numericUpDownReceptionistAmount";
             this.numericUpDownReceptionistAmount.Size = new System.Drawing.Size(83, 27);
             this.numericUpDownReceptionistAmount.TabIndex = 28;
@@ -181,6 +191,11 @@
             this.numericUpDownManagerAmount.Enabled = false;
             this.numericUpDownManagerAmount.Location = new System.Drawing.Point(167, 183);
             this.numericUpDownManagerAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDownManagerAmount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownManagerAmount.Name = "numericUpDownManagerAmount";
             this.numericUpDownManagerAmount.Size = new System.Drawing.Size(83, 27);
             this.numericUpDownManagerAmount.TabIndex = 25;
@@ -313,7 +328,7 @@
             this.panelInterchangebleStaff.Location = new System.Drawing.Point(30, 348);
             this.panelInterchangebleStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelInterchangebleStaff.Name = "panelInterchangebleStaff";
-            this.panelInterchangebleStaff.Size = new System.Drawing.Size(545, 109);
+            this.panelInterchangebleStaff.Size = new System.Drawing.Size(565, 109);
             this.panelInterchangebleStaff.TabIndex = 17;
             this.panelInterchangebleStaff.Visible = false;
             // 
@@ -321,6 +336,11 @@
             // 
             this.numericUpDownAmountOfStaff.Location = new System.Drawing.Point(199, 23);
             this.numericUpDownAmountOfStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDownAmountOfStaff.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownAmountOfStaff.Name = "numericUpDownAmountOfStaff";
             this.numericUpDownAmountOfStaff.Size = new System.Drawing.Size(137, 27);
             this.numericUpDownAmountOfStaff.TabIndex = 24;
@@ -381,7 +401,7 @@
             // 
             this.checkBoxIEJanitor.AutoSize = true;
             this.checkBoxIEJanitor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxIEJanitor.Location = new System.Drawing.Point(457, 65);
+            this.checkBoxIEJanitor.Location = new System.Drawing.Point(465, 64);
             this.checkBoxIEJanitor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxIEJanitor.Name = "checkBoxIEJanitor";
             this.checkBoxIEJanitor.Size = new System.Drawing.Size(93, 32);
@@ -414,6 +434,7 @@
             this.checkBoxShiftJanitor.TabIndex = 15;
             this.checkBoxShiftJanitor.Text = "Janitor";
             this.checkBoxShiftJanitor.UseVisualStyleBackColor = true;
+            this.checkBoxShiftJanitor.CheckedChanged += new System.EventHandler(this.checkBoxShiftJanitor_CheckedChanged);
             // 
             // checkBoxShiftReceptionist
             // 
@@ -426,6 +447,7 @@
             this.checkBoxShiftReceptionist.TabIndex = 14;
             this.checkBoxShiftReceptionist.Text = "Receptionist";
             this.checkBoxShiftReceptionist.UseVisualStyleBackColor = true;
+            this.checkBoxShiftReceptionist.CheckedChanged += new System.EventHandler(this.checkBoxShiftReceptionist_CheckedChanged);
             // 
             // checkBoxShiftManager
             // 
@@ -438,6 +460,7 @@
             this.checkBoxShiftManager.TabIndex = 6;
             this.checkBoxShiftManager.Text = "Manager";
             this.checkBoxShiftManager.UseVisualStyleBackColor = true;
+            this.checkBoxShiftManager.CheckedChanged += new System.EventHandler(this.checkBoxShiftManager_CheckedChanged);
             // 
             // labelStaff
             // 
@@ -465,12 +488,15 @@
             this.dateTimePickerTo.CustomFormat = "HH:mm";
             this.dateTimePickerTo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerTo.Location = new System.Drawing.Point(304, 76);
+            this.dateTimePickerTo.Location = new System.Drawing.Point(307, 79);
             this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimePickerTo.MaxDate = new System.DateTime(2022, 6, 10, 0, 0, 0, 0);
+            this.dateTimePickerTo.MinDate = new System.DateTime(2022, 6, 8, 0, 0, 0, 0);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.ShowUpDown = true;
             this.dateTimePickerTo.Size = new System.Drawing.Size(127, 34);
             this.dateTimePickerTo.TabIndex = 11;
-            this.dateTimePickerTo.Value = new System.DateTime(2022, 8, 6, 0, 1, 0, 0);
+            this.dateTimePickerTo.Value = new System.DateTime(2022, 6, 9, 1, 0, 0, 0);
             this.dateTimePickerTo.ValueChanged += new System.EventHandler(this.dateTimePickerTo_ValueChanged);
             // 
             // dateTimePickerFrom
@@ -479,12 +505,16 @@
             this.dateTimePickerFrom.CustomFormat = "HH:mm";
             this.dateTimePickerFrom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(135, 76);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(137, 79);
             this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimePickerFrom.MaxDate = new System.DateTime(2022, 6, 10, 0, 0, 0, 0);
+            this.dateTimePickerFrom.MinDate = new System.DateTime(2022, 6, 8, 0, 0, 0, 0);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.ShowUpDown = true;
             this.dateTimePickerFrom.Size = new System.Drawing.Size(127, 34);
             this.dateTimePickerFrom.TabIndex = 9;
-            this.dateTimePickerFrom.Value = new System.DateTime(2022, 6, 8, 0, 0, 0, 0);
+            this.dateTimePickerFrom.Value = new System.DateTime(2022, 6, 9, 0, 0, 0, 0);
+            this.dateTimePickerFrom.ValueChanged += new System.EventHandler(this.dateTimePickerFrom_ValueChanged);
             // 
             // labelTimeSpan
             // 
@@ -507,23 +537,23 @@
             this.comboBoxShift.TabIndex = 9;
             this.comboBoxShift.SelectedIndexChanged += new System.EventHandler(this.comboBoxShift_SelectedIndexChanged);
             // 
-            // buttonSaveScheduleInfo
+            // buttonCreateSchedule
             // 
-            this.buttonSaveScheduleInfo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSaveScheduleInfo.Location = new System.Drawing.Point(193, 696);
-            this.buttonSaveScheduleInfo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonSaveScheduleInfo.Name = "buttonSaveScheduleInfo";
-            this.buttonSaveScheduleInfo.Size = new System.Drawing.Size(238, 52);
-            this.buttonSaveScheduleInfo.TabIndex = 19;
-            this.buttonSaveScheduleInfo.Text = "Save Schedule Info";
-            this.buttonSaveScheduleInfo.UseVisualStyleBackColor = true;
-            this.buttonSaveScheduleInfo.Click += new System.EventHandler(this.buttonSaveScheduleInfo_Click);
+            this.buttonCreateSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonCreateSchedule.Location = new System.Drawing.Point(210, 696);
+            this.buttonCreateSchedule.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonCreateSchedule.Name = "buttonCreateSchedule";
+            this.buttonCreateSchedule.Size = new System.Drawing.Size(238, 52);
+            this.buttonCreateSchedule.TabIndex = 19;
+            this.buttonCreateSchedule.Text = "Create Schedule";
+            this.buttonCreateSchedule.UseVisualStyleBackColor = true;
+            this.buttonCreateSchedule.Click += new System.EventHandler(this.buttonCreateSchedule_Click);
             // 
             // labelMaxHourPerShift
             // 
             this.labelMaxHourPerShift.AutoSize = true;
             this.labelMaxHourPerShift.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelMaxHourPerShift.Location = new System.Drawing.Point(59, 120);
+            this.labelMaxHourPerShift.Location = new System.Drawing.Point(60, 115);
             this.labelMaxHourPerShift.Name = "labelMaxHourPerShift";
             this.labelMaxHourPerShift.Size = new System.Drawing.Size(181, 28);
             this.labelMaxHourPerShift.TabIndex = 20;
@@ -536,7 +566,7 @@
             this.panel4.Location = new System.Drawing.Point(16, 163);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(601, 47);
+            this.panel4.Size = new System.Drawing.Size(608, 47);
             this.panel4.TabIndex = 22;
             // 
             // radioButtonSpecialDaysSetting
@@ -569,8 +599,13 @@
             // 
             // numericUpDownShiftPerDay
             // 
-            this.numericUpDownShiftPerDay.Location = new System.Drawing.Point(229, 24);
+            this.numericUpDownShiftPerDay.Location = new System.Drawing.Point(247, 28);
             this.numericUpDownShiftPerDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDownShiftPerDay.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownShiftPerDay.Name = "numericUpDownShiftPerDay";
             this.numericUpDownShiftPerDay.Size = new System.Drawing.Size(130, 27);
             this.numericUpDownShiftPerDay.TabIndex = 23;
@@ -583,8 +618,13 @@
             // 
             // numericUpDownMaxHourPerShift
             // 
-            this.numericUpDownMaxHourPerShift.Location = new System.Drawing.Point(229, 117);
+            this.numericUpDownMaxHourPerShift.Location = new System.Drawing.Point(250, 116);
             this.numericUpDownMaxHourPerShift.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDownMaxHourPerShift.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownMaxHourPerShift.Name = "numericUpDownMaxHourPerShift";
             this.numericUpDownMaxHourPerShift.Size = new System.Drawing.Size(130, 27);
             this.numericUpDownMaxHourPerShift.TabIndex = 24;
@@ -601,11 +641,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(631, 768);
+            this.ClientSize = new System.Drawing.Size(636, 777);
             this.Controls.Add(this.numericUpDownMaxHourPerShift);
             this.Controls.Add(this.numericUpDownShiftPerDay);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.buttonSaveScheduleInfo);
+            this.Controls.Add(this.buttonCreateSchedule);
             this.Controls.Add(this.labelMaxHourPerShift);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dateTimePickerStartDay);
@@ -658,7 +698,7 @@
         private CheckBox checkBoxIEJanitor;
         private CheckBox checkBoxInterchangableStaff;
         private Label labelAmountOfStaff;
-        private Button buttonSaveScheduleInfo;
+        private Button buttonCreateSchedule;
         private Label labelMaxHourPerShift;
         private Panel panel4;
         private RadioButton radioButtonSpecialDaysSetting;

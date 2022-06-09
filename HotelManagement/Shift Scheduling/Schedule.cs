@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace hotel_management
@@ -39,6 +40,7 @@ namespace hotel_management
                     if (!exist)
                     {
                         staffsList.Add(new StaffList { type = role.roleName });
+                        //MessageBox.Show(role.roleName, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
 
@@ -56,6 +58,7 @@ namespace hotel_management
                     if (!exist)
                     {
                         staffsList.Add(new StaffList { type = role.roleName });
+                        //MessageBox.Show(role.roleName, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
 
@@ -66,15 +69,10 @@ namespace hotel_management
             {
                 //create normal staff list
                 //check exist
-                bool exist;
-                var matches = staffsList.Where(p => String.Equals(p.type, p.type.Contains(staff.staff_type)));
-                exist = matches.Count() > 0;
-                if (exist)
+                var matches = staffsList.Where(p => p.type.Contains(staff.staff_type));
+                foreach (StaffList comb in matches)
                 {
-                    foreach (StaffList comb in matches)
-                    {
-                        comb.staffs.Add(staff);
-                    }
+                    comb.staffs.Add(staff);
                 }
             }
 
@@ -110,18 +108,15 @@ namespace hotel_management
                                 //continue from last shift
                                 ShiftStart = ShiftEnd;
                             }
-                            TimeOnly tempEnd = TimeOnly.FromDateTime(ShiftStart);
 
                             if (leftover.TotalHours > maxHours)
                             {
-                                tempEnd.AddHours(maxHours);
-                                ShiftEnd = today.ToDateTime(tempEnd);
+                                ShiftEnd = today.ToDateTime(TimeOnly.FromDateTime(ShiftStart).AddHours(maxHours));
                                 leftover -= TimeSpan.FromHours(maxHours);
                             }
                             else
                             {
-                                tempEnd.AddHours(leftover.TotalHours);
-                                ShiftEnd = today.ToDateTime(tempEnd);
+                                ShiftEnd = today.ToDateTime(TimeOnly.FromDateTime(ShiftStart).AddHours(leftover.TotalHours));
                                 leftover -= leftover;
                             }
                             first = false;
@@ -168,18 +163,15 @@ namespace hotel_management
                                 //continue from last shift
                                 ShiftStart = ShiftEnd;
                             }
-                            TimeOnly tempEnd = TimeOnly.FromDateTime(ShiftStart);
 
                             if (leftover.TotalHours > maxHours)
                             {
-                                tempEnd.AddHours(maxHours);
-                                ShiftEnd = today.ToDateTime(tempEnd);
+                                ShiftEnd = today.ToDateTime(TimeOnly.FromDateTime(ShiftStart).AddHours(maxHours));
                                 leftover -= TimeSpan.FromHours(maxHours);
                             }
                             else
                             {
-                                tempEnd.AddHours(leftover.TotalHours);
-                                ShiftEnd = today.ToDateTime(tempEnd);
+                                ShiftEnd = today.ToDateTime(TimeOnly.FromDateTime(ShiftStart).AddHours(leftover.TotalHours));
                                 leftover -= leftover;
                             }
                             first = false;
@@ -248,18 +240,21 @@ namespace hotel_management
                         string names = "";
                         foreach (STAFF staff in shiftInfo.getStaffs())
                         {
-                            names += staff.staff_name + ", ";
+                            names += staff.staff_name + "\n";
                         }
+                        names.Trim('\n');
                         dt.Rows[index][dt.Columns.Count - 1] = names;
                         index++;
+                        first = false;
                     }
                     else if (DateOnly.FromDateTime(shiftInfo.getStart()) == today)
                     {
                         string names = "";
                         foreach (STAFF staff in shiftInfo.getStaffs())
                         {
-                            names += staff.staff_name + ", ";
+                            names += staff.staff_name + "\n";
                         }
+                        names.Trim('\n');
                         dt.Rows[index][dt.Columns.Count - 1] = names;
                         index++;
                     }
@@ -270,6 +265,9 @@ namespace hotel_management
 
         public bool insertDatabase()
         {
+            SqlCommand cmd = new SqlCommand("TRUNCATE TABLE schedule", mydb.getConnection);
+            mydb.openConnection();
+            cmd.ExecuteNonQuery();
             foreach (ShiftInfo info in shiftInfos)
             {
                 DateTime start = info.getStart();
@@ -280,14 +278,16 @@ namespace hotel_management
                     id += staff.staff_id + " ";
                 }
                 id.Trim();
-                SqlCommand cmd = new SqlCommand("INSERT INTO schedule VALUES(@Start, @End, @StaffIDs)", mydb.getConnection);
-                cmd.Parameters.AddWithValue("@start", start);
-                cmd.Parameters.AddWithValue("@end", end);
-                cmd.Parameters.AddWithValue("@staffids", id);
+                cmd = new SqlCommand("INSERT INTO schedule VALUES(@Start, @End, @StaffIDs)", mydb.getConnection);
+                cmd.Parameters.AddWithValue("@Start", start);
+                cmd.Parameters.AddWithValue("@End", end);
+                cmd.Parameters.AddWithValue("@StaffIDs", id);
                 mydb.openConnection();
-                if (cmd.ExecuteNonQuery() != 1)
+                int exe = cmd.ExecuteNonQuery();
+                if (exe != 1)
                 {
                     return false;
+                    
                 }
             }
             return true;
@@ -305,16 +305,17 @@ namespace hotel_management
                 DateTime start = Convert.ToDateTime(dr["Start"]);
                 DateTime end = Convert.ToDateTime(dr["End"]);
                 List<STAFF> staffs = new List<STAFF>();
-                foreach (int id in separateIDs(dr["StaffIDs"].ToString()))
+                foreach (int id in separateIDs(dr["StaffIDs"].ToString().Trim()))
                 {
                     STAFF staff = new STAFF();
 
                     SqlCommand cmd2 = new SqlCommand("SELECT * FROM staffs WHERE Id = @staff_id", mydb.getConnection);
-                    cmd.Parameters.AddWithValue("@staff_id", id);
-                    SqlDataAdapter adapter2 = new SqlDataAdapter(cmd);
+                    cmd2.Parameters.AddWithValue("@staff_id", id);
+                    SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
                     DataTable table2 = new DataTable();
-                    adapter.Fill(table);
-                    if (table.Rows.Count > 0)
+                    adapter2.Fill(table2);
+                    //MessageBox.Show(table2.Rows.Count.ToString() +"\n", "", MessageBoxButtons.OK);
+                    if (table2.Rows.Count > 0)
                     {
                         string name = table2.Rows[0]["name"].ToString();
                         string dob = table2.Rows[0]["dob"].ToString();
@@ -327,7 +328,7 @@ namespace hotel_management
                         MemoryStream picture = new MemoryStream(pic);
                         Image img = Image.FromStream(picture);
                         string usernameID = table2.Rows[0]["usernameID"].ToString();
-                        staff.setStaff(id.ToString(), name, dob, address, phone, sex, type, img, usernameID);
+                        staff.setStaff(id.ToString(), name, dob, address, phone, sex, type, usernameID, img);
                         staffs.Add(staff);
                     }
                 }
@@ -339,9 +340,9 @@ namespace hotel_management
         {
             List<int> list = new List<int>();
             string[] separated = ids.Split(' ');
-            for (int i = 0; i < separated.Length; i++)
+            foreach (string id in separated)
             {
-                list.Add(Convert.ToInt16(separated[i]));
+                list.Add(Convert.ToInt16(id));
             }
             return list;
 

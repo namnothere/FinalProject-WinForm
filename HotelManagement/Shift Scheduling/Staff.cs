@@ -10,7 +10,7 @@ namespace hotel_management
     internal class StaffList
     {
         public string type { get; set; }
-        public List<STAFF> staffs { get; set; }
+        public List<STAFF> staffs { get; set; } = new List<STAFF> { };
 
 
     }

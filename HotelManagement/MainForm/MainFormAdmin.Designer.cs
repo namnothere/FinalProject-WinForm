@@ -41,6 +41,7 @@ namespace hotel_management
             this.txbUsername = new System.Windows.Forms.Label();
             this.profilePic = new System.Windows.Forms.PictureBox();
             this.panel_workarea = new System.Windows.Forms.Panel();
+            this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.panel_sidebar.SuspendLayout();
             this.panelInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilePic)).BeginInit();
@@ -49,6 +50,7 @@ namespace hotel_management
             // panel_sidebar
             // 
             this.panel_sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.panel_sidebar.Controls.Add(this.iconButton1);
             this.panel_sidebar.Controls.Add(this.btnLogout);
             this.panel_sidebar.Controls.Add(this.btnDangXuat);
             this.panel_sidebar.Controls.Add(this.btnQLKhachHang);
@@ -264,6 +266,29 @@ namespace hotel_management
             this.panel_workarea.Size = new System.Drawing.Size(1406, 859);
             this.panel_workarea.TabIndex = 18;
             // 
+            // iconButton1
+            // 
+            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton1.FlatAppearance.BorderSize = 0;
+            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.iconButton1.ForeColor = System.Drawing.Color.White;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Hotel;
+            this.iconButton1.IconColor = System.Drawing.Color.Gainsboro;
+            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.Location = new System.Drawing.Point(0, 483);
+            this.iconButton1.Name = "iconButton1";
+            this.iconButton1.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
+            this.iconButton1.Size = new System.Drawing.Size(292, 60);
+            this.iconButton1.TabIndex = 18;
+            this.iconButton1.Text = "Schedule Table";
+            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.iconButton1.UseVisualStyleBackColor = false;
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
             // MainFormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -301,5 +326,6 @@ namespace hotel_management
         private IconButton btnLogout;
         private Label txbUsername;
         private Panel panel_workarea;
+        private IconButton iconButton1;
     }
 }

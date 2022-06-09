@@ -13,7 +13,7 @@ namespace hotel_management
     public partial class CreateSchedule : Form
     {
         Schedule schedule = new Schedule();
-        
+
         STAFF staff = new STAFF();
         List<STAFF> staffList = new List<STAFF>();
 
@@ -23,12 +23,13 @@ namespace hotel_management
         {
             foreach (DataRow dr in staff.getAllEmployees().Rows)
             {
+                staff = new STAFF();
                 staff.convertStaff(dr);
                 staffList.Add(staff);
             }
         }
 
-        int selectedShift;
+        int selectedShift = 1;
         List<ShiftState> shifts = new List<ShiftState>();
 
 
@@ -45,7 +46,7 @@ namespace hotel_management
             public bool janitor;
             public int janitorAmount;
 
-            public bool specialDay;
+            public bool specialDay = false;
 
             public bool interchangebleStaff;
             public int amountOfStaff;
@@ -54,7 +55,7 @@ namespace hotel_management
             public bool IEjanitor;
         }
 
-        private void saveState()
+        private void saveState(bool spec)
         {
             ShiftState shift = new ShiftState();
             shift.shiftNum = selectedShift;
@@ -67,7 +68,7 @@ namespace hotel_management
             shift.janitor = checkBoxShiftJanitor.Checked;
             shift.janitorAmount = Convert.ToInt16(numericUpDownJanitorAmount.Value);
 
-            shift.specialDay = radioButtonNormalDaysSetting.Checked;
+            shift.specialDay = spec;
 
             shift.interchangebleStaff = checkBoxInterchangableStaff.Checked;
             if (shift.interchangebleStaff)
@@ -82,7 +83,29 @@ namespace hotel_management
             if (checkExist.Count() == 0)
             {
                 shifts.Add(shift);
-                shift.specialDay = !checkBoxInterchangableStaff.Checked;
+                {
+                    shift = new ShiftState();
+                    shift.shiftNum = selectedShift;
+                    shift.from = TimeOnly.FromDateTime(dateTimePickerFrom.Value);
+                    shift.to = TimeOnly.FromDateTime(dateTimePickerTo.Value);
+                    shift.manager = checkBoxShiftManager.Checked;
+                    shift.managerAmount = Convert.ToInt16(numericUpDownManagerAmount.Value);
+                    shift.receptionist = checkBoxShiftReceptionist.Checked;
+                    shift.receptionistAmount = Convert.ToInt16(numericUpDownReceptionistAmount.Value);
+                    shift.janitor = checkBoxShiftJanitor.Checked;
+                    shift.janitorAmount = Convert.ToInt16(numericUpDownJanitorAmount.Value);
+
+                    shift.specialDay = !spec;
+
+                    shift.interchangebleStaff = checkBoxInterchangableStaff.Checked;
+                    if (shift.interchangebleStaff)
+                    {
+                        shift.amountOfStaff = Convert.ToInt16(numericUpDownAmountOfStaff.Value);
+                        shift.IEmanager = checkBoxIEManager.Checked;
+                        shift.IEreceptionist = checkBoxIEReceptionist.Checked;
+                        shift.IEjanitor = checkBoxIEJanitor.Checked;
+                    }
+                }
                 shifts.Add(shift);
             }
             else
@@ -107,11 +130,14 @@ namespace hotel_management
                             state.IEreceptionist = shift.IEreceptionist;
                             state.IEjanitor = shift.IEjanitor;
                         }
+                        
+                        //MessageBox.Show("All", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     }
                     else
                     {
                         state.from = shift.from;
                         state.to = shift.to;
+                        //MessageBox.Show("Only ft", "", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     }
                 }
             }
@@ -120,36 +146,54 @@ namespace hotel_management
 
         private void loadState(int shiftNum, bool spec)
         {
-            var match = shifts.Where(p => p.shiftNum == shiftNum && p.specialDay == spec);
-            if (match.Count() > 0)
+            dateTimePickerFrom.Value = DateTime.Parse("09/06/2022 00:00:00");
+            dateTimePickerTo.Value = DateTime.Parse("09/06/2022 00:00:00").AddMinutes(1);
+            checkBoxShiftManager.Checked = false;
+            numericUpDownManagerAmount.Value = 1;
+            numericUpDownManagerAmount.Enabled = false;
+            checkBoxShiftReceptionist.Checked = false;
+            numericUpDownReceptionistAmount.Value = 1;
+            numericUpDownReceptionistAmount.Enabled = false;
+            checkBoxShiftJanitor.Checked = false;
+            numericUpDownJanitorAmount.Value = 1;
+            numericUpDownJanitorAmount.Enabled = false;
+            checkBoxInterchangableStaff.Checked = false;
+
+            numericUpDownAmountOfStaff.Value = 1;
+            checkBoxIEManager.Checked = false;
+            checkBoxIEReceptionist.Checked = false;
+            checkBoxIEJanitor.Checked = false;
+
+            ShiftState shift = new ShiftState();
+            shift = shifts.FirstOrDefault(p => p.shiftNum == shiftNum && p.specialDay == spec);
+            
+            if (shift != null)
             {
-                foreach (ShiftState shift in match)
+                dateTimePickerTo.Value = dateTimePickerTo.MaxDate;
+                dateTimePickerFrom.Value = DateOnly.FromDateTime(DateTime.Parse("09/06/2022 00:00:00")).ToDateTime(shift.from);
+                dateTimePickerTo.Value = DateOnly.FromDateTime(DateTime.Parse("09/06/2022 00:00:00")).ToDateTime(shift.to);
+                checkBoxShiftManager.Checked = shift.manager;
+                numericUpDownManagerAmount.Value = shift.managerAmount;
+                checkBoxShiftReceptionist.Checked = shift.receptionist;
+                numericUpDownReceptionistAmount.Value = shift.receptionistAmount;
+                checkBoxShiftJanitor.Checked = shift.janitor;
+                numericUpDownJanitorAmount.Value = shift.janitorAmount;
+
+                checkBoxInterchangableStaff.Checked = shift.interchangebleStaff;
+                if (shift.interchangebleStaff)
                 {
-                    dateTimePickerFrom.Value = DateOnly.FromDateTime(DateTime.Today).ToDateTime(shift.from);
-                    dateTimePickerTo.Value = DateOnly.FromDateTime(DateTime.Today).ToDateTime(shift.to);
-                    checkBoxShiftManager.Checked = shift.manager;
-                    checkBoxShiftReceptionist.Checked = shift.receptionist;
-                    checkBoxShiftJanitor.Checked = shift.janitor;
-
-                    checkBoxInterchangableStaff.Checked = shift.interchangebleStaff;
-                    if (shift.interchangebleStaff)
-                    {
-                        numericUpDownAmountOfStaff.Value = shift.amountOfStaff;
-                        checkBoxIEManager.Checked = shift.IEmanager;
-                        checkBoxIEReceptionist.Checked = shift.IEreceptionist;
-                        checkBoxIEJanitor.Checked = shift.IEjanitor;
-                    }
+                    numericUpDownAmountOfStaff.Value = shift.amountOfStaff;
+                    checkBoxIEManager.Checked = shift.IEmanager;
+                    checkBoxIEReceptionist.Checked = shift.IEreceptionist;
+                    checkBoxIEJanitor.Checked = shift.IEjanitor;
                 }
-            }
-            else
-            {
-                dateTimePickerFrom.Value = DateTime.Today;
-                dateTimePickerTo.Value = DateTime.Today.AddMinutes(1);
-                checkBoxShiftManager.Checked = false;
-                checkBoxShiftReceptionist.Checked = false;
-                checkBoxShiftJanitor.Checked = false;
-                checkBoxInterchangableStaff.Checked = false;
-
+                else
+                {
+                    numericUpDownAmountOfStaff.Value = 1;
+                    checkBoxIEManager.Checked = false;
+                    checkBoxIEReceptionist.Checked = false;
+                    checkBoxIEJanitor.Checked = false;
+                }
             }
         }
 
@@ -158,7 +202,7 @@ namespace hotel_management
         private void shiftSort(List<ShiftState> shifts)
         {
             //insertion sort
-            for (int i = 1; i < shifts.Count(); ++i)
+            for (int i = 2; i <= shifts.Count(); ++i)
             {
                 TimeOnly key = shifts.FirstOrDefault(p => p.shiftNum == i).from;
                 int j = i - 1;
@@ -179,11 +223,11 @@ namespace hotel_management
             string type = "Special Days";
             if (spec)
             {
-                type = "Special Days";
+                type = "Special Days ";
             }
             else
             {
-                type = "Normal Days";
+                type = "Normal Days ";
             }
             for (int i = 1; i <= Convert.ToInt16(numericUpDownShiftPerDay.Value) - 1; i++)
             {
@@ -195,7 +239,7 @@ namespace hotel_management
                         ShiftState match2 = shifts.FirstOrDefault(p => p.shiftNum == j);
                         if (match2 != null)
                         {
-                            if (!(match1.from < match2.to && match1.to > match2.from))
+                            if (match1.from < match2.to && match1.to > match2.from)
                             {
                                 MessageBox.Show("Shift " + i + " of " + type + "time range is overlapping with shift " + j + " time range", "Create Schedule", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 return false;
@@ -237,14 +281,10 @@ namespace hotel_management
 
         private void CreateSchedule_Load(object sender, EventArgs e)
         {
+            radioButtonSpecialDaysSetting.Checked = false;
             List<int> index = new List<int>();
             index.Add(1);
             comboBoxShift.DataSource = index;
-            index = new List<int>();
-            for (int i = 1; i <= 4; i++)
-            {
-                index.Add(i);
-            }
             comboBoxShift.DataSource = index;
             selectedShift = 1;
         }
@@ -253,8 +293,10 @@ namespace hotel_management
         {
             if (radioButtonSpecialDaysSetting.Checked)
                 panelWeekday.Visible = true;
-            else 
+            else
                 panelWeekday.Visible = false;
+            saveState(!radioButtonSpecialDaysSetting.Checked);
+            loadState(Convert.ToInt16(comboBoxShift.SelectedValue), radioButtonSpecialDaysSetting.Checked);
         }
         private void checkBoxInterchangableStaff_CheckedChanged(object sender, EventArgs e)
         {
@@ -269,9 +311,10 @@ namespace hotel_management
         }
         private void comboBoxShift_SelectedIndexChanged(object sender, EventArgs e)
         {
-            saveState();
-            loadState(comboBoxShift.SelectedIndex, radioButtonSpecialDaysSetting.Checked);
-            selectedShift = comboBoxShift.SelectedIndex;
+
+            saveState(radioButtonSpecialDaysSetting.Checked);
+            loadState(Convert.ToInt16(comboBoxShift.SelectedValue), radioButtonSpecialDaysSetting.Checked);
+            selectedShift = Convert.ToInt16(comboBoxShift.SelectedValue);
         }
         private void numericUpDownShiftPerDay_ValueChanged(object sender, EventArgs e)
         {
@@ -308,9 +351,7 @@ namespace hotel_management
             if (dateTimePickerFrom.Value >= dateTimePickerTo.Value)
             {
                 MessageBox.Show("From field must be less than To field", "Create Schedule", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                DateTime tempfrom = dateTimePickerTo.Value;
-                tempfrom.AddMinutes(-1);
-                dateTimePickerFrom.Value = tempfrom;
+                dateTimePickerFrom.Value = dateTimePickerTo.Value.AddMinutes(-1);
             }
         }
         private void dateTimePickerTo_ValueChanged(object sender, EventArgs e)
@@ -318,9 +359,7 @@ namespace hotel_management
             if (dateTimePickerTo.Value <= dateTimePickerFrom.Value)
             {
                 MessageBox.Show("To field must be greater than From field", "Create Schedule", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                DateTime tempto = dateTimePickerFrom.Value;
-                tempto.AddMinutes(1);
-                dateTimePickerFrom.Value = tempto;
+                dateTimePickerTo.Value = dateTimePickerFrom.Value.AddMinutes(1);
             }
         }
         private void numericUpDownManagerAmount_ValueChanged(object sender, EventArgs e)
@@ -369,12 +408,10 @@ namespace hotel_management
             {
                 checkBoxShiftManager.Checked = false;
                 checkBoxShiftManager.Enabled = false;
-                numericUpDownManagerAmount.Enabled = false;
             }
             else
             {
                 checkBoxShiftManager.Enabled = true;
-                numericUpDownManagerAmount.Enabled = true;
             }
         }
         private void checkBoxIEReceptionist_CheckedChanged(object sender, EventArgs e)
@@ -383,12 +420,10 @@ namespace hotel_management
             {
                 checkBoxShiftReceptionist.Checked = false;
                 checkBoxShiftReceptionist.Enabled = false;
-                numericUpDownReceptionistAmount.Enabled = false;
             }
             else
             {
                 checkBoxShiftReceptionist.Enabled = true;
-                numericUpDownReceptionistAmount.Enabled = true;
             }
         }
         private void checkBoxIEJanitor_CheckedChanged(object sender, EventArgs e)
@@ -397,17 +432,15 @@ namespace hotel_management
             {
                 checkBoxShiftJanitor.Checked = false;
                 checkBoxShiftJanitor.Enabled = false;
-                numericUpDownJanitorAmount.Enabled = false;
             }
             else
             {
                 checkBoxShiftJanitor.Enabled = true;
-                numericUpDownJanitorAmount.Enabled = true;
             }
         }
-        private void buttonSaveScheduleInfo_Click(object sender, EventArgs e)
+        private void buttonCreateSchedule_Click(object sender, EventArgs e)
         {
-            saveState();
+            saveState(radioButtonSpecialDaysSetting.Checked);
             bool flag = true;
             List<ShiftState> normShifts = shifts.Where(p => !p.specialDay).ToList();
             List<ShiftState> specShifts = shifts.Where(p => p.specialDay).ToList();
@@ -421,23 +454,30 @@ namespace hotel_management
                 shiftSort(specShifts);
                 List<Requirement> reqNorm = convertStateToReqList(normShifts);
                 List<Requirement> reqSpec = convertStateToReqList(specShifts);
+                
                 List<string> specDays = returnSpecialDays();
                 fillStaffList();
                 WorkingDays days = new WorkingDays(staffList, this);
-                days.Show();
+                days.ShowDialog();
                 schedule.createSchedule(start, maxHours, reqNorm, reqSpec, specDays, staffList, workdays);
-
-                
+                if (schedule.insertDatabase())
+                {
+                    MessageBox.Show("Schedule created", "Create Schedule", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Schedule not created", "Create Schedule", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
 
-        private List<Requirement> convertStateToReqList (List<ShiftState> shifts)
+        private List<Requirement> convertStateToReqList(List<ShiftState> shifts)
         {
             List<Requirement> req = new List<Requirement>();
             for (int i = 1; i <= shifts.Count(); i++)
             {
                 Requirement reqSingle = new Requirement();
-                
+
                 ShiftState shift = shifts.FirstOrDefault(p => p.shiftNum == i);
                 reqSingle.start = shift.from;
                 reqSingle.end = shift.to;
@@ -489,7 +529,7 @@ namespace hotel_management
         private List<string> returnSpecialDays()
         {
             List<string> days = new List<string>();
-            
+
             if (checkBoxMonday.Checked)
             {
                 days.Add(checkBoxMonday.Text);
@@ -525,5 +565,41 @@ namespace hotel_management
         {
             workdays = days;
         }
-    }
+
+        private void checkBoxShiftManager_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShiftManager.Checked)
+            {
+                numericUpDownManagerAmount.Enabled = true;
+            }
+            else
+            {
+                numericUpDownManagerAmount.Enabled = false;
+            }
+        }
+
+        private void checkBoxShiftReceptionist_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShiftReceptionist.Checked)
+            {
+                numericUpDownReceptionistAmount.Enabled = true;
+            }
+            else
+            {
+                numericUpDownReceptionistAmount.Enabled = false;
+            }
+        }
+
+        private void checkBoxShiftJanitor_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShiftJanitor.Checked)
+            {
+                numericUpDownJanitorAmount.Enabled = true;
+            }
+            else
+            {
+                numericUpDownJanitorAmount.Enabled = false;
+            }
+        }
+    }       
 }

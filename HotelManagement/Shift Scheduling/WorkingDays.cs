@@ -78,29 +78,23 @@ namespace hotel_management
         {
             if (checkBoxUneven.Checked)
             {
-                numericUpDownAmountOfWorkdays.Value = 1;
                 numericUpDownAmountOfWorkdays.Increment = 1;
                 numericUpDownAmountOfWorkdays.Minimum = 1;
+                numericUpDownAmountOfWorkdays.Value = 1;
+
             }
             else
             {
-                numericUpDownAmountOfWorkdays.Value = days;
                 numericUpDownAmountOfWorkdays.Increment = days;
                 numericUpDownAmountOfWorkdays.Minimum = days;
-            }
-        }
-
-        private void numericUpDownAmountOfWorkdays_ValueChanged(object sender, EventArgs e)
-        {
-            if (numericUpDownAmountOfWorkdays.Value % days != 0)
-            {
-                checkBoxUneven.Checked = false;
+                numericUpDownAmountOfWorkdays.Value = days;
             }
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             schedule.setWorkdays(Convert.ToInt16(numericUpDownAmountOfWorkdays.Value));
+            this.Close();
         }
     }
 }
