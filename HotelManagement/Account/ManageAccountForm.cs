@@ -24,7 +24,7 @@ namespace hotel_management
             loadListView();
         }
 
-        private void loadListView()
+        public void loadListView()
         {
             //dataListAccount
             this.dataListAccount.DataSource = null;
@@ -72,7 +72,7 @@ namespace hotel_management
             //Recept: 2
             //Staff: 0
             
-            if (cbAdmin.Checked && cbRecept.Checked)
+            if (cbAdmin.Checked && cbRecept.Checked || cbAdmin.Checked)
                 return 1;
             else if (cbRecept.Checked)
                 return 2;

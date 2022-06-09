@@ -18,8 +18,8 @@ namespace hotel_management
         }
 
         ACCOUNT acc = new ACCOUNT();
-        Form A = new ManageAccountForm();
-        Form E = new EmployeeManageForm();
+        ManageAccountForm A = new ManageAccountForm();
+        EmployeeManageForm E = new EmployeeManageForm();
         string cur = "E";
         
         private void EmployeeManeForm_Load(object sender, EventArgs e)
@@ -67,11 +67,13 @@ namespace hotel_management
         {
             if (frm == "A")
             {
+                A.loadListView();
                 btnEmployee.ForeColor = Color.White;
                 btnAccount.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
             }
             else if (frm == "E")
             {
+                
                 btnEmployee.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
                 btnAccount.ForeColor = Color.White;
             }
