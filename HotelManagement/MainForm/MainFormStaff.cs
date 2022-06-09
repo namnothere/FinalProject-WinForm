@@ -84,14 +84,13 @@ namespace hotel_management
 
         private void MainFormStaff_Load(object sender, EventArgs e)
         {
-            ActivateButton(btnHome, RGBcolors.color1);
+            btnHome_Click(btnHome, e);
             this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
 
             if (acc.getImage(txbUsername.Text) != null)
             {
                 this.profilePic.Image = acc.getImage(txbUsername.Text);
             }
-
             txbUsername.ForeColor = Color.White;
 
         }

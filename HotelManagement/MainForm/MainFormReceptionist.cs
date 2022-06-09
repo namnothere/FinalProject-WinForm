@@ -83,7 +83,7 @@ namespace hotel_management
 
         private void MainFormStaff_Load(object sender, EventArgs e)
         {
-            ActivateButton(btnHome, RGBcolors.color1);
+            btnHome_Click(btnHome, e);
             this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
             ACCOUNT acc = new ACCOUNT();
 
@@ -122,8 +122,16 @@ namespace hotel_management
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender, RGBcolors.color2);
+            ActivateButton(sender, RGBcolors.color1);
+            FormState.PreviousPage = this;
             OpenFormInPanel(new HomePage(this.id));
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBcolors.color2);
+            FormState.PreviousPage = this;
+            OpenFormInPanel(new ReportForm());
         }
     }
 }

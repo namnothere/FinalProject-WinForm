@@ -56,7 +56,7 @@ namespace hotel_management
 
         public bool insertEmployee(string staff_id, string staff_name, DateTime DOB, string staff_address, string staff_phone, string staff_sex, string staff_type, string username, MemoryStream staff_img)
         {
-            SqlCommand cmd = new SqlCommand("INSERT INTO staffs VALUES(@Id, @name, @DOB, @address, @phone, @sex, @type, @img, @username)", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("INSERT INTO staffs VALUES(@Id, @name, @DOB, @address, @phone, @sex, @type, @username, @img, @usernameID)", mydb.getConnection);
 
             cmd.Parameters.AddWithValue("@Id", staff_id);
             cmd.Parameters.AddWithValue("@name", staff_name);
@@ -67,6 +67,7 @@ namespace hotel_management
             cmd.Parameters.AddWithValue("@type", staff_type);
             cmd.Parameters.AddWithValue("@img", staff_img.ToArray());
             cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@usernameID", DBNull.Value);
             mydb.openConnection();
             if (cmd.ExecuteNonQuery() == 1)
             {
@@ -138,6 +139,16 @@ namespace hotel_management
         {
             SqlCommand cmd = new SqlCommand("SELECT * FROM staffs WHERE Id = @staff_id", mydb.getConnection);
             cmd.Parameters.AddWithValue("@staff_id", staff_id);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+
+        public DataTable getEmployeeByUsername(string username)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM staffs WHERE username = @username", mydb.getConnection);
+            cmd.Parameters.AddWithValue("@username", username);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable table = new DataTable();
             adapter.Fill(table);

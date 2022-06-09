@@ -234,6 +234,17 @@ namespace hotel_management
             return table;
         }
 
+        public DataTable searchByOrderID(int order_id)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Orders WHERE Id LIKE '%" + order_id.ToString() + "%'", mydb.getConnection);
+            cmd.Parameters.AddWithValue("@order_id", SqlDbType.Int).Value = order_id;
+            mydb.openConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            return table;
+        }
+
         public bool Paid(int order_id, int total, int discount)
         {
             SqlCommand cmd = new SqlCommand("update Orders set status=@status, total = @total, discount = @discount where Id=@order_id", mydb.getConnection);

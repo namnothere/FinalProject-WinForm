@@ -23,7 +23,7 @@ namespace hotel_management
         ReservationForm R = new ReservationForm();
         CheckInForm CI = new CheckInForm();
         CheckOutForm CO = new CheckOutForm();
-
+        History H = new History();
 
         private void BookroomForm_Load(object sender, EventArgs e)
         {
@@ -54,18 +54,28 @@ namespace hotel_management
                 lbReservation.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
                 lbCheckIn.ForeColor = Color.White;
                 lbCheckOut.ForeColor = Color.White;
+                lbHistory.ForeColor = Color.White;
             }
             else if (frm == "CI")
             {
                 lbReservation.ForeColor = Color.White;
                 lbCheckIn.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
                 lbCheckOut.ForeColor = Color.White;
+                lbHistory.ForeColor = Color.White;
             }
             else if (frm == "CO")
             {
                 lbReservation.ForeColor = Color.White;
                 lbCheckIn.ForeColor = Color.White;
+                lbHistory.ForeColor = Color.White;
                 lbCheckOut.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
+            }
+            else if (frm == "H")
+            {
+                lbReservation.ForeColor = Color.White;
+                lbCheckIn.ForeColor = Color.White;
+                lbCheckOut.ForeColor = Color.White;
+                lbHistory.ForeColor = Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(255)))), ((int)(((byte)(147)))));
             }
         }
 
@@ -99,6 +109,16 @@ namespace hotel_management
                 curr = "CO";
                 currForm(curr);
                 OpenFormInPanel(CO);
+            }
+        }
+
+        private void lbHistory_Click(object sender, EventArgs e)
+        {
+            if (curr != "H")
+            {
+                curr = "H";
+                currForm(curr);
+                OpenFormInPanel(H);
             }
         }
     }

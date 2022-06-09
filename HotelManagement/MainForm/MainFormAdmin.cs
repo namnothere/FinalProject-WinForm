@@ -97,7 +97,8 @@ namespace hotel_management
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ActivateButton(btnHome, RGBcolors.color1);
+            //ActivateButton(btnHome, RGBcolors.color1);
+            btnHome_Click(btnHome, e);
             this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
             ACCOUNT acc = new ACCOUNT();
 
@@ -110,11 +111,7 @@ namespace hotel_management
             }
 
             txbUsername.ForeColor = Color.White;
-
-            //this.profilePic.Image = global::hotel_management.Properties.Resources.profileIcon;
-            //var ST = new clsStaff();
-            //var nv = ST.CheckIfExist(account.username);
-            //lblName.Text = nv.name;
+           
         }
 
         private void OpenFormInPanel(object Formhijo)
@@ -144,11 +141,11 @@ namespace hotel_management
             OpenFormInPanel(new CreateSchedule());
         }
 
-        private void btnQLKhachHang_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBcolors.color5);
-            //OpenFormInPanel(new frmCustomerManagement());
-        }
+        //private void btnQLKhachHang_Click(object sender, EventArgs e)
+        //{
+        //    ActivateButton(sender, RGBcolors.color5);
+        //    //OpenFormInPanel(new frmCustomerManagement());
+        //}
 
         private void btnStaffMane_Click(object sender, EventArgs e)
         {
@@ -172,6 +169,12 @@ namespace hotel_management
         {
             TimeTable tt = new TimeTable();
             tt.Show();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBcolors.color5);
+            //OpenFormInPanel(new frmCustomerManagement());
         }
     }
 }

@@ -112,6 +112,27 @@ namespace hotel_management
             return -1;
         }
 
+        public string getUsernameByID(int id)
+        {
+            string query = "SELECT username FROM login WHERE Id = @id";
+            SqlCommand cmd = new SqlCommand(query, mydb.getConnection);
+
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            mydb.openConnection();
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+
+            adapter.SelectCommand = cmd;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                return table.Rows[0]["username"].ToString();
+            }
+            return "";
+
+        }
 
         //public bool Available(string username, int id)
         //{
@@ -213,7 +234,7 @@ namespace hotel_management
 
         public bool updateAccount(string username, string password, int perm)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE login SET username = @username, password = @password, admin = @perm WHERE username = @username", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("UPDATE login SET password = @password, admin = @perm WHERE username = @username", mydb.getConnection);
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
             cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
             cmd.Parameters.Add("@perm", SqlDbType.Int).Value = perm;
@@ -242,6 +263,9 @@ namespace hotel_management
 
         public int admin(string username)
         {
+            //Admin: 1
+            //Recept: 2
+            //Staff: 0
             SqlCommand cmd = new SqlCommand("SELECT admin FROM login WHERE username = @username", mydb.getConnection);
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = username;
             mydb.openConnection();
@@ -259,6 +283,10 @@ namespace hotel_management
 
         public int admin()
         {
+            //Admin: 1
+            //Recept: 2
+            //Staff: 0
+            
             SqlCommand cmd = new SqlCommand("SELECT admin FROM login WHERE username = @username", mydb.getConnection);
             cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = this.username;
             mydb.openConnection();

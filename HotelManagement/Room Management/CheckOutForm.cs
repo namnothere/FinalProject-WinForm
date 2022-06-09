@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xceed.Document.NET;
+using Xceed.Words.NET;
 
 namespace hotel_management.Room_Management
 {
@@ -241,8 +243,157 @@ namespace hotel_management.Room_Management
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Successfully print out bill!", "Bill", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Word Documents|*.doc;*.docx";
+            save.Title = "Save an text File";
+            save.FileName = "BillNo" + lbTransID.Text;
+            save.ShowDialog();
+
+
+            string path = save.FileName;
+            if (path != "")
+            {
+                var doc = null as DocX;
+
+
+
+                if (!File.Exists(path))
+                {
+                    doc = DocX.Create(path);
+                }
+                else
+                {
+                    try
+                    {
+                        doc = DocX.Load(path);
+                    }
+                    catch (System.IO.IOException)
+                    {
+                        MessageBox.Show("File is being opened by another process!");
+                        //the file is unavailable because it is:
+                        //still being written to
+                        //or being processed by another thread
+                        return;
+                    }
+                }
+
+                CreateTitle(doc);
+                PrintBillNumber(doc);
+                PrintDateTime(doc);
+                PrintItemsHeader(doc);
+                PrintRoom(doc);
+                PrintDiscount(doc);
+                PrintTotal(doc);
+                
+                doc.Save();
+                MessageBox.Show("Successfully saved to Word!", "Bill", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
+
+        void CreateTitle(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("Hotel Management System");
+            p.Alignment = Alignment.center;
+            p.FontSize(16);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        void PrintBillNumber(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("** Order No - " + lbTransID.Text + " **");
+            p.Alignment = Alignment.center;
+            p.FontSize(16);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+        
+        void PrintDateTime(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("Date: " + DateTime.Now.ToString("MM/dd/yyyy hh:mm"));
+            p.Alignment = Alignment.left;
+            p.FontSize(14);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        //print out all item with a line separate each item
+        void PrintItemsHeader(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("---------------------------------------------------------");
+            p.AppendLine("Item\t");
+            p.Append("Price\t");
+            p.Append("Qty\t");
+            p.Append("Sub Total");
+            p.AppendLine("---------------------------------------------------------");
+            p.Alignment = Alignment.left;
+            p.FontSize(12);
+            p.Font("Times New Roman");
+            //p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        //print room to bill
+        void PrintRoom(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.Append(txbRoomType.Text + "\t");
+            p.Append(txbRoomRate.Text + "\t");
+            p.Append(txbDays.Text + "\t");
+            p.Append(txbSubtotal.Text);
+            p.Alignment = Alignment.left;
+            p.FontSize(12);
+            p.Font("Times New Roman");
+            //p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        void PrintDiscount(DocX doc)
+        {
+            if (comboBoxDiscount.SelectedIndex != -1)
+            {
+                Paragraph p = doc.InsertParagraph();
+                int discount = Convert.ToInt32(comboBoxDiscount.SelectedValue);
+                p.AppendLine("Discount: " + comboBoxDiscount.Text + " (" + discount.ToString() + "%)");
+                p.Alignment = Alignment.left;
+                p.FontSize(12);
+                p.Font("Times New Roman");
+                p.Bold();
+                p.Color(Color.Black);
+            }
+        }
+
+        void PrintTotal(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("---------------------------------------------------------");
+            //p.Alignment = Alignment.center;
+            //p.FontSize(12);
+            //p.Font("Times New Roman");
+            //p.Bold();
+            //p.Color(Color.Black);
+
+            //Paragraph p1 = doc.InsertParagraph();
+            p.AppendLine("Total: " + txbTotal.Text);
+            p.Alignment = Alignment.left;
+            p.FontSize(12);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+        }
+      
     }
 }

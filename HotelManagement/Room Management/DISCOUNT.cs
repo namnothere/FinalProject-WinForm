@@ -107,5 +107,21 @@ namespace hotel_management.Room_Management
             return false;
         }
         
+        public int getDiscount(string type)
+        {
+            SqlCommand cmd = new SqlCommand("SELECT Rate FROM Discount WHERE Type = @type", mydb.getConnection);
+            cmd.Parameters.Add("@type", SqlDbType.NVarChar).Value = type;
+            mydb.openConnection();
+            SqlDataReader reader = cmd.ExecuteReader();
+            int rate = 0;
+            if (reader.Read())
+            {
+                rate = reader.GetInt32(0);
+            }
+            mydb.closeConnection();
+            return rate;
+        }
+
+
     }
 }

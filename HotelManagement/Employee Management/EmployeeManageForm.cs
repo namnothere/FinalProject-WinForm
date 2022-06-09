@@ -99,18 +99,39 @@ namespace hotel_management
             MemoryStream pic = new MemoryStream();
             picBox.Image.Save(pic, picBox.Image.RawFormat);
 
+
+
             if (staff.insertEmployee(txbID.Text, txbName.Text, dtpDOB.Value, txbAddress.Text, txbPhone.Text, comboBoxSex.SelectedItem.ToString(), comboBoxType.SelectedItem.ToString(),txbUsername.Text, pic))
             {
                 MessageBox.Show("Add new staff successfully!", "Add staff");
                 ACCOUNT acc = new ACCOUNT();
-                acc.insertAccount(txbUsername.Text, "123456", 0);
+                acc.insertAccount(txbUsername.Text, "123456", perm());
                 staff.setUsernameID(txbUsername.Text);
-                    
+                fillListview();
+
             }
             else
             {
                 MessageBox.Show("Add staff failed!", "Add staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        int perm()
+        {
+            int perm = 0;
+            if (comboBoxType.SelectedItem.ToString() == "Manager")
+            {
+                perm = 1;
+            }
+            else if (comboBoxType.SelectedItem.ToString() == "Receptionist")
+            {
+                perm = 2;
+            }
+            else if (comboBoxType.SelectedItem.ToString() == "Janitor")
+            {
+                perm = 0;
+            }
+            return perm;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -127,21 +148,13 @@ namespace hotel_management
                 return;
             }
 
-            //if (acc.usernameExist(txbUsername.Text))
-            //{
-            //    MessageBox.Show("This username has been taken", "Add staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            //if (acc.Available(txbUsername.Text, acc.getID(txbUsername.Text)) == false)
-            //{
-            //    MessageBox.Show("Username not available", "Update account", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
 
             MemoryStream pic = new MemoryStream();
             picBox.Image.Save(pic, picBox.Image.RawFormat);
 
+            MessageBox.Show("New DOB: " + dtpDOB.Value);
+
+            //s.updateEmployee(EmployeeID, txbName.Text, dateTimePicker1.Value, txbAddress.Text, txbPhone.Text, comboBoxSex.SelectedItem.ToString(), txbType.Text, txbUsername.Text, pic);
             if (staff.updateEmployee(txbID.Text, txbName.Text, dtpDOB.Value, txbAddress.Text, txbPhone.Text, comboBoxSex.SelectedItem.ToString(), comboBoxType.SelectedItem.ToString(), txbUsername.Text, pic))
             {
                 MessageBox.Show("Edit staff successfully!", "Edit staff");

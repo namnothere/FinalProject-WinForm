@@ -314,9 +314,9 @@
             this.comboBoxType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Items.AddRange(new object[] {
-            "Mor",
-            "Noon",
-            "Night"});
+            "Manager",
+            "Receptionist",
+            "Janitor"});
             this.comboBoxType.Location = new System.Drawing.Point(316, 235);
             this.comboBoxType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxType.Name = "comboBoxType";

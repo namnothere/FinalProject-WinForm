@@ -133,7 +133,9 @@ namespace hotel_management
 
         private void lbForgotPassword_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ngoo", "Forgot Password");
+            //MessageBox.Show("ngoo", "Forgot Password");
+            ForgotPasswordForm frm = new ForgotPasswordForm();
+            frm.Show();
         }
 
         private void txbUsername_MouseClick(object sender, EventArgs e)
