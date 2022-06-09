@@ -282,23 +282,9 @@ namespace hotel_management.Room_Management
                 PrintDateTime(doc);
                 PrintItemsHeader(doc);
                 PrintRoom(doc);
+                PrintDiscount(doc);
                 PrintTotal(doc);
-                //Table table = LoadHeader(doc);
-
-
-                //for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                //{
-
-                //    table.InsertRow();
-                //    for (int j = 0; j < dataGridView1.Columns.Count; j++)
-                //    {
-                //        table.Rows[i + 1].Cells[j].Paragraphs.First().Append(dataGridView1.Rows[i].Cells[j].Value.ToString());
-
-                //    }
-                //}
-
-
-                //doc.InsertTable(table);
+                
                 doc.Save();
                 MessageBox.Show("Successfully saved to Word!", "Bill", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -345,12 +331,12 @@ namespace hotel_management.Room_Management
         void PrintItemsHeader(DocX doc)
         {
             Paragraph p = doc.InsertParagraph();
-            p.AppendLine("------------------------------------------------------");
+            p.AppendLine("---------------------------------------------------------");
             p.AppendLine("Item\t");
             p.Append("Price\t");
             p.Append("Qty\t");
             p.Append("Sub Total");
-            p.AppendLine("------------------------------------------------------");
+            p.AppendLine("---------------------------------------------------------");
             p.Alignment = Alignment.left;
             p.FontSize(12);
             p.Font("Times New Roman");
@@ -375,6 +361,21 @@ namespace hotel_management.Room_Management
             //p.InsertPageBreakAfterSelf();
         }
 
+        void PrintDiscount(DocX doc)
+        {
+            if (comboBoxDiscount.SelectedIndex != -1)
+            {
+                Paragraph p = doc.InsertParagraph();
+                int discount = Convert.ToInt32(comboBoxDiscount.SelectedValue);
+                p.AppendLine("Discount: " + comboBoxDiscount.Text + " (" + discount.ToString() + "%)");
+                p.Alignment = Alignment.left;
+                p.FontSize(12);
+                p.Font("Times New Roman");
+                p.Bold();
+                p.Color(Color.Black);
+            }
+        }
+
         void PrintTotal(DocX doc)
         {
             Paragraph p = doc.InsertParagraph();
@@ -393,21 +394,6 @@ namespace hotel_management.Room_Management
             p.Bold();
             p.Color(Color.Black);
         }
-
-        //Table LoadHeader(DocX doc)
-        //{
-        //    Table table = doc.AddTable(1, 4);
-        //    table.Design = TableDesign.TableGrid;
-        //    table.Alignment = Alignment.center;
-        //    table.Rows[0].Cells[0].Paragraphs.First().Append("ID");
-        //    table.Rows[0].Cells[1].Paragraphs.First().Append("Course Name");
-        //    table.Rows[0].Cells[2].Paragraphs.First().Append("Period");
-        //    table.Rows[0].Cells[3].Paragraphs.First().Append("Description");
-        //    for (int i = 0; i < table.ColumnCount; i++)
-        //    {
-        //        table.Rows[0].Cells[i].FillColor = Color.FromName("DeepSkyBlue");
-        //    }
-        //    return table;
-        //}        
+      
     }
 }
