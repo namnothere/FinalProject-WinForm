@@ -60,7 +60,7 @@ namespace hotel_management
         {
             //update sql 
 
-            SqlCommand cmd = new SqlCommand("UPDATE attendance SET start = @start, date = @start WHERE Id = @id", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("UPDATE attendance SET start = @start, date = @start WHERE Id = @id AND start IS NULL", mydb.getConnection);
 
             //SqlCommand cmd = new SqlCommand("UPDATE attendance VALUES(@id, @start, @end)");
             cmd.Parameters.AddWithValue("@id", id);
@@ -81,7 +81,7 @@ namespace hotel_management
         public bool endShift(int id, DateTime end)
         {
             //SqlCommand cmd = new SqlCommand("INSERT INTO attendance VALUES(@id, @start, @end)");
-            SqlCommand cmd = new SqlCommand("UPDATE attendance SET endT = @endT, duration = @duration WHERE Id = @id", mydb.getConnection);
+            SqlCommand cmd = new SqlCommand("UPDATE attendance SET endT = @endT, duration = @duration WHERE Id = @id AND endT IS NULL", mydb.getConnection);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@endT", end);
             TimeSpan span = end - getStart(id);

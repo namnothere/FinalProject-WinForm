@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Xceed.Document.NET;
+using Xceed.Words.NET;
 
 namespace hotel_management.Room_Management
 {
@@ -241,8 +243,171 @@ namespace hotel_management.Room_Management
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Successfully print out bill!", "Bill", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Word Documents|*.doc;*.docx";
+            save.Title = "Save an text File";
+            save.FileName = "BillNo" + lbTransID.Text;
+            save.ShowDialog();
+
+
+            string path = save.FileName;
+            if (path != "")
+            {
+                var doc = null as DocX;
+
+
+
+                if (!File.Exists(path))
+                {
+                    doc = DocX.Create(path);
+                }
+                else
+                {
+                    try
+                    {
+                        doc = DocX.Load(path);
+                    }
+                    catch (System.IO.IOException)
+                    {
+                        MessageBox.Show("File is being opened by another process!");
+                        //the file is unavailable because it is:
+                        //still being written to
+                        //or being processed by another thread
+                        return;
+                    }
+                }
+
+                CreateTitle(doc);
+                PrintBillNumber(doc);
+                PrintDateTime(doc);
+                PrintItemsHeader(doc);
+                PrintRoom(doc);
+                PrintTotal(doc);
+                //Table table = LoadHeader(doc);
+
+
+                //for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                //{
+
+                //    table.InsertRow();
+                //    for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                //    {
+                //        table.Rows[i + 1].Cells[j].Paragraphs.First().Append(dataGridView1.Rows[i].Cells[j].Value.ToString());
+
+                //    }
+                //}
+
+
+                //doc.InsertTable(table);
+                doc.Save();
+                MessageBox.Show("Successfully saved to Word!", "Bill", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
+
+        void CreateTitle(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("Hotel Management System");
+            p.Alignment = Alignment.center;
+            p.FontSize(16);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        void PrintBillNumber(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("** Order No - " + lbTransID.Text + " **");
+            p.Alignment = Alignment.center;
+            p.FontSize(16);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+        
+        void PrintDateTime(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("Date: " + DateTime.Now.ToString("MM/dd/yyyy hh:mm"));
+            p.Alignment = Alignment.left;
+            p.FontSize(14);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        //print out all item with a line separate each item
+        void PrintItemsHeader(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("------------------------------------------------------");
+            p.AppendLine("Item\t");
+            p.Append("Price\t");
+            p.Append("Qty\t");
+            p.Append("Sub Total");
+            p.AppendLine("------------------------------------------------------");
+            p.Alignment = Alignment.left;
+            p.FontSize(12);
+            p.Font("Times New Roman");
+            //p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        //print room to bill
+        void PrintRoom(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.Append(txbRoomType.Text + "\t");
+            p.Append(txbRoomRate.Text + "\t");
+            p.Append(txbDays.Text + "\t");
+            p.Append(txbSubtotal.Text);
+            p.Alignment = Alignment.left;
+            p.FontSize(12);
+            p.Font("Times New Roman");
+            //p.Bold();
+            p.Color(Color.Black);
+            //p.InsertPageBreakAfterSelf();
+        }
+
+        void PrintTotal(DocX doc)
+        {
+            Paragraph p = doc.InsertParagraph();
+            p.AppendLine("---------------------------------------------------------");
+            //p.Alignment = Alignment.center;
+            //p.FontSize(12);
+            //p.Font("Times New Roman");
+            //p.Bold();
+            //p.Color(Color.Black);
+
+            //Paragraph p1 = doc.InsertParagraph();
+            p.AppendLine("Total: " + txbTotal.Text);
+            p.Alignment = Alignment.left;
+            p.FontSize(12);
+            p.Font("Times New Roman");
+            p.Bold();
+            p.Color(Color.Black);
+        }
+
+        //Table LoadHeader(DocX doc)
+        //{
+        //    Table table = doc.AddTable(1, 4);
+        //    table.Design = TableDesign.TableGrid;
+        //    table.Alignment = Alignment.center;
+        //    table.Rows[0].Cells[0].Paragraphs.First().Append("ID");
+        //    table.Rows[0].Cells[1].Paragraphs.First().Append("Course Name");
+        //    table.Rows[0].Cells[2].Paragraphs.First().Append("Period");
+        //    table.Rows[0].Cells[3].Paragraphs.First().Append("Description");
+        //    for (int i = 0; i < table.ColumnCount; i++)
+        //    {
+        //        table.Rows[0].Cells[i].FillColor = Color.FromName("DeepSkyBlue");
+        //    }
+        //    return table;
+        //}        
     }
 }

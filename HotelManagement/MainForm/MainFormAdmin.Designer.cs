@@ -32,7 +32,7 @@ namespace hotel_management
             this.panel_sidebar = new System.Windows.Forms.Panel();
             this.btnLogout = new FontAwesome.Sharp.IconButton();
             this.btnDangXuat = new FontAwesome.Sharp.IconButton();
-            this.btnQLKhachHang = new FontAwesome.Sharp.IconButton();
+            this.btnReport = new FontAwesome.Sharp.IconButton();
             this.btnRoomManagement = new FontAwesome.Sharp.IconButton();
             this.btnSched = new FontAwesome.Sharp.IconButton();
             this.btnStaffMane = new FontAwesome.Sharp.IconButton();
@@ -51,7 +51,7 @@ namespace hotel_management
             this.panel_sidebar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.panel_sidebar.Controls.Add(this.btnLogout);
             this.panel_sidebar.Controls.Add(this.btnDangXuat);
-            this.panel_sidebar.Controls.Add(this.btnQLKhachHang);
+            this.panel_sidebar.Controls.Add(this.btnReport);
             this.panel_sidebar.Controls.Add(this.btnRoomManagement);
             this.panel_sidebar.Controls.Add(this.btnSched);
             this.panel_sidebar.Controls.Add(this.btnStaffMane);
@@ -108,28 +108,28 @@ namespace hotel_management
             this.btnDangXuat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDangXuat.UseVisualStyleBackColor = false;
             // 
-            // btnQLKhachHang
+            // btnReport
             // 
-            this.btnQLKhachHang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
-            this.btnQLKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnQLKhachHang.FlatAppearance.BorderSize = 0;
-            this.btnQLKhachHang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQLKhachHang.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnQLKhachHang.ForeColor = System.Drawing.Color.White;
-            this.btnQLKhachHang.IconChar = FontAwesome.Sharp.IconChar.IdCard;
-            this.btnQLKhachHang.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnQLKhachHang.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnQLKhachHang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLKhachHang.Location = new System.Drawing.Point(0, 420);
-            this.btnQLKhachHang.Name = "btnQLKhachHang";
-            this.btnQLKhachHang.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
-            this.btnQLKhachHang.Size = new System.Drawing.Size(292, 63);
-            this.btnQLKhachHang.TabIndex = 13;
-            this.btnQLKhachHang.Text = "Client Management";
-            this.btnQLKhachHang.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQLKhachHang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQLKhachHang.UseVisualStyleBackColor = false;
-            this.btnQLKhachHang.Click += new System.EventHandler(this.btnQLKhachHang_Click);
+            this.btnReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnReport.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReport.FlatAppearance.BorderSize = 0;
+            this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            this.btnReport.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnReport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReport.Location = new System.Drawing.Point(0, 420);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Padding = new System.Windows.Forms.Padding(9, 0, 18, 0);
+            this.btnReport.Size = new System.Drawing.Size(292, 63);
+            this.btnReport.TabIndex = 13;
+            this.btnReport.Text = "Income/Outcome";
+            this.btnReport.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // btnRoomManagement
             // 
@@ -297,7 +297,7 @@ namespace hotel_management
         private FontAwesome.Sharp.IconButton btnHome;
         private Panel panelInfo;
         private PictureBox profilePic;
-        private IconButton btnQLKhachHang;
+        private IconButton btnReport;
         private IconButton btnLogout;
         private Label txbUsername;
         private Panel panel_workarea;

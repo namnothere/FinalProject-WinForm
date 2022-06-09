@@ -112,6 +112,27 @@ namespace hotel_management
             return -1;
         }
 
+        public string getUsernameByID(int id)
+        {
+            string query = "SELECT username FROM login WHERE Id = @id";
+            SqlCommand cmd = new SqlCommand(query, mydb.getConnection);
+
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            mydb.openConnection();
+
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable table = new DataTable();
+
+            adapter.SelectCommand = cmd;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                return table.Rows[0]["username"].ToString();
+            }
+            return "";
+
+        }
 
         //public bool Available(string username, int id)
         //{

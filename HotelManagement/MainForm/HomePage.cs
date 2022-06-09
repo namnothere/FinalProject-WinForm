@@ -12,7 +12,7 @@ namespace hotel_management
 {
     public partial class HomePage : Form
     {
-        int id;
+        int id; //id in login table
         public HomePage(int id)
         {
             InitializeComponent();
@@ -20,7 +20,8 @@ namespace hotel_management
         }
 
         ATTENDANCE a = new ATTENDANCE();
-
+        bool Locked = true; //locked "my info section", only open if user click edit the first time
+        bool exist = false; //employee assign with this username is not exist
         private void btnStart_Click(object sender, EventArgs e)
         {
             if (a.AttendanceAvailable(this.id) == false)
@@ -58,6 +59,8 @@ namespace hotel_management
             loadAttendace();
             CreateHeader();
             CalculateTotalHours();
+            LockAllFields();
+            LoadInfo();
         }
 
         public void loadAttendace()
@@ -91,10 +94,120 @@ namespace hotel_management
             double totalHours = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                totalHours += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
+                if (dataGridView1.Rows[i].Cells[4].Value != DBNull.Value)
+                    totalHours += Convert.ToDouble(dataGridView1.Rows[i].Cells[4].Value);
             }
-            lbHours.Text = Math.Round(totalHours, 2).ToString();
+            //this is acutally total minutes so I have to convert it to hours
+            lbHours.Text = "Total hours: " + Math.Round(totalHours/60, 2).ToString();
         }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (Locked && this.exist)
+            {
+                Locked = false;
+                btnEdit.Text = "Save";
+                //dataGridView1.ReadOnly = false;
+                UnlockAllFields();
+            }
+            else
+            {
+
+                if (!this.exist) return;
+                
+                Locked = true;
+                LockAllFields();
+                btnEdit.Text = "Edit";
+                
+                MemoryStream pic = new MemoryStream();
+                pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);                
+
+                STAFF s = new STAFF();
+
+                DataTable table = s.getEmployeeByUsername(new ACCOUNT().getUsernameByID(this.id));
+
+                string EmployeeID = table.Rows[0]["Id"].ToString();
+
+                if (EmployeeID != null)
+                    s.updateEmployee(EmployeeID, txbName.Text, dateTimePicker1.Value, txbAddress.Text, txbPhone.Text, comboBoxSex.SelectedItem.ToString(), txbType.Text, txbUsername.Text, pic);
+                
+                loadAttendace();
+                CalculateTotalHours();
+            }
+        }
+
+        void LockAllFields()
+        {
+            //lock all textbox
+            txbName.ReadOnly = true;
+            txbAddress.ReadOnly = true;
+            txbPhone.ReadOnly = true;
+            txbType.ReadOnly = true;
+            txbUsername.ReadOnly = true;
+            comboBoxSex.Enabled = false;
+            dateTimePicker1.Enabled = false;
+            pictureBox1.Enabled = false;
+        }
+
+        void UnlockAllFields()
+        {
+            //unlock all textbox
+            txbName.ReadOnly = false;
+            txbAddress.ReadOnly = false;
+            txbPhone.ReadOnly = false;
+            txbType.ReadOnly = false;
+            txbUsername.ReadOnly = true;
+            comboBoxSex.Enabled = true;
+            dateTimePicker1.Enabled = true;
+            pictureBox1.Enabled = true;
+        }
+
+        void LoadInfo()
+        {
+            //load info from database
+            STAFF s = new STAFF();
+            ACCOUNT acc = new ACCOUNT();
+            DataTable table = s.getEmployeeByUsername(new ACCOUNT().getUsernameByID(this.id));
+            if (table.Rows.Count == 0)
+            {
+                //MessageBox.Show("Error: Employee not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            this.exist = true;
+            txbName.Text = table.Rows[0]["name"].ToString();
+            txbAddress.Text = table.Rows[0]["address"].ToString();
+            txbPhone.Text = table.Rows[0]["phone"].ToString();
+            txbType.Text = table.Rows[0]["type"].ToString();
+            txbUsername.Text = table.Rows[0]["username"].ToString();
+            comboBoxSex.Text = table.Rows[0]["sex"].ToString();
+            dateTimePicker1.Value = Convert.ToDateTime(table.Rows[0]["dob"].ToString());
+
+            pictureBox1.Image = acc.getImage(txbUsername.Text);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void pictureBox1_DoubleClick(object sender, EventArgs e)
+        {
+            //open dialog folder to get new image
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = new Bitmap(ofd.FileName);
+                //picBox.Image = new Bitmap(open.FileName);
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (!Locked && this.exist)
+            {
+                Locked = true;
+                LoadInfo();
+                LockAllFields();
+                //UnlockAllFields();
+            }
+        }
     }
 }

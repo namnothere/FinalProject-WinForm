@@ -35,6 +35,7 @@ namespace hotel_management
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.lbReservation = new System.Windows.Forms.Label();
             this.panel_workarea = new System.Windows.Forms.Panel();
+            this.lbHistory = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +43,7 @@ namespace hotel_management
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(154)))), ((int)(((byte)(142)))));
+            this.panel1.Controls.Add(this.lbHistory);
             this.panel1.Controls.Add(this.lbCheckOut);
             this.panel1.Controls.Add(this.lbCheckIn);
             this.panel1.Controls.Add(this.iconPictureBox1);
@@ -116,6 +118,19 @@ namespace hotel_management
             this.panel_workarea.Size = new System.Drawing.Size(1406, 807);
             this.panel_workarea.TabIndex = 3;
             // 
+            // lbHistory
+            // 
+            this.lbHistory.AutoSize = true;
+            this.lbHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbHistory.ForeColor = System.Drawing.Color.White;
+            this.lbHistory.Location = new System.Drawing.Point(576, 9);
+            this.lbHistory.Name = "lbHistory";
+            this.lbHistory.Size = new System.Drawing.Size(107, 31);
+            this.lbHistory.TabIndex = 7;
+            this.lbHistory.Text = "History";
+            this.lbHistory.Click += new System.EventHandler(this.lbHistory_Click);
+            // 
             // RoomManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -143,6 +158,7 @@ namespace hotel_management
         private Label lbCheckIn;
         private Label lbCheckOut;
         private Panel panel_workarea;
+        private Label lbHistory;
     }
 }
 
