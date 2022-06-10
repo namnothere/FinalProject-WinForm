@@ -39,20 +39,20 @@ namespace hotel_management
             public TimeOnly from;
             public TimeOnly to;
 
-            public bool manager;
-            public int managerAmount;
-            public bool receptionist;
-            public int receptionistAmount;
-            public bool janitor;
-            public int janitorAmount;
+            public bool manager = false;
+            public int managerAmount = 0;
+            public bool receptionist = false;
+            public int receptionistAmount = 0;
+            public bool janitor = false;
+            public int janitorAmount = 0;
 
             public bool specialDay = false;
 
-            public bool interchangebleStaff;
-            public int amountOfStaff;
-            public bool IEmanager;
-            public bool IEreceptionist;
-            public bool IEjanitor;
+            public bool interchangebleStaff = false;
+            public int amountOfStaff = 0;
+            public bool IEmanager = false;
+            public bool IEreceptionist = false;
+            public bool IEjanitor = false;
         }
 
         private void saveState(bool spec)
@@ -205,6 +205,7 @@ namespace hotel_management
             for (int i = 2; i <= shifts.Count(); ++i)
             {
                 TimeOnly key = shifts.FirstOrDefault(p => p.shiftNum == i).from;
+                int keyNum = shifts.FirstOrDefault(p => p.shiftNum == i).shiftNum;
                 int j = i - 1;
 
                 while (j >= 0 && shifts.FirstOrDefault(p => p.shiftNum == j).from > key)
@@ -212,7 +213,7 @@ namespace hotel_management
                     shifts.FirstOrDefault(p => p.shiftNum == j + 1).shiftNum = shifts.FirstOrDefault(p => p.shiftNum == j).shiftNum;
                     j = j - 1;
                 }
-                shifts.FirstOrDefault(p => p.shiftNum == j + 1).from = key;
+                shifts.FirstOrDefault(p => p.shiftNum == j + 1).shiftNum = keyNum;
             }
         }
 
@@ -452,9 +453,11 @@ namespace hotel_management
                 int maxHours = Convert.ToInt16(numericUpDownMaxHourPerShift.Value);
                 shiftSort(normShifts);
                 shiftSort(specShifts);
+
                 List<Requirement> reqNorm = convertStateToReqList(normShifts);
                 List<Requirement> reqSpec = convertStateToReqList(specShifts);
-                
+           
+
                 List<string> specDays = returnSpecialDays();
                 fillStaffList();
                 WorkingDays days = new WorkingDays(staffList, this);
@@ -483,27 +486,30 @@ namespace hotel_management
                 reqSingle.end = shift.to;
 
                 List<RoleAmount> roles = new List<RoleAmount>();
-                RoleAmount role = new RoleAmount();
                 if (shift.manager)
                 {
+                    RoleAmount role = new RoleAmount();
                     role.roleName = "Manager";
                     role.amount = shift.managerAmount;
                     roles.Add(role);
                 }
                 if (shift.receptionist)
                 {
+                    RoleAmount role = new RoleAmount();
                     role.roleName = "Receptionist";
                     role.amount = shift.receptionistAmount;
                     roles.Add(role);
                 }
                 if (shift.janitor)
                 {
+                    RoleAmount role = new RoleAmount();
                     role.roleName = "Janitor";
                     role.amount = shift.janitorAmount;
                     roles.Add(role);
                 }
                 if (shift.interchangebleStaff)
                 {
+                    RoleAmount role = new RoleAmount();
                     role.roleName = "";
                     if (shift.IEmanager)
                     {
